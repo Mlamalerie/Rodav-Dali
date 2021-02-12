@@ -1,0 +1,12 @@
+
+"Rodav Dalí"
+Vente de tableau d'artiste.
+
+NavBar
+	Acceuil Manga Abstrait Contact
+	
+
+Fonctionnalité à ajouter : les users peuvent perso un tableau en uploader une cover d'album par exemple
+
+
+********************** BIBLIOGRAPHIE **********************
