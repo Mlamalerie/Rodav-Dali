@@ -3,10 +3,11 @@
 Vente de tableau d'artiste.
 
 NavBar
-	Acceuil Manga Abstrait Contact
+	Acceuil Produits Contact
 	
 
 Fonctionnalité à ajouter : les users peuvent perso un tableau en uploader une cover d'album par exemple
 
 
 ********************** BIBLIOGRAPHIE **********************
+

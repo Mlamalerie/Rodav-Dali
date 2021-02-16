@@ -5,50 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/buttonmagique.css">
+
 
         <!-- ===== BOX ICONS ===== -->
-        
+        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
-        <title>Responsive Ecommerce Website Sneakers</title>
+        <title>Rodav Dalí</title>
     </head>
     <body>
 
-        <!--===== HEADER =====-->
-        <header>
-            
-        </header>
+        <nav class="navbar">
+            <div class="content">
+                <div class="logo">
+                    <a href="#">Rodav Dalí</a>
+                </div>
+                <ul class="menu-list">
+                    <div class="icon cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="albums.html">Nos albums</a></li>
+                    <li><a href="graphics.html">Nos Toiles</a></li>
+                   
+                    <li><a href="contact.html" >Contact</a></li>
+                   <li> 
+                       <div class="buttons" >
+<!--                        <button>INSCRIPTION</button>-->
+                          <button>CONNEXION</button>
+                       </div></li>
+                </ul>
+                <div class="icon menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+        <div class="banner"></div>
+        <div class="about">
+            <div class="content">
+                <div class="title">Responsive Sticky Navigation Menu Bar on Scroll using HTML CSS & JavaScript</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo impedit atque consequatur! Iusto distinctio temporibus repellendus labore odit adipisci harum ipsa beatae natus, eum eius, hic aperiam odio! Quasi molestias magnam illo voluptatem iusto ipsam blanditiis, tempore cumque reiciendis quaerat vero tenetur, sequi dolores libero voluptas vitae voluptate placeat dolorum modi ipsa nisi repellat facilis aliquam asperiores. Aut nam repellat harum quas saepe dolorum voluptates ratione, itaque consectetur explicabo a facilis rem mollitia maxime repudiandae fuga reprehenderit, odio cum incidunt labore molestiae quis non perferendis ipsam. Illum, in, deserunt. Ipsa.</p>
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            
-
-            <!--===== FEATURED =====-->
-            
-
-            <!--===== COLLECTION =====-->
-            
-
-            <!--===== WOMEN SNEAKERS =====-->
-            
-
-            <!--===== OFFER =====-->
-            
-
-            <!--===== NEW COLLECTION =====-->
-            
-
-            <!--===== NEWSLETTER =====-->
-            
-        </main>
-
-        <!--===== FOOTER =====-->
-        <footer>
-            
-        </footer>
-
-        <!--===== MAIN JS =====-->
-        <script src=""></script>
-        
+            </div>
+        </div>
+        <script>
+            const body = document.querySelector("body");
+            const navbar = document.querySelector(".navbar");
+            const menuBtn = document.querySelector(".menu-btn");
+            const cancelBtn = document.querySelector(".cancel-btn");
+            menuBtn.onclick = ()=>{
+                navbar.classList.add("show");
+                menuBtn.classList.add("hide");
+                body.classList.add("disabled");
+            }
+            cancelBtn.onclick = ()=>{
+                body.classList.remove("disabled");
+                navbar.classList.remove("show");
+                menuBtn.classList.remove("hide");
+            }
+            window.onscroll = ()=>{
+                this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+            }
+        </script>
     </body>
 </html>
