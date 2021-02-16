@@ -1,100 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Contact Form</title>
-        <link type="text/css" rel="stylesheet" href="assets/css/contact.css" />
-        <script
-                src="https://kit.fontawesome.com/64d58efce2.js"
-                crossorigin="anonymous"
-                ></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/buttonmagique.css">
+        <link rel="stylesheet" href="assets/css/contact.css">
+
+
+        <!-- ===== BOX ICONS ===== -->
+        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+        <title>Rodav Dalí • Web Site</title>
     </head>
     <body>
-       
 
-       
-       <section>
-           
-           
-       </section>
-        <div class="container">
-            
-            <img src="img/shape.png" class="square" alt="" />
-            <div class="form">
-                <div class="contact-info">
-                    <h3 class="title">Let's get in touch</h3>
-                    <p class="text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                        dolorum adipisci recusandae praesentium dicta!
-                    </p>
-
-                    <div class="info">
-                        <div class="information">
-                            <img src="img/location.png" class="icon" alt="" />
-                            <p>92 Cherry Drive Uniondale, NY 11553</p>
-                        </div>
-                        <div class="information">
-                            <img src="img/email.png" class="icon" alt="" />
-                            <p>lorem@ipsum.com</p>
-                        </div>
-                        <div class="information">
-                            <img src="img/phone.png" class="icon" alt="" />
-                            <p>123-456-789</p>
-                        </div>
-                    </div>
-
-                    <div class="social-media">
-                        <p>Connect with us :</p>
-                        <div class="social-icons">
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </div>
+        <nav class="navbar">
+            <div class="content">
+                <div class="logo">
+                    <a href="#">Rodav Dalí</a>
                 </div>
+                <ul class="menu-list">
+                    <div class="icon cancel-btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <li><a href="#">Accueil</a></li>
 
-                <div class="contact-form">
-                    <span class="circle one"></span>
-                    <span class="circle two"></span>
 
-                    <form action="index.html" autocomplete="off">
-                        <h3 class="title">Contact us</h3>
-                        <div class="input-container">
-                            <input type="text" name="name" class="input" />
-                            <label for="">Username</label>
-                            <span>Username</span>
-                        </div>
-                        <div class="input-container">
-                            <input type="email" name="email" class="input" />
-                            <label for="">Email</label>
-                            <span>Email</span>
-                        </div>
-                        <div class="input-container">
-                            <input type="tel" name="phone" class="input" />
-                            <label for="">Phone</label>
-                            <span>Phone</span>
-                        </div>
-                        <div class="input-container textarea">
-                            <textarea name="message" class="input"></textarea>
-                            <label for="">Message</label>
-                            <span>Message</span>
-                        </div>
-                        <input type="submit" value="Send" class="btn" />
+                    <li><a href="contact.html" >Contact</a></li>
+                    <li> 
+                        <div class="buttons" >
+                            <!--                        <button>INSCRIPTION</button>-->
+                            <button>CONNEXION</button>
+                        </div></li>
+                </ul>
+                <div class="icon menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <!--
+<div class="cart-nav">
+<div class="icon">
+<i class="fas fa-shopping-cart"></i>
+<span>Cart</span>
+</div>
+<div class="item-count">10</div>
+</div>
+-->
+            </div>
+        </nav>
+        <div class="banner"></div>
+        <div class="about text-white">
+
+            <div class="content-left">
+                <div class="sidebar">
+                    <h1>Nos produits</h1>
+
+                    <a href="albums.html">Albums</a>
+                    <a href="graphics.html">Tableaux</a>
+
+                </div>
+            </div>
+
+            <div class="content content-right">
+
+                <div class="box">
+                   <h2>Contactez-nous </h2>
+                    <form action="" autocomplete="off">
+                        <input type="text" placeholder="Votre nom">
+                        <input type="email" placeholder="Votre email">
+                        <textarea placeholder="Tapez votre message...."></textarea>
+                        <button>Envoyer</button>
                     </form>
                 </div>
+
             </div>
         </div>
 
-        <script src="app.js"></script>
+        <footer id="footer">
+            <div class="bottom">
+                <center>
+                    <span class="credit">Coded By <span class="text-white">Mlamali SAID SALIMO</span> and <span class="text-white">Redouane</span></span>
+                    <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
+                </center>
+            </div>
+
+        </footer>
+
+        <script>
+            const body = document.querySelector("body");
+            const navbar = document.querySelector(".navbar");
+            const menuBtn = document.querySelector(".menu-btn");
+            const cancelBtn = document.querySelector(".cancel-btn");
+            menuBtn.onclick = ()=>{
+                navbar.classList.add("show");
+                menuBtn.classList.add("hide");
+                body.classList.add("disabled");
+            }
+            cancelBtn.onclick = ()=>{
+                body.classList.remove("disabled");
+                navbar.classList.remove("show");
+                menuBtn.classList.remove("hide");
+            }
+            window.onscroll = ()=>{
+                this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+            }
+        </script>
     </body>
 </html>

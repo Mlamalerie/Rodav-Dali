@@ -163,98 +163,13 @@ html,body {
   .navbar .logo a{
     font-size: 27px;
   }
-}
+    
+       .content-left{
+/*  max-width: 1rem;*/
+  margin-left: 1rem;
 
-/*** CARTE  ***/
-
-.wrapper{
-  position: relative;
-  max-width: 1130px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+ 
 }
-.cart-nav{
-/*  position: absolute;*/
-  right: 0;
-  top: -35%;
-  width: 130px;
-  background: #fff;
-  padding: 10px 5px;
-  border-radius: 3px;
-  display: flex;
-  cursor: pointer;
-  justify-content: space-evenly;
-  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
-}
-.cart-nav .icon{
-  color: #ff7979;
-}
-.cart-nav .icon i{
-  font-size: 20px;
-}
-.cart-nav .icon span{
-  font-weight: 500;
-}
-.cart-nav .item-count{
-  font-size: 15px;
-  height: 23px;
-  width: 23px;
-  color: #ff799d;
-  background: #ffcccc;
-  text-align: center;
-  line-height: 22px;
-  border: 1px solid #ffb3b3;
-  border-radius: 50%;
-}
-.wrapper .card{
-  position: relative;
-  background: #fff;
-    height: 345px;
-  border-radius: 8px;
-  width: calc(33% - 25px);
-  overflow: hidden;
-  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
-}
-.wrapper .card img{
-  width: 100%;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
-.card:hover img{
-  transform: scale(1.05);
-}
-.wrapper .card .content{
-  position: absolute;
-  width: 100%;
-/*    height: 25%;*/
-  bottom: -50%;
-  background: rgba(25, 25, 25, 0.94);
-  padding: 10px 20px 22px 20px;
-  box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-}
-.wrapper .card:hover .content{
-  bottom: 0;
-}
-.card .content .row,
-.content .buttons{
-  display: flex;
-  justify-content: space-between;
-}
-.content .row .details span{
-  font-size: 22px;
-  font-weight: 500;
-}
-.content .row .details p{
-  color: #7c7c7c;
-  font-size: 17px;
-  font-weight: 400;
-}
-.content .row .price{
-  color: #ff7979;
-  font-size: 25px;
-  font-weight: 600;
 }
 
 /************************** *****************/
@@ -264,16 +179,25 @@ html,body {
 
  
 }
+@media screen and (max-width: 1600px) {
+  .content-left{
+/*  max-width: 1rem;*/
+  margin-left: 3rem;
+
+ 
+}
+}
+
 
 .sidebar{
 /*   position: fixed;*/
-/*   width: 250px;*/
+   min-width: 230px;
    top:0;
    left: 0;
    bottom: 0;
    background: #191919;
    padding: 100px 30px;
-    margin-top: 3rem;
+    margin: 5rem 0rem;
     border-radius: 10px;
   
 }
@@ -282,11 +206,11 @@ html,body {
    display: block;
 /*   padding: 10px 20px;*/
    color: #fff;
-   text-decoration:inherit;
+   text-decoration:underline;
   
    letter-spacing: 2px;
    font-weight: 400;
-   margin: 0;
+   margin: 15px 0px;
    font-size: 25px;
    text-transform: uppercase;
      text-align: center;
@@ -308,10 +232,18 @@ html,body {
 }
 
 /******* footer *****/
+#footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+/*    margin-bottom: 0px;*/
+}
 .bottom center{
   padding: 20px 5px;
   font-size: 0.9375rem;
   background: #151515;
+    
 }
 .bottom center span{
   color: #656565;
