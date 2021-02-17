@@ -1,0 +1,13 @@
+
+.banner{
+  height: 90px;
+ 
+}
+
+
+
+
+.about {
+    
+    min-height: calc(100vh - 153px);
+}

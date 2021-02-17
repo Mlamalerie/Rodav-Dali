@@ -6,6 +6,7 @@
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/albums.css">
         <link rel="stylesheet" href="assets/css/buttonmagique.css">
         <link rel="stylesheet" href="assets/css/cart.css">
 
@@ -71,10 +72,10 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span>Headphone</span>
-                                    <p>Premium headphone</p>
+                                    <span>Eyes Of Days</span>
+                                    <p>de <u>Cruel Santi</u> (2020)</p>
                                 </div>
-                                <div class="price">$30</div>
+                                <div class="price">$17</div>
                             </div>
                             <!--
 <div class="buttons">
@@ -89,38 +90,50 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span>Apple Watch</span>
-                                    <p>Premium digital watch</p>
+                                    <span> <strong>I want</strong></span>
+                                    <p>de <u>Cruel Santi</u> (2018)</p>
                                 </div>
-                                <div class="price">$80</div>
+                                <div class="price">$10</div>
                             </div>
-                            <!--
-<div class="buttons">
-<button>Buy Now</button>
-<button class="cart-btn">Add to Cart</button>
-</div>
--->
+
                         </div>
                     </div>
                     <div class="card">
-                        <img src="assets/img/cover/cover%20(1).png" alt=""> 
+                        <img src="assets/img/cover/cover%20(2).jpg" alt=""> 
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span>Apple Airpod</span>
-                                    <p>Premium black airpod</p>
+                                    <span> <sstrong>Slutt Diez</sstrong></span>
+                                    <p>de <u>Lil Flip</u> (2020)</p>
+                                </div>
+                                <div class="price">$20</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                 <div class="wrapper">
+
+                    
+                    <div class="card">
+                        <img src="assets/img/cover/cover%20(1).jpeg" alt=""> 
+                        <div class="content">
+                            <div class="row">
+                                <div class="details">
+                                    <span> <sstrong>La bonne époque</sstrong></span>
+                                    <p>de <u>Mlamali</u> (2005)</p>
                                 </div>
                                 <div class="price">$50</div>
                             </div>
-                            <!--
-<div class="buttons">
-<button>Buy Now</button>
-<button class="cart-btn">Add to Cart</button>
-</div>
--->
+
                         </div>
                     </div>
+                    
+                   
                 </div>
+      
             </div>
         </div>
 
@@ -134,24 +147,6 @@
 
         </footer>
 
-        <script>
-            const body = document.querySelector("body");
-            const navbar = document.querySelector(".navbar");
-            const menuBtn = document.querySelector(".menu-btn");
-            const cancelBtn = document.querySelector(".cancel-btn");
-            menuBtn.onclick = ()=>{
-                navbar.classList.add("show");
-                menuBtn.classList.add("hide");
-                body.classList.add("disabled");
-            }
-            cancelBtn.onclick = ()=>{
-                body.classList.remove("disabled");
-                navbar.classList.remove("show");
-                menuBtn.classList.remove("hide");
-            }
-            window.onscroll = ()=>{
-                this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
-            }
-        </script>
+
     </body>
 </html>

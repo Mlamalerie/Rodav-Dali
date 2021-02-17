@@ -1,11 +1,10 @@
 
 .banner{
-  background: url("https://media.giphy.com/media/8Py81X2P6RM2cErs6a/giphy.gif") no-repeat;
   height: 90px;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+ 
 }
+
+
 .content-right{
    width: 65%;
 /*    margin-left: 2rem;*/
@@ -21,7 +20,7 @@
    box-shadow: 1px 2px 4px rgba(0,0,0,.3);
 }
 
-.box input{
+.box input[type=text],.box input[type=email], .box select,.box input[type=date]{
    height: 35px;
    width: 100%;
    padding-left: 5%;
@@ -33,6 +32,51 @@
    outline: none;
 }
 
+
+.divSexe{
+   height: 35px;
+/*   width: 100%;*/
+/*   padding-left: 5%;*/
+   margin-top: 20px;
+/*align-content: center;*/
+/*    align-items: center;*/
+    text-align: center;
+  
+/*   background: #363636;*/
+   border: none;
+   border-radius:4px;
+   color: whitesmoke;
+   outline: none;
+   
+}
+.divDate{
+  height: 35px;
+/*   width: 100%;*/
+/*   padding-left: 5%;*/
+   margin-top: 20px;
+/*align-content: center;*/
+/*    align-items: center;*/
+    text-align: center;
+  
+/*   background: #363636;*/
+   border: none;
+   border-radius:4px;
+   color: whitesmoke;
+   outline: none;
+   
+}
+label {
+    padding: 0px 0.7rem;
+    border-radius: 4px;
+    margin-left: 5px;
+    background-color: #262626;
+   
+    
+}
+
+#inputF {
+    margin-left: 5%;
+}
 .box textarea{
    height: 90px;
    width: 100%;
