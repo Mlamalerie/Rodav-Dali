@@ -3,7 +3,7 @@
 petit blabla. 2021
 
 ## Les artistes du site
-
+#### artiste peintre et graphiste 
 faut dire que c'est nous mm qui avons fais les cover
 
 ## Screenshots of the website

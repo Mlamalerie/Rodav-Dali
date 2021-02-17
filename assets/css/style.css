@@ -58,6 +58,7 @@ html,body {
   font-size: 30px;
   font-weight: 600;
   text-decoration: none;
+     text-shadow: 2px 3px 5px rgba(253, 0, 0, 0.3);
 }
 .navbar .menu-list{
   display: inline-flex;
@@ -269,3 +270,15 @@ html,body {
   }
 }
 
+/***** **/
+.text-shadow {
+     text-shadow: 2px 3px 5px rgba(255, 255, 255, 0.22);
+}
+.text-point {
+     text-decoration-line: underline!important;
+  text-decoration-style: dotted!important;
+}
+.text-wavy {
+     text-decoration-line: underline!important;
+  text-decoration-style: wavy!important;
+}
