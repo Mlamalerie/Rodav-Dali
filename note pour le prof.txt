@@ -1,0 +1,1 @@
+navbar quand on descend c transparant, opaque avec javascript plutard

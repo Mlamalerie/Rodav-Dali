@@ -1,6 +1,6 @@
 
 .banner{
-  height: 90px;
+  height: 105px;
  
 }
 
@@ -13,5 +13,5 @@
 
 .about {
     
-    min-height: calc(100vh - 153px);
+    min-height: calc(100vh - 175px);
 }
