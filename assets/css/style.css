@@ -258,7 +258,7 @@ html,body {
 
 .sidebar{
     /*   position: fixed;*/
-    min-width: 230px;
+    min-width: 16.5rem;
     top:0;
     left: 0;
     bottom: 0;

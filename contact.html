@@ -7,6 +7,7 @@
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/buttonmagique.css">
+      
         <link rel="stylesheet" href="assets/css/contact.css">
 
 
@@ -17,24 +18,31 @@
     </head>
     <body>
 
+        <!-- ===== NAV BAR ===== -->
         <nav class="navbar">
             <div class="content">
                 <div class="logo">
-                    <a href="#">Rodav Dalí</a>
+                    <a href="index.html">Rodav Dalí</a>
                 </div>
                 <ul class="menu-list">
                     <div class="icon cancel-btn">
                         <i class="fas fa-times"></i>
                     </div>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li>
+                        <a href="#" class="desktop-link text-shadow text-point  ">Oeuvres</a>
+                        <input type="checkbox" id="show-features">
+                        <label for="show-features">Oeuvres</label>
+                        <ul>
+                            <li class="sub-link-hover"><a href="albums.html">Albums 💽</a></li>
+                            <li class="sub-link-hover"><a href="tableaux.html">Tableaux 🎨</a></li>
+                            <li class="sub-link-hover"><a href="accessoires.html">Accessoires 🕹</a></li>
 
+                        </ul>
+                    </li>
 
                     <li><a href="contact.html" >Contact</a></li>
-                    <li> 
-                        <div class="buttons" >
-                            <!--                        <button>INSCRIPTION</button>-->
-                            <button>CONNEXION</button>
-                        </div></li>
+                    <li><a href="connexion.html" class="buttons-magique">Connexion</a></li>
                 </ul>
                 <div class="icon menu-btn">
                     <i class="fas fa-bars"></i>
@@ -50,18 +58,24 @@
 -->
             </div>
         </nav>
+        <!-- ===== WALL ===== -->
         <div class="banner"></div>
+        <!-- ===== CORPS ===== -->
         <div class="about text-white">
 
+            <!-- ===== MENU GAUCHE ===== -->
             <div class="content-left">
                 <div class="sidebar">
-                    <h1>Nos produits</h1>
+                    <h1 class="text-shadow text-point">Nos produits</h1>
 
-                    <a href="albums.html">Albums</a>
-                    <a href="graphics.html">Tableaux</a>
+
+                    <a href="albums.html">Albums 💽</a>
+                    <a href="tableaux.html">Tableaux 🎨</a>
+                    <a href="accessoires.html">Accessoires 🕹</a>
 
                 </div>
             </div>
+
 
             <div class="content content-right">
 
@@ -84,11 +98,11 @@
                                 <input name="sexe"type="radio" id="inputF"><label for="inputF">F</label>
 
                             </div>
-                            
+
                             <label for="datenaissance">Date de naissance</label>
                             <input type="date" id="datenaissance"  >
-                            
-                          
+
+
                             <select id="metiers" name="metiers" >
                                 <option value="-1">Sans emploi</option>
                                 <option value="0">Musicien</option>
@@ -96,7 +110,7 @@
                                 <option value="2">Etudiant</option>
                                 <option value="3">Autre..</option>
                             </select>
-                            
+
 
                         </div>
 
@@ -111,16 +125,16 @@
             </div>
         </div>
 
-      
+
         <footer>
             <div class="bottom">
                 <center>
                     <span class="credit">Coded By 
-                    <a href="https://www.linkedin.com/in/mlamalisaidsalimo"><span class="text-white">Mlamali SAID SALIMO</span></a> 
-                    and 
-                    
-                    <a href="https://www.linkedin.com/in/redouane-zamani-041184200"><span class="text-white">Redouane ZAMANI</span></a>
-                    
+                        <a href="https://www.linkedin.com/in/mlamalisaidsalimo"><span class="text-white">Mlamali SAID SALIMO</span></a> 
+                        and 
+
+                        <a href="https://www.linkedin.com/in/redouane-zamani-041184200"><span class="text-white">Redouane ZAMANI</span></a>
+
                     </span>
                     <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
                 </center>
@@ -129,6 +143,6 @@
         </footer>
 
 
-       
+
     </body>
 </html>
