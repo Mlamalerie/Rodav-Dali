@@ -48,6 +48,8 @@
     height: 345px;
   border-radius: 8px;
   width: calc(33% - 25px);
+    min-width: 350px;
+    margin-right: 40px;
   overflow: hidden;
   box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
 }
