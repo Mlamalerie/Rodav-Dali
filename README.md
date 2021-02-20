@@ -1,13 +1,12 @@
 # Rodav Dalì
 
-petit blabla. 2021
-
-## Les artistes du site
-#### artiste peintre et graphiste 
-faut dire que c'est nous mm qui avons fais les cover
+petit blabla.
+Certaines images présentes sur le site ont été récuperés sur internet puis retravailler avec PhotoShop. D'autres ont totalement créé par nos soins.
 
 ## Screenshots of the website
-![](assets/img/screen%20(1).PNG)
-![](assets/img/screen%20(2).PNG)
+screen
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+## Commantaires 
+navbar quand on descend c transparant, opaque avec javascript plutard
 ## Contributors
-Mlamali SAID SALIMO and Redouane ZAMANI
+[Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo) and [Redouane ZAMANI](https://www.linkedin.com/in/redouane-zamani-041184200/). 2021

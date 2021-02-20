@@ -8,8 +8,6 @@ NavBar
 
 Fonctionnalité à ajouter : les users peuvent perso un tableau en uploader une cover d'album par exemple
 
-bug à corriger : quand on rapetessit le navbar, on lcique ca marche pas
-
 
 ******* Comment j'ai conçu le site.
 On a trouvé le magnifique gif en se promenant sur giphy.
