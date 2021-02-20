@@ -1,6 +1,6 @@
 # Rodav Dalì
 Site d'exposition et vente de créations artistiques et esthétique. 
-<!-- -->
+
 ### 📸 Screenshots 
 ![](https://drive.google.com/uc?id=1mhvG4uiXgJtR9OGJMDXOuffKPbeH7u-q&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Page d'accueil")
 ![](https://drive.google.com/uc?id=1mk43xv-FIQ5IPILY7CCq6IHASARgZ_Tm&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Tableaux | Rodav Dalì")
