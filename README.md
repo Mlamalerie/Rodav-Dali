@@ -1,13 +1,13 @@
 # Rodav Dalì
-
-petit blabla.
+Site de d'exposition/vente d'oeuvres diverses. 
 Certaines images présentes sur le site ont été récuperés sur internet puis retravailler avec PhotoShop. D'autres ont totalement créé par nos soins.
 
 ### Screenshots of the website
-screen
-![alt text](https://drive.google.com/uc?id=1kwrKWnBpjzxv9E0iDYIGkNUXz6nTCzCr&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Logo Title Text 1")
-<img src="https://tesseract-it.com/assets/img/blog/c69355e2c38ddb57aca5e0aa852b2dc9.jpeg" width="350" title="hover text">
+![alt text](https://drive.google.com/uc?id=1mhvG4uiXgJtR9OGJMDXOuffKPbeH7u-q&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Page d'accueil")
+![alt text](https://drive.google.com/uc?id=1mk43xv-FIQ5IPILY7CCq6IHASARgZ_Tm&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Tableaux | Rodav Dalì")
+![alt text](https://drive.google.com/uc?id=1kwrKWnBpjzxv9E0iDYIGkNUXz6nTCzCr&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Albums | Rodav Dalì")
+
 ### Commentaires 
-navbar quand on descend c transparant, opaque avec javascript plutard
+Pour l'instant à ce stage du projet (HTML/CSS) la navbar est transparente et quand on scrool, c'est un peu gênant. Au prochain stade (JS) on fera en sorte qu'elle devienne opaque, cela sera + stylé.
 ### Contributors
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo) and [Redouane ZAMANI](https://www.linkedin.com/in/redouane-zamani-041184200/). 2021
