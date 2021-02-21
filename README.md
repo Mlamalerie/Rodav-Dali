@@ -15,5 +15,3 @@ Pour l'instant à ce stage du projet (HTML/CSS) la navbar est transparente quand
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo) and [Redouane ZAMANI](https://www.linkedin.com/in/redouane-zamani-041184200/). <br/>
 
 
----
-Nous avons uploader notre site sur un petit hébergeur, pour permettre au curieux de visionner le site + simplement : https://rodavdali.netlify.app/
