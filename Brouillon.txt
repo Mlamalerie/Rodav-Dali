@@ -6,11 +6,12 @@ NavBar
 	Acceuil Produits Contact
 	
 
-Fonctionnalité à ajouter : les users peuvent perso un tableau en uploader une cover d'album par exemple
-
+Fonctionnalité à ajouter et choses à ameliorer: 
+les users peuvent perso un tableau en uploader une cover d'album par exemple
+navbar quand on clique sur oeuvre
 
 ******* Comment j'ai conçu le site.
 On a trouvé le magnifique gif en se promenant sur giphy.
 On a trouvé le css bouton magique en se promenant sur youtube.
-On a créern 
+
 
