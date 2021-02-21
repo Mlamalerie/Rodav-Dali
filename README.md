@@ -16,4 +16,4 @@ Pour l'instant à ce stage du projet (HTML/CSS) la navbar est transparente quand
 
 
 ---
-https://rodavdali.netlify.app/
+Nous avons uploader notre site sur un petit hébergeur, pour permettre au curieux de visionner le site + simplement : https://rodavdali.netlify.app/
