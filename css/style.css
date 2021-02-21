@@ -6,8 +6,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 html,body {
-    background-color: rgb(20 16 17);
+    background-color: rgb(20, 16, 17)!important;
 }
 .text-white {
     color: whitesmoke!important;
