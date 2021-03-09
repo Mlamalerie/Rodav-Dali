@@ -2,16 +2,24 @@
 #app-cover
 {
     display: table;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 0px auto;
+    
 /*    width: 600px;*/
 /*    margin: 80px auto;*/
     counter-reset: button-counter;
+    padding: 35px;
+    background-color: #191919;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
   
 } 
 
 .labelStock
 { 
-   margin-left: 22%;
+  font-size: 95%;
+
+   
   
 }
 
@@ -57,7 +65,7 @@
 
 .button.b2
 {
-    border-radius: 2px;
+    border-radius: 2px;  margin: 10px auto 0px auto;
 }
 
 .checkbox
@@ -66,8 +74,8 @@
     width: 100%;
     height: 100%;
     padding: 0;
-    margin: 0;
-    margin: 0;
+ 
+  
     opacity: 0;
     cursor: pointer;
     z-index: 3;
@@ -126,7 +134,7 @@
     width: 44px;
     height: 27px; 
     left: 53px;
-    background-color: #03A9F4;
+    background-color: #03aaf4;
     z-index: 2;
 }
 
@@ -138,6 +146,6 @@
 
 #button-13 .checkbox:checked ~ .layer
 {
-    background-color: #fcebeb;
+    background-color: #171717;
 }
 
