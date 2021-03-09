@@ -59,20 +59,22 @@
   transition: all 0.3s ease;
 }
 .card:hover img{
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 .wrapper .card .content{
   position: absolute;
   width: 100%;
 /*    height: 25%;*/
-  bottom: -50%;
-  background: rgba(25, 25, 25, 0.94);
+  bottom: -17%; /* placement du content */
+  background: rgba(25, 25, 25, 0.75);
   padding: 10px 20px 22px 20px;
   box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
 }
 .wrapper .card:hover .content{
   bottom: 0;
+    background: rgba(25, 25, 25, 0.98);
+   
 }
 .card .content .row,
 .content .buttons{

@@ -6,10 +6,11 @@
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/checkbox.css">
         <link rel="stylesheet" href="css/albums-tableaux-dress.css">
         <link rel="stylesheet" href="css/buttonmagique.css">
         <link rel="stylesheet" href="css/cart.css">
-<link rel="icon" href="img/icon.ico" />
+        <link rel="icon" href="img/icon.ico" />
 
         <!-- ===== BOX ICONS ===== -->
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
         <title>Albums | Rodav Dalí • Web Site</title>
     </head>
     <body>
-       <!-- ===== NAV BAR ===== -->
+        <!-- ===== NAV BAR ===== -->
         <nav class="navbar">
             <div class="content">
                 <div class="logo">
@@ -35,7 +36,7 @@
                         <ul>
                             <li class="sub-link-hover"><a href="albums.html">Albums 💽</a></li>
                             <li class="sub-link-hover"><a href="tableaux.html">Tableaux 🎨</a></li>
-                         <li class="sub-link-hover"><a href="dress.html">Mode 🧦</a></li>
+                            <li class="sub-link-hover"><a href="dress.html">Mode 🧦</a></li>
 
                         </ul>
                     </li>
@@ -59,17 +60,35 @@
         </nav>
         <!-- ===== WALL ===== -->
         <div class="banner"></div>
-          <!-- ===== CORPS ===== -->
+        <!-- ===== CORPS ===== -->
         <div class="about text-white">
             <!-- ===== MENU GAUCHE ===== -->
             <div class="content-left">
+                    <div id="app-cover"> <label class="labelStock" for="affqte">Le Stock</label>
+                        <div class="row-row">
+                            <div class="toggle-button-cover">
+
+                                <div class="button b2" id="button-13">
+                                    <input onchange="showQte(this)" id="affqte" type="checkbox" class="checkbox">
+                                    <div class="knobs">
+                                        <span></span>
+                                    </div>
+                                    <div class="layer"></div>
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+           
                 <div class="sidebar">
-                    <h1 class="text-shadow text-point">Nos produits</h1>
+
+                        <h1 class="text-shadow text-point">Nos produits</h1>
 
 
                     <a href="albums.html"><span class="amenuactive ">Albums</span> 💽</a>
                     <a href="tableaux.html">Tableaux 🎨</a>
-                   <a href="dress.html">Mode 🧦</a>
+                    <a href="dress.html">Mode 🧦</a>
 
                 </div>
             </div>
@@ -83,8 +102,10 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span><strong>Eyes Of Days</strong></span>
-                                    <p>de <u>Cruel Santi</u> (2020)</p>
+                                    <span><strong>Eyes Of Days  <span class="quantiteBay"><br>[5 en stock]</span></strong></span>
+                                    <p>de <u>Cruel Santi</u> (2020)
+                                   
+                                    </p>
                                 </div>
                                 <div class="price">$17</div>
                             </div>
@@ -101,7 +122,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span> <strong>I want</strong></span>
+                                    <span> <strong>I want</strong> <span class="quantiteBay"><br>[42 en stock]</span></span>
                                     <p>de <u>Cruel Santi</u> (2018)</p>
                                 </div>
                                 <div class="price">$10</div>
@@ -114,7 +135,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span> <strong>Slutt Diez</strong></span>
+                                    <span> <strong>Slutt Diez <span class="quantiteBay"><br>[13 en stock]</span></strong></span>
                                     <p>de <u>Lil Flip</u> (2020)</p>
                                 </div>
                                 <div class="price">$20</div>
@@ -134,7 +155,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span> <strong>La bonne époque</strong></span>
+                                    <span> <strong>La bonne époque <span class="quantiteBay"><br>[1 en stock]</span></strong></span>
                                     <p>de <u>Mlamali</u> (2005)</p>
                                 </div>
                                 <div class="price">$50</div>
@@ -147,7 +168,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span> <strong>Silver</strong></span>
+                                    <span> <strong>Silver <span class="quantiteBay"><br>[33 en stock]</span></strong></span>
                                     <p>de <u>Amadunsi</u> (2020)</p>
                                 </div>
                                 <div class="price">$10</div>
@@ -160,7 +181,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="details">
-                                    <span> <strong>WEB </strong> (2021)</span>
+                                    <span> <strong>WEB (2021) <span class="quantiteBay"><br>[3 en stock]</span></strong></span>
                                     <p>de <u>Mlamali</u> et <u>Redouane</u> </p>
                                 </div>
                                 <div class="price">$3</div>
@@ -177,22 +198,46 @@
             </div>
         </div>
 
-       
+
         <footer>
             <div class="bottom">
                 <center>
                     <span class="credit">Coded By 
-                    <a href="https://www.linkedin.com/in/mlamalisaidsalimo"><span class="text-white">Mlamali SAID SALIMO</span></a> 
-                    and 
-                    
-                    <a href="https://www.linkedin.com/in/redouane-zamani-041184200"><span class="text-white">Redouane ZAMANI</span></a>
-                    
+                        <a href="https://www.linkedin.com/in/mlamalisaidsalimo"><span class="text-white">Mlamali SAID SALIMO</span></a> 
+                        and 
+
+                        <a href="https://www.linkedin.com/in/redouane-zamani-041184200"><span class="text-white">Redouane ZAMANI</span></a>
+
                     </span>
                     <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
                 </center>
             </div>
 
         </footer>
+        <script src="js/boutique.js"> </script>
+        
+        <script>
+            const body = document.getElementsByName("body");
+            const navbar = document.getElementsByClassName("navbar")[0];
+            const menuBtn = document.getElementsByClassName("menu-btn")[0];
+            const cancelBtn = document.getElementsByClassName("cancel-btn")[0];
 
+            console.log(body,navbar,menuBtn,cancelBtn);
+
+
+            menuBtn.onclick = ()=>{
+                navbar.classList.add("show");
+                menuBtn.classList.add("hide");
+                body.classList.add("disabled");
+            }
+            cancelBtn.onclick = ()=>{
+                body.classList.remove("disabled");
+                navbar.classList.remove("show");
+                menuBtn.classList.remove("hide");
+            }
+            window.onscroll = ()=>{
+                this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+            }
+        </script>
     </body>
 </html>

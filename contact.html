@@ -7,9 +7,9 @@
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/buttonmagique.css">
-      
+
         <link rel="stylesheet" href="css/contact.css">
-<link rel="icon" href="img/icon.ico" />
+        <link rel="icon" href="img/icon.ico" />
 
         <!-- ===== BOX ICONS ===== -->
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
@@ -83,8 +83,10 @@
                     <h2>Contactez-nous <i class="fas fa-envelope"></i></h2>
                     <form id="formContact" action="mailto:saidsalimo@eisti.eu" autocomplete="off">
                         <div class="">
-                            <input type="text" placeholder="Votre prénom" style="grid-column: 2">
-                            <input type="text" placeholder="Votre nom" style="grid-column: 4">
+                            <input id="prenom" onkeyup="check()" type="text" placeholder="Votre prénom" style="grid-column: 2">
+                            <div class="error error-prenom" > </div>
+                            <input id="nom" onkeyup="check()" type="text" placeholder="Votre nom" style="grid-column: 4">
+                            <div class="error error-nom" >  </div>
 
                         </div>
 
@@ -92,19 +94,19 @@
 
                             <div class="divSexe" style="grid-column: 2">
 
-                                <input name="sexe" type="radio" id="inputM"><label for="inputM" >M</label>
+                                <input onchange="check()" name="sexe" type="radio" id="inputM"><label for="inputM" >M</label>
 
 
-                                <input name="sexe"type="radio" id="inputF"><label for="inputF">F</label>
+                                <input onchange="check()" name="sexe" type="radio" id="inputF"><label for="inputF">F</label>
 
                             </div>
 
                             <label for="datenaissance">Date de naissance</label>
-                            <input type="date" id="datenaissance"  >
+                            <input onkeyup="check()" type="date" id="datenaissance"  >
 
 
                             <select id="metiers" name="metiers" placeholder="test">
-                                 <option value="-1">Sans emploi</option>
+                                <option value="-1">Sans emploi</option>
                                 <option value="0">🧑🏾‍🎨 Artiste (musicien, chanteur, peintre, graphiste, ect..) </option>
                                 <option value="1">🦾 Ingénieur diplomé</option>
                                 <option value="2">📚 Etudiant</option>
@@ -114,11 +116,12 @@
 
                         </div>
 
-                        <input type="email" placeholder="Votre email">
+                        <input onkeyup="check()" id="email" name="email" type="email" placeholder="Votre email">
+                        <div class="error error-mail" >  </div>
 
-                        <input type="text" placeholder="Le sujet du message">
-                        <textarea placeholder="Tapez votre message...."></textarea>
-                        <button class="buttons-magique">Envoyer</button>
+                        <input id="sujet" onkeyup="check()" type="text" placeholder="Le sujet du message">
+                        <textarea id="message" onkeyup="check()" placeholder="Tapez votre message...."></textarea>
+                        <button id="btnSEND" disabled>veuillez remplir toute les cases <i class="fas fa-exclamation-triangle"></i></button>
                     </form>
                 </div>
 
@@ -142,6 +145,209 @@
 
         </footer>
 
+        <script>
+            const email = document.getElementById("email");
+            const prenom = document.getElementById("prenom");
+            const nom = document.getElementById("nom");
+            const sexeM = document.getElementById("inputM");
+            const sexeF = document.getElementById("inputF");
+            const date = document.getElementById("datenaissance");
+            const sujet = document.getElementById("sujet");
+            const message = document.getElementById("message");
+
+            const erroremail = document.querySelector(".error-mail");
+            const errorprenom = document.querySelector(".error-prenom");
+            const errornom = document.querySelector(".error-nom");
+            const btnSEND = document.querySelector("#btnSEND");
+            btnSEND.style.fontSize = "0.8rem";
+
+
+            const regExpMail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            const regExpAlpha = /^[A-Za-z]+$/;
+
+            const icon =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" 
+            var okSEND = true;
+
+            function isValidDate(dateString)
+            {
+                // First check for the pattern
+                var regex_date = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+
+                if(!regex_date.test(dateString))
+                {
+                    return false;
+                }
+
+                // Parse the date parts to integers
+                var parts   = dateString.split("-");
+                var day     = parseInt(parts[2], 10);
+                var month   = parseInt(parts[1], 10);
+                var year    = parseInt(parts[0], 10);
+
+                // Check the ranges of month and year
+                if(year < 1000 || year > 3000 || month == 0 || month > 12)
+                {
+                    return false;
+                }
+
+                var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+                // Adjust for leap years
+                if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+                {
+                    monthLength[1] = 29;
+                }
+
+                // Check the range of the day
+                return day > 0 && day <= monthLength[month - 1];
+            }
+            function check(){
+                console.log("check");
+                okSEND = true;
+
+                /**** verif email */
+                if(email.value.length == 0) {
+                    erroremail.style.display = "none";
+                    email.style.border = "none";
+                    okSEND =false;console.log("email");
+                } 
+                else {
+
+
+                    if(!email.value.match(regExpMail)){ // si c'est pas bon
+
+                        email.style.border = "solid 1px"
+                        email.style.borderColor = "#e74c3c";
+
+                        erroremail.style.display = "block";
+                        erroremail.innerHTML = icon + "Veuillez saisir une adresse mail correct !";
+                        okSEND =false;
+                        console.log("email");
+                        //btn.style.display = "none";
+                    } else {
+                        erroremail.style.display = "none";
+                        email.style.border = "none"
+                    }
+                }
+
+                /**** verif prenom */
+                if(prenom.value.length == 0) {
+                    errorprenom.style.display = "none";
+                    prenom.style.border = "none"
+                    okSEND =false;console.log("prenom");
+                } else {
+
+
+                    if(!prenom.value.match(regExpAlpha)){ // si c'est pas bon
+                        console.log("*-");
+                        prenom.style.border = "solid 1px"
+                        prenom.style.borderColor = "#e74c3c";
+
+                        errorprenom.style.display = "block";
+                        errorprenom.innerHTML = icon + "Veuillez saisir un prenom correct (des lettres uniquement)!";
+                        okSEND =false;console.log("prenom");
+                        //btn.style.display = "none";
+                    } else {
+                        console.log("++-");
+                        errorprenom.style.display = "none";
+                        prenom.style.border = "none"
+                    }
+                }
+
+                /**** verif nom */
+                if(nom.value.length == 0) {
+                    errornom.style.display = "none";
+                    nom.style.border = "none";
+                    okSEND =false;
+                    console.log("nom");
+                } else {
+
+
+                    if(!nom.value.match(regExpAlpha)){ // si c'est pas bon
+                        console.log("*-");
+                        nom.style.border = "solid 1px"
+                        nom.style.borderColor = "#e74c3c";
+
+                        errornom.style.display = "block";
+                        errornom.innerHTML = icon + "Veuillez saisir un nom correct (des lettres uniquement)!";
+                        okSEND =false;console.log("nom");
+                        //btn.style.display = "none";
+                    } else {
+                        errornom.style.display = "none";
+                        nom.style.border = "none";
+                    }
+                }
+
+                /**** verif sexe */
+                if(!sexeM.checked && !sexeF.checked) {
+                    okSEND = false;
+                    console.log("sexe");
+                }
+               
+
+                /**** verif sujet */
+                if(sujet.value.length == 0) {
+                    okSEND = false;
+                    console.log("sujet");
+                }
+
+                /**** verif message */
+                if(message.value.length == 0) {
+                    okSEND = false; console.log("message");
+                }
+
+                /**** verif date */
+                if(!isValidDate(date.value)) {
+                    console.log(date.value,"###data pas bon");
+                    okSEND = false;
+
+                } 
+               
+                console.log(date.value,"***********",isValidDate(date.value));
+                if(okSEND) {
+                    btnSEND.style.display = "block";
+                    btnSEND.setAttribute("class","buttons-magique");
+                    btnSEND.style.fontSize = "1.1rem";
+                    btnSEND.innerHTML = "ENVOYER";
+                     btnSEND.setAttribute("disabled","false");
+                    console.log("if%");
+                } 
+                else{
+                    console.log("else%");
+                    btnSEND.setAttribute("class"," ");
+                    btnSEND.innerHTML = "veuillez remplir toute les cases <i class='fas fa-exclamation-triangle'></i>";
+                    btnSEND.style.fontSize = "0.8rem";
+                    btnSEND.setAttribute("disabled","true");
+
+                }
+            }
+        </script>
+
+
+
+        <script>
+            const body = document.getElementsByName("body");
+            const navbar = document.getElementsByClassName("navbar")[0];
+            const menuBtn = document.getElementsByClassName("menu-btn")[0];
+            const cancelBtn = document.getElementsByClassName("cancel-btn")[0];
+
+            console.log(body,navbar,menuBtn,cancelBtn);
+
+
+            menuBtn.onclick = ()=>{
+                navbar.classList.add("show");
+                menuBtn.classList.add("hide");
+                body.classList.add("disabled");
+            }
+            cancelBtn.onclick = ()=>{
+                body.classList.remove("disabled");
+                navbar.classList.remove("show");
+                menuBtn.classList.remove("hide");
+            }
+            window.onscroll = ()=>{
+                this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+            }
+        </script>
 
 
     </body>

@@ -29,10 +29,11 @@
    padding-left: 5%;
    margin-top: 20px;
    background: #363636;
-   border: none;
+   border:none;
    border-radius:4px;
    color: whitesmoke;
    outline: none;
+   
 }
 
 
@@ -106,3 +107,9 @@ label {
    color: #fff;
 }
 
+.error {
+    color: #e74c3c;
+    font-size: 80%;
+    text-align: center;
+    margin-top: 3px;
+}
