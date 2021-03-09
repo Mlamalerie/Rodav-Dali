@@ -13,5 +13,5 @@ Pour l'instant à ce stage du projet (HTML/CSS) la navbar est transparente quand
 
 ### 👨🏾‍💻👨🏼‍💻 Auteurs
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo) and [Redouane ZAMANI](https://www.linkedin.com/in/redouane-zamani-041184200/). <br/>
-2021.
+
 
