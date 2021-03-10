@@ -1,110 +1,110 @@
 
 .banner{
-  height: 105px;
- 
+    height: 105px;
+
 }
 .about {
-    
-    min-height: calc(100vh - 168px);
+
+    min-height: calc(100vh - 175px);
 }
 
 .content-right{
-   width: 65%;
-/*    margin-left: 2rem;*/
-    
+    width: 45%;
+    /*    margin-left: 2rem;*/
+
 }
 
 .box{
-   background: #191919;
-   max-width: 40rem;
-   margin: 4rem auto;
-   padding: 30px 60px;
-   border-radius: 8px;
-   box-shadow: 1px 2px 4px rgba(0,0,0,.3);
+    background: #191919;
+    max-width: 40rem;
+    margin: 4rem auto;
+    padding: 30px 60px;
+    border-radius: 8px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.3);
 }
 
 .box input[type=text],.box input[type=email], .box select,.box input[type=date]{
-   height: 35px;
-   width: 100%;
-   padding-left: 5%;
-   margin-top: 20px;
-   background: #363636;
-   border:none;
-   border-radius:4px;
-   color: whitesmoke;
-   outline: none;
-   
+    height: 35px;
+    width: 100%;
+    padding-left: 5%;
+    margin-top: 20px;
+    background: #363636;
+    border:none;
+    border-radius:4px;
+    color: whitesmoke;
+    outline: none;
+
 }
 
 
 .divSexe{
-   height: 35px;
-/*   width: 100%;*/
-/*   padding-left: 5%;*/
-   margin-top: 20px;
-/*align-content: center;*/
-/*    align-items: center;*/
+    height: 35px;
+    /*   width: 100%;*/
+    /*   padding-left: 5%;*/
+    margin-top: 20px;
+    /*align-content: center;*/
+    /*    align-items: center;*/
     text-align: center;
-  
-/*   background: #363636;*/
-   border: none;
-   border-radius:4px;
-   color: whitesmoke;
-   outline: none;
-   
+
+    /*   background: #363636;*/
+    border: none;
+    border-radius:4px;
+    color: whitesmoke;
+    outline: none;
+
 }
 .divDate{
-  height: 35px;
-/*   width: 100%;*/
-/*   padding-left: 5%;*/
-   margin-top: 20px;
-/*align-content: center;*/
-/*    align-items: center;*/
+    height: 35px;
+    /*   width: 100%;*/
+    /*   padding-left: 5%;*/
+    margin-top: 20px;
+    /*align-content: center;*/
+    /*    align-items: center;*/
     text-align: center;
-  
-/*   background: #363636;*/
-   border: none;
-   border-radius:4px;
-   color: whitesmoke;
-   outline: none;
-   
+
+    /*   background: #363636;*/
+    border: none;
+    border-radius:4px;
+    color: whitesmoke;
+    outline: none;
+
 }
 label {
     padding: 0px 0.7rem;
     border-radius: 4px;
     margin-left: 5px;
     background-color: #262626;
-   
-    
+
+
 }
 
 #inputF {
     margin-left: 5%;
 }
 .box textarea{
-   height: 120px;
-   width: 100%;
-   padding: 10px 5%;
-   margin-top: 20px;
-   background: #363636;
-   border: none;
-   border-radius: 4px;
-   color: whitesmoke;
-   outline: none;
-/*   resize: none;*/
+    height: 120px;
+    width: 100%;
+    padding: 10px 5%;
+    margin-top: 20px;
+    background: #363636;
+    border: none;
+    border-radius: 4px;
+    color: whitesmoke;
+    outline: none;
+    /*   resize: none;*/
 }
 
 .box button{
-   height: 40px;
-   width: 100%;
+    height: 40px;
+    width: 100%;
     margin-left: 0;
-   margin-top: 20px;
-   background: linear-gradient(to left, #00E2FF, #0695FE);
-   border: none;
-   border-radius:4px;
-  
-/*   outline: none;*/
-   color: #fff;
+    margin-top: 20px;
+    background: linear-gradient(to left, #00E2FF, #0695FE);
+    border: none;
+    border-radius:4px;
+
+    /*   outline: none;*/
+    color: #fff;
 }
 
 .error {
@@ -112,4 +112,16 @@ label {
     font-size: 80%;
     text-align: center;
     margin-top: 3px;
+}
+
+.clignote {
+
+    animation: clignote 0.7s linear infinite;
+}
+@keyframes clignote {  
+    50% {
+        opacity: 75%; 
+
+    }
+
 }

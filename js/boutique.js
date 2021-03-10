@@ -1,3 +1,6 @@
+var inputAffichageQte = document.getElementById('affqte');
+showQte(inputAffichageQte);
+
 function showQte(input) {
     let liste = document.getElementsByClassName("quantiteBay");
     let contents = document.getElementsByClassName("content");

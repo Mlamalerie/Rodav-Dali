@@ -159,7 +159,7 @@ html,body {
     font-size: 38px;
     font-weight: 700;
 }
-.about p{
+.descriptionsite p{
     padding-top: 20px;
     text-align: justify;
 }
@@ -301,17 +301,25 @@ html,body {
 }
 
 /******* footer *****/
+.social-group {
+    background-color: #151515;
+    padding: 0.8rem 2.1rem 0.35rem 2.1rem;
+    border-radius: 50px;  
+    
+}
+.mr-2 {
+    margin-right: 1.5%;
+}
+
 .socialicon {
     font-size: 150%;
-   transition: all 0.4s ease;
-    margin-right: 1.5%;
-    
+   transition: all 0.5s ease;
+     
 }
 .socialicon:hover {
     font-size: 200%;
     color: rgb(255, 198, 45)!important;
-    margin-right: 1.5%;
-    transition: 0
+  
 }
 #footer {
     position: fixed;
@@ -323,9 +331,16 @@ html,body {
 .bottom center{
     padding: 20px 5px;
     font-size: 0.9375rem;
-    background: #151515;
+    
 
 }
+.bg-dark {
+    background: #151515;
+}
+.bg-dark2 {
+    background: #141011;
+}
+
 .bottom center span{
     color: #656565;
 }
@@ -451,4 +466,40 @@ html,body {
   to {
     opacity: 1;
   }
+}
+
+.scroll-downs {
+  position: absolute;
+  top: 82vh;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  
+  width :34px;
+  height: 55px;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
 }
