@@ -116,11 +116,11 @@ label {
 
 .clignote {
 
-    animation: clignote 0.7s linear infinite;
+    animation: clignote 1.5s linear infinite;
 }
 @keyframes clignote {  
     50% {
-        opacity: 75%; 
+        opacity: 50%; 
 
     }
 

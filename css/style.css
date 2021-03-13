@@ -264,7 +264,7 @@ html,body {
     left: 0;
     bottom: 0;
     background: #191919;
-    padding: 80px 30px;
+    padding: 60px 30px;
     margin: 3rem 0rem;
     border-radius: 10px;
     text-align: center;
@@ -470,7 +470,7 @@ html,body {
 
 .scroll-downs {
   position: absolute;
-  top: 82vh;
+  top: 81vh;
   right: 0;
   bottom: 0;
   left: 0;

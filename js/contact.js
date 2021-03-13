@@ -15,7 +15,7 @@ btnSEND.style.fontSize = "0.8rem";
 
 
 const regExpMail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-const regExpAlpha = /^[A-Za-z]+$/;
+const regExpAlpha = /^[A-Za-z\s]+$/;
 
 const icon =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" 
 var okSEND = true;
@@ -73,7 +73,7 @@ function check(){
             email.style.borderColor = "#e74c3c";
 
             erroremail.style.display = "block";
-            erroremail.innerHTML = icon + "Veuillez saisir une adresse mail correct !";
+            erroremail.innerHTML = icon + "Veuillez saisir une adresse mail correct (exemple : said@gmail.com) !";
             okSEND =false;
             console.log("email");
             //btn.style.display = "none";
@@ -84,7 +84,7 @@ function check(){
     }
 
     /**** verif prenom */
-    if(prenom.value.length == 0) {
+    if(prenom.value.trim().length == 0) {
         errorprenom.style.display = "none";
         prenom.style.border = "none"
         okSEND =false;console.log("prenom");
@@ -110,7 +110,7 @@ function check(){
     }
 
     /**** verif nom */
-    if(nom.value.length == 0) {
+    if(nom.value.trim().length == 0) {
         errornom.style.display = "none";
         nom.style.border = "none";
         okSEND =false;
@@ -147,7 +147,7 @@ function check(){
 
 
     /**** verif sujet */
-    if(sujet.value.length == 0) {
+    if(sujet.value.trim().length == 0) {
         okSEND = false;
         console.log("sujet");  sujet.classList.add("clignote");
     } else {
@@ -155,18 +155,19 @@ function check(){
     }
 
     /**** verif message */
-    if(message.value.length == 0) {
+    if(message.value.trim().length == 0) {
         okSEND = false; console.log("message");  message.classList.add("clignote");
     } else{
         message.classList.remove("clignote");
     }
 
     /**** verif date */
-    if(!isValidDate(date.value)) {
+    if(!isValidDate(date.value) ) {
         console.log(date.value,"###data pas bon");
         okSEND = false;
         date.classList.add("clignote");
     } else{
+        console.log(date.value,"### tout est bon");
         date.classList.remove("clignote");
     }
 
