@@ -8,8 +8,9 @@ Site d'exposition et vente de créations artistiques et esthétique.
 
 ---
 ### 📌 Notes 
-Certaines images présentes sur le site ont été récuperés sur internet puis retravailler avec PhotoShop. D'autres ont totalement créé par nos soins.
-A l'aide d'un peu de javascript, la navbar est transparente au top de la page puis devient opaque au scrollage.
+Certaines images présentes sur le site ont été récuperés sur internet puis retravailler avec PhotoShop. D'autres ont totalement créé par nos soins.<br>
+A l'aide d'un peu de javascript, la navbar est transparente au top de la page, puis elle devient opaque au scrollage.<br>
+On a aussi pris le soin de créer un item signifiant que la page est entrain de charger (juste dans la page d'accueil, avec beaucoup de CSS et un peu de JS)
 
 ### 👨🏾‍💻👨🏼‍💻 Auteurs
 [Mlamali SAID SALIMO](https://www.linkedin.com/in/mlamalisaidsalimo) and [Redouane ZAMANI](https://www.linkedin.com/in/redouane-zamani-041184200/). <br/>
