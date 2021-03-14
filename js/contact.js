@@ -176,8 +176,10 @@ function check(){
         btnSEND.style.display = "block";
         btnSEND.setAttribute("class","buttons-magique");
         btnSEND.style.fontSize = "1.1rem";
-        btnSEND.innerHTML = "ENVOYER";
-        btnSEND.setAttribute("disabled","false");
+        btnSEND.innerHTML = "ENVOYER !";
+        btnSEND.removeAttribute("disabled");
+        btnSEND.setAttribute("onclick","submitForm()")
+      
         console.log("if%");
     } 
     else{
@@ -185,7 +187,15 @@ function check(){
         btnSEND.setAttribute("class"," ");
         btnSEND.innerHTML = "veuillez remplir toute les cases <i class='fas fa-exclamation-triangle'></i>";
         btnSEND.style.fontSize = "0.8rem";
-        btnSEND.setAttribute("disabled","true");
+        btnSEND.setAttribute("disabled");  
+        btnSEND.removeAttribute("onclick");
 
     }
+}
+
+function submitForm() {
+    
+    let f = document.getElementById("formContact");
+    console.log(f)
+    f.submit()
 }
