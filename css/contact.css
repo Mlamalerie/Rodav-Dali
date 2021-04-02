@@ -94,7 +94,7 @@ label {
     /*   resize: none;*/
 }
 
-.box button{
+.box .button{
     height: 40px;
     width: 100%;
     margin-left: 0;

@@ -1,3 +1,11 @@
+<?php
+session_start();
+$_SESSION['ici_index_bool'] = true;
+$_SESSION['ici_contact_bool'] = false;
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -22,45 +30,7 @@
         </div>
         <corps id="leBody" style="display: none">
             <!-- ===== NAV BAR ===== -->
-            <nav class="navbar">
-                <div class="content">
-                    <div class="logo">
-                        <a href="index.html">Rodav Dalí</a>
-                    </div>
-                    <ul class="menu-list">
-                        <div class="icon cancel-btn">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li>
-                            <a href="#" class="desktop-link text-shadow text-point">Oeuvres</a>
-                            <input type="checkbox" id="show-features">
-                            <label for="show-features">Oeuvres</label>
-                            <ul>
-                                <li class="sub-link-hover"><a href="albums.html">Albums 💽</a></li>
-                                <li class="sub-link-hover"><a href="tableaux.html">Tableaux 🎨</a></li>
-                                <li class="sub-link-hover"><a href="dress.html">Mode 🧦</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li><a href="contact.html" >Contact</a></li>
-                        <li><a href="connexion.html" class="buttons-magique">Connexion</a></li>
-                    </ul>
-                    <div class="icon menu-btn">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <!--
-<div class="cart-nav">
-<div class="icon">
-<i class="fas fa-shopping-cart"></i>
-<span>Cart</span>
-</div>
-<div class="item-count">10</div>
-</div>
--->
-                </div>
-            </nav>
+             <?php require_once('php/navbar.php'); ?>
             <!-- ===== WALL ===== -->
             <div class="banner"></div>
 
