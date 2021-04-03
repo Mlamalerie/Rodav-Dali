@@ -15,7 +15,14 @@ if(isset($_GET['n']) && !empty($_GET['n'])) {
     }
 } else {
     header('HTTP/1.0 404 Not Found');
+    exit();
 }
+
+if(!isset($mess)) {
+    header('HTTP/1.0 404 Not Found');
+    exit();
+}
+
 header( "refresh:3;url=index.php" );
 
 ?>
@@ -28,7 +35,7 @@ header( "refresh:3;url=index.php" );
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href=" css/okSended.css">
+        <link rel="stylesheet" href=" css/bravo.css">
 
         <link rel="icon" href="img/icon.ico" />
 

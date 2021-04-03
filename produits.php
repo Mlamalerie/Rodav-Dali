@@ -30,7 +30,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/checkbox.css">
-        <link rel="stylesheet" href="css/albums-tableaux-dress.css">
+        <link rel="stylesheet" href="css/produits.css">
         <link rel="stylesheet" href="css/buttonmagique.css">
         <link rel="stylesheet" href="css/cart.css">
 
@@ -83,7 +83,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
                                     </p>
                                     <div class="CombienDiv right">
-                                        <button class="session-title my-2 "> <u>Ajouter au panier</u></button>  
+                                        <button class="session-title my-2 " onclick="location.href = 'sign.php'" > <u>Ajouter au panier</u></button>  
                                         <div class="session justify-content-center my-2  "> 
 
                                             <div class="plus-minus"> 

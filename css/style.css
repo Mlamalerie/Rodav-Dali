@@ -50,46 +50,70 @@ html,body {
 .content .menu-list li label {
     display: none;
 }
+.labelPseudo {    
+     
+    color: #fff; 
+    text-align: center;
+    background: rgba(230, 112, 39, 0.51);
+    padding: 5% 12%;
+    border-radius: 6px;
+    margin-left: 9px;
+
+} 
+
 .content .menu-list ul {
-    position: absolute;
-    background: rgba(27, 27, 27, 0.95);
+    width: auto;
+    position:absolute;
+    background: none;
+
     top: 80px;
+
     z-index: -1;
     opacity: 0;
     visibility: hidden;
-    border-radius: 4px;
-    padding-right: 40px;
+
+     
+    border-radius: 8px;
 
 }
 .content .menu-list ul li {
     position: relative;
+    right: 5px;
 
 }
 .content .menu-list li {
-    list-style: none;
+    list-style: none; 
     line-height: 60px;
 
 }
 
-.content .menu-list ul li a {
+.content .menu-list ul li a{
+    position: relative;
     display: block;
     width: 100%;
-   
-    padding: 0px 0.25rem;
-/*        line-height: 40px;*/
+    background: rgba(27, 27, 27, 0.95);
+    padding: 0px 0.6rem;
+    line-height: 55px;
     border-radius: 0px!important;
     text-align: center;
 
-}
+}  
 
-.content .menu-list li:hover > ul{
-    top: 70px;
-    opacity: 1;
+.content .menu-list li:hover> ul,.content .menu-list li:active> ul{
+        top: 70px; 
+    opacity: 1;  
     visibility: visible;
     transition: all 0.3s ease;
 }
+  
+.buttons-magique:active {
+    
+}
+
 .content .menu-list ul li:hover ul{
     top: 0;
+
+ 
 }
 
 /***fin add sub menu */
@@ -104,7 +128,7 @@ html,body {
 .navbar{
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 10000;
     padding: 25px 0;
     transition: all 0.3s ease;
 }
@@ -130,7 +154,7 @@ html,body {
 }
 .menu-list li{
     list-style: none;
-    
+
 }
 .menu-list li a{
     color: #fff;
@@ -149,7 +173,7 @@ html,body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-     
+
 }
 .about{
     padding: 30px 0;
@@ -305,7 +329,7 @@ html,body {
     background-color: #151515;
     padding: 0.8rem 2.1rem 0.35rem 2.1rem;
     border-radius: 50px;  
-    
+
 }
 .mr-2 {
     margin-right: 1.5%;
@@ -313,29 +337,29 @@ html,body {
 
 .socialicon {
     font-size: 150%;
-   transition: all 0.5s ease;
-     
+    transition: all 0.5s ease;
+
 }
 .socialicon:hover {
     font-size: 200%;
     color: rgb(255, 198, 45)!important;
-  
+
 }
 
 
 #footer {
-/*    position: fixed;*/
+    /*    position: fixed;*/
     bottom: 0px;
     left: 0px;
     right: 0px;
-       text-align: center;
-      z-index: 999;
+    text-align: center;
+    z-index: 999;
     /*    margin-bottom: 0px;*/
 }
 .bottom center{
     padding: 20px 5px;
     font-size: 0.9375rem;
-    
+
 
 }
 .bg-dark {
@@ -343,7 +367,7 @@ html,body {
 }
 .bg-dark2 {
     background: #141011;
-    
+
 }
 
 .bottom center span{
@@ -385,126 +409,126 @@ html,body {
 
 /****** SCROLL *****/
 .containerScrool {
-  position: relative;
-  width: 150px;
-  height: 50px;
+    position: relative;
+    width: 150px;
+    height: 50px;
     margin: 0 auto;
-       bottom : 21vh;
+    bottom : 21vh;
     left: 47px;
-   
+
 
 }
 
 .chevron {
- 
-  position: absolute;
-  width: 50px;
-  height: 8px;
-  opacity: 0;
-  transform: scale3d(0.5, 0.5, 0.5);
-  animation: move 3s ease-out infinite;
+
+    position: absolute;
+    width: 50px;
+    height: 8px;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 3s ease-out infinite;
 }
 
 .chevron:first-child {
-  animation: move 3s ease-out 1s infinite;
+    animation: move 3s ease-out 1s infinite;
 }
 
 .chevron:nth-child(2) {
-  animation: move 3s ease-out 2s infinite;
-       
+    animation: move 3s ease-out 2s infinite;
+
 }
 
 .chevron:before,
 .chevron:after {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 51%;
-  background: #fff;
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
 }
 
 .chevron:before {
-  left: 0;
-  transform: skew(0deg, 30deg);
+    left: 0;
+    transform: skew(0deg, 30deg);
 }
 
 .chevron:after {
-  right: 0;
-  width: 50%;
-  transform: skew(0deg, -30deg);
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
 }
 
 @keyframes move {
-  25% {
-    opacity: 1;
+    25% {
+        opacity: 1;
 
-  }
-  33% {
-    opacity: 1;
-    transform: translateY(30px);
-  }
-  67% {
-    opacity: 1;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
-  }
+    }
+    33% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    67% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+    }
 }
 
 .text {
-  display: block;
-  margin-top: 75px;
-  margin-left: -30px;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: .25;
-  animation: pulse 2s linear alternate infinite;
+    display: block;
+    margin-top: 75px;
+    margin-left: -30px;
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: .25;
+    animation: pulse 2s linear alternate infinite;
 }
 
 @keyframes pulse {
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 .scroll-downs {
-  position: absolute;
-  top: 81vh;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  
-  width :34px;
-  height: 55px;
+    position: absolute;
+    top: 81vh;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    width :34px;
+    height: 55px;
 }
 .mousey {
-  width: 3px;
-  padding: 10px 15px;
-  height: 35px;
-  border: 2px solid #fff;
-  border-radius: 25px;
-  opacity: 0.75;
-  box-sizing: content-box;
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
 }
 .scroller {
-  width: 3px;
-  height: 10px;
-  border-radius: 25%;
-  background-color: #fff;
-  animation-name: scroll;
-  animation-duration: 2.2s;
-  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
-  animation-iteration-count: infinite;
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
 }
 @keyframes scroll {
-  0% { opacity: 0; }
-  10% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(15px); opacity: 0;}
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
 }

@@ -1,19 +1,20 @@
-.buttons-magique{
+.buttons-magique{ 
   position: relative;
-  padding: 0.4rem 1.5rem;
-/* margin-left: 400px;*/
+  padding: 0.85rem 1rem;
+/* margin-left: 400px;*/ 
   border-radius: 50px;
-   
+          
   border: none;
-  outline: none;
+  outline: none; 
   background: #111;
-  color: #fff;
-  font-size: 20px;
+  color: #fff; 
+  font-size: 60px;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.5s;
+   
 }
 /*
 button:first-child:hover{
@@ -25,9 +26,9 @@ button:first-child:hover{
   background: linear-gradient(90deg, #fa7199, #f5ce62, #e43603, #fa7199);
   background-size: 400%;
     color: white!important;
-}
-
-.buttons-magique:before{
+}    
+   
+.buttons-ma gique:before{
   content: '';
   position: absolute;
   background: inherit;
@@ -36,9 +37,10 @@ button:first-child:hover{
   bottom: -5px;
   left: -5px;
   border-radius: 50px;
-  filter: blur(20px);
+  filter: blur(20px); 
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 50.5s;
+   
 }
 
 .buttons-magique:hover:before{
@@ -47,7 +49,7 @@ button:first-child:hover{
 }
 .buttons-magique:hover{
   z-index: 1;
-  animation: glow 8s linear infinite;
+  animation: glow 10s linear infinite;
 }
 @keyframes glow {
   0%{
@@ -56,4 +58,9 @@ button:first-child:hover{
   100%{
     background-position: 400%;
   }
+}
+
+.fa-user {
+    font-size: 115%;
+
 }
