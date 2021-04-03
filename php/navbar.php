@@ -21,7 +21,8 @@
                         </li>
 
                         <li><a href="contact.php" >Contact</a></li>
-                        <li><a href="connexion.php" class="buttons-magique">Connexion</a></li>
+                        <?php if(!$okconnectey) {?>  <li><a href="sign.php" class="buttons-magique">Connexion</a></li> <?php } else { ?> <li><a href="deconnexion.php" class="buttons-magique">Deconnexion</a></li> <?php } ?>
+                       
                     </ul>
                     <div class="icon menu-btn">
                         <i class="fas fa-bars"></i>

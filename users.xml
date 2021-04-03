@@ -1,38 +1,51 @@
 <?xml version="1.0"?>
 <data-users>    
 <user>    
-<pseudo>pseudo1</pseudo>    
-<email>email1</email>    
-<password>email1</password>    
+<pseudo>Mlamali</pseudo>    
+<email>mla9560058@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:36:30</date_inscription>    
 </user>    
 <user>    
-<pseudo>pseudo2</pseudo>    
-<email>email2</email>    
-<password>email1</password>    
+<pseudo>Mlamali</pseudo>    
+<email>eteaeatrz@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:37:05</date_inscription>    
 </user>    
 <user>    
-<pseudo>pseudo3</pseudo>    
-<email>email3</email>    
-<password>email1</password>    
+<pseudo>Mlamali</pseudo>    
+<email>eteaeatrzr@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:39:07</date_inscription>    
 </user>    
 <user>    
-<pseudo>pseudo4</pseudo>    
-<email>email4</email>    
-<password>email1</password>    
+<pseudo>Mlamali</pseudo>    
+<email>eteaeatrzrtest@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:49:19</date_inscription>    
 </user>    
 <user>    
-<pseudo>Mlali</pseudo>    
-<email>aef@</email>    
-<password>123</password>    
+<pseudo>Mlamali</pseudo>    
+<email>eteaeatrzrtes90t@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:52:56</date_inscription>    
 </user>    
 <user>    
-<pseudo>Mlali</pseudo>    
-<email>aef@</email>    
-<password>123</password>    
+<pseudo>Mlamali</pseudo>    
+<email>eteaeatrzrtes90t50@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 09:54:13</date_inscription>    
 </user>    
 <user>    
-<pseudo>Mlali</pseudo>    
-<email>aef@</email>    
-<password>123</password>    
+<pseudo>Mlamali</pseudo>    
+<email>mla@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 10:14:17</date_inscription>    
+</user>    
+<user>    
+<pseudo>Mlamali</pseudo>    
+<email>pipi@gmail.com</email>    
+<password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
+<date_inscription>2021-04-03 10:22:40</date_inscription>    
 </user>    
 </data-users>

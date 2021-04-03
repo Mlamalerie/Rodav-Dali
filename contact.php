@@ -4,9 +4,6 @@ include_once("varSession.inc.php");
 $_SESSION['ici_index_bool'] = false;
 $_SESSION['ici_contact_bool'] = true;
 
-function sendMail() {
-    echo 'Bonjour';
-}
 
 $icon = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>";
 
@@ -88,11 +85,11 @@ if(!empty($_POST)){
     //*** Verification du mail
     if(empty($email)) { // si vide
         $ok = false;
-        //$err_email = "Veuillez renseigner ce champ !";
+        $err_email = $icon. "Veuillez renseigner ce champ !";
 
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // si invalide
         $ok = false;
-        $err_email = "Adresse e-mail invalide !";
+        $err_email = $icon. "Adresse e-mail invalide !";
 
     }
 
@@ -115,7 +112,7 @@ if(!empty($_POST)){
     if($ok) {
 
         sendMail();
-        header('Location: okSended.php');
+        header('Location: bravo.php?n=1');
         exit;
     }
 
@@ -156,9 +153,9 @@ if(!empty($_POST)){
             <!-- ===== MENU GAUCHE ===== -->
             <?php require_once('php/menugauche.php'); ?>
             <div class="content content-right">
-
+                <div class="box"><h2 >CONTACTEZ NOUS  <i class="fas fa-envelope"></i></h2></div>
                 <div class="box">
-                    <h2 >CONTACTEZ NOUS  <i class="fas fa-envelope"></i></h2>
+                    
                     <form action="" id="formContact" method="post" autocomplete="off" >
                         <div class="">
                             <input id="prenom" name="prenom" onkeyup="check()" type="text" placeholder="Saisir votre prénom" value="<?php if(isset($prenom)){echo $prenom;}?>" style="grid-column: 2">
@@ -207,7 +204,6 @@ if(!empty($_POST)){
 
             </div>
         </div>
-        <?php var_dump($_POST); ?>
         <!-- ===== FOOTER ===== -->
 
         <?php require_once('php/footer.php'); ?>      

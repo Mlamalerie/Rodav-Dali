@@ -1,5 +1,12 @@
 <?php
 
+// si une connection est détecter : (ta rien a faire ici mec)
+$okconnectey = false;
+if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
+    $okconnectey = true;
+} 
+
+
 function writeJSONFile($nomFichier,$Produits) {
     $json = json_encode($Produits);
     $bytes = file_put_contents($nomFichier, $json); 
@@ -14,9 +21,6 @@ function readJSONFile($nomFichier) {
 
 ]",$json);
     $data = json_decode($json, true);
-    echo "<pre>";
-    //print_r($data);
-    echo "</pre>";
     return $data;
 }
 //$d = readJSONFile("boutique.json");
@@ -60,7 +64,6 @@ writeJSONFile("boutique.json",$Produits);
 */
 
 $Produits = readJSONFile("boutique.json");
-
 
 
 

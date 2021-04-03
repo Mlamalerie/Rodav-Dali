@@ -321,11 +321,15 @@ html,body {
     color: rgb(255, 198, 45)!important;
   
 }
+
+
 #footer {
-    position: fixed;
+/*    position: fixed;*/
     bottom: 0px;
     left: 0px;
     right: 0px;
+       text-align: center;
+      z-index: 999;
     /*    margin-bottom: 0px;*/
 }
 .bottom center{
@@ -339,6 +343,7 @@ html,body {
 }
 .bg-dark2 {
     background: #141011;
+    
 }
 
 .bottom center span{
