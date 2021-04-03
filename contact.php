@@ -152,6 +152,8 @@ if(!empty($_POST)){
 
             <!-- ===== MENU GAUCHE ===== -->
             <?php require_once('php/menugauche.php'); ?>
+            
+            
             <div class="content content-right">
                 <div class="box"><h2 >CONTACTEZ NOUS  <i class="fas fa-envelope"></i></h2></div>
                 <div class="box">

@@ -1,93 +1,28 @@
 <?php
 session_start();
 include_once("varSession.inc.php");
+
 if($okconnectey) {
     header("Location: index.php");
     exit;
 }
 
-
-
-function writeUsersXMLFile($data) {
-
-    $nomFichier = "users.xml";
-    $xml = new SimpleXMLElement('<?xml version="1.0"?><data-users/>');
-    if(!empty($data)){
-        $listeKeys = array_keys($data[array_keys($data)[0]]);
-        var_dump($listeKeys);
-        foreach($data as $u) {
-
-            $user = $xml->addChild('user');
-
-            foreach($listeKeys as $k) {
-                $user->addChild($k, $u[$k]);
-            }
-
-        }
-    } else {
-        $user = $xml->addChild('user');
-
-        foreach($listeKeys as $k) {
-            $user->addChild($k, $u[$k]);
-        }
-    }
-
-    $res = $xml->asXML();
-    $res=str_replace('><',">    \n<",$res);
-    $bytes = file_put_contents($nomFichier,$res);
-}
-function changerKeys($data) {
-    $i = 0;
-    if(!empty($data[0])){
-
-        foreach($data as $u){
-            if(!empty($u["email"]) && !empty($u)){
-                $newkey = $u["email"];
-                $oldkey = $i;
-                $data[$newkey] = $data[$oldkey];
-                unset($data[$oldkey]);
-            }
-            $i++;
-        }
-    }
-    return $data;
-}
-function readUsersXMLFile() {
-    $fic = "users.xml";
-    if (file_exists($fic)) {
-        $data = simplexml_load_file($fic);
-
-        //var_dump(count($data));
-        if(count($data) > 1){
-            $res = @json_decode(@json_encode($data),1);
-
-            return changerKeys($res['user']);
-        } else { // un element
-            $res = @json_decode(@json_encode(array($data->user)),1);
-            return changerKeys($res);
-        }
-    } else { 
-        exit("Echec lors de l\'ouverture du fichier $fic.");
-    } 
-
-}
-
-
-function addNewUser($newUser){
-    // Recup les users dans un tableaux
-    $data = readUsersXMLFile();
+function addNewUser($newUser,$data){
     // ajouter le new user au tableau
     $data[$newUser['email']] = $newUser;
     // creer un fichier xml avec le nouveau tab
     writeUsersXMLFile($data);
+    return $data;
 
 }
+
 
 
 if(!empty($_POST)){
     $icon = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>";
 
-    if(isset($_POST['GoSignIn'])) {
+    //******************************** S'inscrire
+    if(isset($_POST['GoSignUp'])) {
         $okVeutSinscrire = true;
         extract($_POST);
         $ok = true;
@@ -138,7 +73,7 @@ if(!empty($_POST)){
 
         } else {
             $okDejaMailExiste = false;
-            $lesEmails = array_keys(readUsersXMLFile());
+            $lesEmails = array_keys($Data_Users);
             //var_dump($lesEmails);
             if(in_array($email, $lesEmails)) {
                 $ok = false;
@@ -175,27 +110,27 @@ if(!empty($_POST)){
             $date = date("Y-m-d H:i:s"); 
             $password = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
             $newUser = ["pseudo" => $pseudo, "email" => $email, "password" => $password,"date_inscription" => $date ];
-            addNewUser($newUser);
+            addNewUser($newUser,$Data_Users);
 
             $_SESSION['user_email'] = $email;
             $_SESSION['user_pseudo'] =  $pseudo;
-
             // charger le panier
+
             header("Location: bravo.php?n=2");
             exit;
         } else {
             echo "ERROR";
         }
     }
-
-    if(isset($_POST['GoSignUp'])) {
+    //******************************** Se connecter
+  
+    if(isset($_POST['GoSignIn'])) {
         extract($_POST);
 
         $ok = true;
 
         $email = (String) strtolower(trim($email));
         $password = (String) trim($password);
-        $Users = readUsersXMLFile();
 
         //*** Verification du mail
         if(empty($email)) { // si vide
@@ -211,7 +146,7 @@ if(!empty($_POST)){
 
             $okDejaMailExiste = false; // le mail n'est pas dans la bdd
 
-            $lesEmails = array_keys($Users);
+            $lesEmails = array_keys($Data_Users);
             //var_dump($lesEmails);
             if(in_array($email, $lesEmails)) {
                 $okDejaMailExiste = true; 
@@ -229,7 +164,7 @@ if(!empty($_POST)){
             // verif si le boug tape le bon mdp
             if($ok) {
                 $saisie = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
-                $goodmdp = $Users[$email]['password'];
+                $goodmdp = $Data_Users[$email]['password'];
 
                 if($saisie != $goodmdp) {
                     $ok = false;
@@ -240,13 +175,13 @@ if(!empty($_POST)){
 
         if($ok) {
             echo "OKKK";
-            // var_dump($Users[$email]);
-            $_SESSION['user_pseudo'] = $Users[$email]['pseudo'];
-            $_SESSION['user_email'] = $Users[$email]['email'];
+            $_SESSION['user_pseudo'] = $Data_Users[$email]['pseudo'];
+            $_SESSION['user_email'] = $Data_Users[$email]['email'];
 
 
             header("Location: index.php");
             exit;
+
         } else {
             echo "ERROR connex";
         }
@@ -308,13 +243,12 @@ if(!empty($_POST)){
                     <span id="error-ipassword2" class="error"><?php if(isset($err_password2)) echo $err_password2?></span>
 
 
-                    <button type="submit" name="GoSignIn" value="1">S'inscrire</button>
+                    <button type="submit" name="GoSignUp" value="1">S'inscrire</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form action="" method="post">
                     <h1 class="title">Connexion</h1>
-
                     <input onkeyup="check()" type="email" name="email" id="cemail" placeholder="Email" value="<?php if(isset($email)){ echo $email;} ?>" />
                     <span id="error-cemail" class="error"><?php if(isset($err_email) && !isset($okVeutSinscrire)) echo $err_email?></span>
 
@@ -322,7 +256,7 @@ if(!empty($_POST)){
                     <span id="error-cpassword" class="error"><?php if(isset($err_password) && !isset($okVeutSinscrire)) echo $err_password?></span>
 
                     <!--                    <a href="#">Forgot your password?</a>-->
-                    <button type="submit" name="GoSignUp" value="2" >Se connecter</button>
+                    <button type="submit" name="GoSignIn" value="2" >Se connecter</button>
                 </form>
             </div>
             <div class="overlay-container">
@@ -519,7 +453,7 @@ if(!empty($_POST)){
                         erroripassword2.style.display = "none";
                     }
 
-                }, delay1Sec*0.6);
+                }, delay1Sec*2);
 
             }
 

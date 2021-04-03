@@ -39,7 +39,7 @@ button:first-child:hover{
   border-radius: 50px;
   filter: blur(20px); 
   opacity: 0;
-  transition: opacity 50.5s;
+  transition: opacity 0.5s;
    
 }
 

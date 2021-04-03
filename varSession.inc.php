@@ -7,6 +7,10 @@ if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
 } 
 
 
+/********************************************************************************/
+/*****************************    PRODUITS    ***********************************/
+/********************************************************************************/
+
 function writeJSONFile($nomFichier,$Produits) {
     $json = json_encode($Produits);
     $bytes = file_put_contents($nomFichier, $json); 
@@ -65,6 +69,76 @@ writeJSONFile("boutique.json",$Produits);
 
 $Produits = readJSONFile("boutique.json");
 
+/********************************************************************************/
+/*****************************     USERS      ***********************************/
+/********************************************************************************/
 
+
+function writeUsersXMLFile($data) {
+
+    $nomFichier = "users.xml";
+    $xml = new SimpleXMLElement('<?xml version="1.0"?><data-users/>');
+    if(!empty($data)){
+        $listeKeys = array_keys($data[array_keys($data)[0]]);
+        var_dump($listeKeys);
+        foreach($data as $u) {
+
+            $user = $xml->addChild('user');
+
+            foreach($listeKeys as $k) {
+                $user->addChild($k, $u[$k]);
+            }
+
+        }
+    } else {
+        $user = $xml->addChild('user');
+
+        foreach($listeKeys as $k) {
+            $user->addChild($k, $u[$k]);
+        }
+    }
+
+    $res = $xml->asXML();
+    $res=str_replace('><',">    \n<",$res);
+    $bytes = file_put_contents($nomFichier,$res);
+}
+function changerKeys($data) {
+    $i = 0;
+    if(!empty($data[0])){
+
+        foreach($data as $u){
+            if(!empty($u["email"]) && !empty($u)){
+                $newkey = $u["email"];
+                $oldkey = $i;
+                $data[$newkey] = $data[$oldkey];
+                unset($data[$oldkey]);
+            }
+            $i++;
+        }
+    }
+    return $data;
+}
+function readUsersXMLFile() {
+    $fic = "users.xml";
+    if (file_exists($fic)) {
+        $data = simplexml_load_file($fic);
+
+        //var_dump(count($data));
+        if(count($data) > 1){
+            $res = @json_decode(@json_encode($data),1);
+
+            return changerKeys($res['user']);
+        } else { // un element
+            $res = @json_decode(@json_encode(array($data->user)),1);
+            return changerKeys($res);
+        }
+    } else { 
+        exit("Echec lors de l\'ouverture du fichier $fic.");
+    } 
+
+}
+
+
+$Data_Users = readUsersXMLFile();
 
 ?>

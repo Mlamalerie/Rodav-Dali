@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("varSession.inc.php");
-
+if($okconnectey){var_dump($Data_Users[$_SESSION['user_email']]);}
 $_SESSION['ici_index_bool'] = true;
 $_SESSION['ici_contact_bool'] = false;
 
