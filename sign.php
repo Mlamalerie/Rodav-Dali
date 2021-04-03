@@ -109,12 +109,13 @@ if(!empty($_POST)){
         if($ok) {
             $date = date("Y-m-d H:i:s"); 
             $password = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
-            $newUser = ["pseudo" => $pseudo, "email" => $email, "password" => $password,"date_inscription" => $date ];
+            $panier = array() ;
+            $newUser = ["pseudo" => $pseudo, "email" => $email, "password" => $password,"date_inscription" => $date, "panier" => $panier];
             addNewUser($newUser,$Data_Users);
 
             $_SESSION['user_email'] = $email;
             $_SESSION['user_pseudo'] =  $pseudo;
-            // charger le panier
+            $_SESSION['user_panier'] = $panier;
 
             header("Location: bravo.php?n=2");
             exit;
@@ -123,7 +124,7 @@ if(!empty($_POST)){
         }
     }
     //******************************** Se connecter
-  
+
     if(isset($_POST['GoSignIn'])) {
         extract($_POST);
 
@@ -178,9 +179,15 @@ if(!empty($_POST)){
             $_SESSION['user_pseudo'] = $Data_Users[$email]['pseudo'];
             $_SESSION['user_email'] = $Data_Users[$email]['email'];
 
-
-            header("Location: index.php");
-            exit;
+            
+             $_SESSION['user_panier'] = $Data_Users[$email]['panier']['produit'];
+             var_dump( $_SESSION['user_panier']);
+            if(in_array("id",array_keys($_SESSION['user_panier']))){
+                $_SESSION['user_panier'] = [$_SESSION['user_panier']["key"] => ($_SESSION['user_panier'])];
+                var_dump( $_SESSION['user_panier']);
+            } 
+            // header("Location: index.php");
+            //  exit;
 
         } else {
             echo "ERROR connex";

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("varSession.inc.php");
+include_once("varSession.inc.php");
 $weCatExiste = false;
 
 $_SESSION['ici_index_bool'] = false;
@@ -11,6 +11,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
     $lc = array("albums","mode","tableaux");
     if (in_array(strtolower($_GET['cat']), $lc)) {
         $LaCat = (String) $_GET['cat'];
+        $CodeCat = 'a';
 
     } else {
         header('HTTP/1.0 404 Not Found');
@@ -53,7 +54,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
     </head>
     <body >
 
-
+        <input type="hidden" id="CodeCat" value="<?= $CodeCat ?>">
 
         <!-- ===== NAV BAR ===== -->
         <?php require_once('php/navbar.php'); ?>
@@ -121,24 +122,30 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <?php require_once('php/footer.php'); ?>
         <script>
             function addPanier(key) {
-                console.log("ajoutPanier");
-                var xmlhttp = new XMLHttpRequest();
                 let qte = parseInt(document.getElementById("nbQteCommande"+key).value);
 
-                let ou = "sendToPanier.php?key=";
-                ou += key;
-                ou += '&qte=';
-                ou += key;
+                if (qte > 0){
+                    console.log("ajoutPanier");
+                    var xmlhttp = new XMLHttpRequest();
+                    let codeCat = document.getElementById("CodeCat").value;
 
-                console.log(ou,key,qte);
-                xmlhttp.open("GET",ou,true);
-                xmlhttp.send();
 
+                    let ou = "sendToPanier.php?key=";
+                    ou += codeCat;
+                    ou += key;
+                    ou += '&qte=';
+                    ou += key;
+
+                    console.log(ou,key,qte);
+                    xmlhttp.open("GET",ou,true);
+                    xmlhttp.send();
+                }
             }
 
         </script>
-        <script src="js/boutique.js"> </script>
-        <script src="js/navbar.js"> </script>
+        <script type="text/javascript" src="js/boutique.js"> </script>
+        <script type="text/javascript" src="js/navbar.js"> </script>
+        <script type="text/javascript" src="js/modal.js"> </script>
 
     </body>
 </html>

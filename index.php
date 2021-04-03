@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("varSession.inc.php");
-if($okconnectey){var_dump($Data_Users[$_SESSION['user_email']]);}
+//if($okconnectey){var_dump($_SESSION);}
 $_SESSION['ici_index_bool'] = true;
 $_SESSION['ici_contact_bool'] = false;
 
@@ -16,6 +16,7 @@ $_SESSION['ici_contact_bool'] = false;
 
         <!-- ===== CSS ===== -->
         <link rel="stylesheet" href=" css/style.css">
+        <link rel="stylesheet" href=" css/cart.css">
         <link rel="stylesheet" href=" css/buttonmagique.css">
         <link rel="stylesheet" href=" css/loader.css">
         <link rel="icon" href="img/icon.ico" />
@@ -92,6 +93,7 @@ $_SESSION['ici_contact_bool'] = false;
             <?php require_once('php/footer.php'); ?>
         </corps>
         <script src="js/navbar.js"> </script>
+        <script src="js/modal.js"> </script>
         <script src="js/loader.js"> </script>
 
 

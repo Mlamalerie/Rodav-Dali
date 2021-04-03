@@ -11,21 +11,23 @@
   justify-content: space-between;
     margin: 40px 0px;
 }
-.cart-nav{
-/*  position: absolute;*/
-  right: 0;
-  top: -35%;
-  width: 130px;
-  background: #fff;
-  padding: 10px 5px;
-  border-radius: 3px;
+.cart-nav{  
+  
+
+  position: relative;
+  left: 32px;
+  top: 10px; 
+  width: 50px;
+  background: #2c2c2c;
+  padding: 8px 5px;
+  border-radius: 7px;
   display: flex;
   cursor: pointer;
   justify-content: space-evenly;
   box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
 }
 .cart-nav .icon{
-  color: #ff7979;
+  color: rgb(121, 255, 124);
 }
 .cart-nav .icon i{
   font-size: 20px;
@@ -37,11 +39,11 @@
   font-size: 15px;
   height: 23px;
   width: 23px;
-  color: #ff799d;
-  background: #ffcccc;
+  color: #ffffff;
+  background: #f46a95;
   text-align: center;
   line-height: 22px;
-  border: 1px solid #ffb3b3;
+  border: 1px solid #f46a95;
   border-radius: 50%;
 }
 .wrapper .card{
