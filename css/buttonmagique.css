@@ -1,10 +1,9 @@
 .buttons-magique{ 
   position: relative;
-  padding: 0.85rem 1rem;
+  padding: 0.85rem 1rem; 
 /* margin-left: 400px;*/ 
-  border-radius: 50px;
-          
-  border: none;
+  border-radius: 50px; 
+  border: none;  
   outline: none; 
   background: #111;
   color: #fff; 

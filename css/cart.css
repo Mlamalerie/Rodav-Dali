@@ -3,35 +3,35 @@
 
 /*** CARTE  ***/
 
-.wrapper{
+.wrapper{ 
   position: relative;
   max-width: 1130px;
-  display: flex;
+  display: flex; 
   align-items: center;
   justify-content: space-between;
     margin: 40px 0px;
 }
-.cart-nav{  
-  
 
-  position: relative;
-  left: 32px;
-  top: 10px; 
-  width: 50px;
-  background: #2c2c2c;
-  padding: 8px 5px;
-  border-radius: 7px;
-  display: flex;
-  cursor: pointer;
-  justify-content: space-evenly;
-  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
+.cart-nav {
+    position: relative;
+    top: 5px;
+    left: 29px;
+    width: 85px;
+    background: #1c1c1c;
+    padding: 10px 5px;
+    border-radius: 20px;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-evenly;
+    box-shadow: 3px 3px 8px 0pxrgba(0,0,0,0.15);
 }
+
 .cart-nav .icon{
-  color: rgb(121, 255, 124);
+  color: rgb(121, 255, 124); 
 }
 .cart-nav .icon i{
-  font-size: 20px;
-}
+  font-size: 20px; 
+} 
 .cart-nav .icon span{
   font-weight: 500;
 }
@@ -46,9 +46,16 @@
   border: 1px solid #f46a95;
   border-radius: 50%;
 }
-.wrapper .card{
+.cart-nav .item-iconshop {
+     font-size: 18px;
+  width: 23px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 25px;
+} 
+.wrapper .card{ 
   position: relative;
-  background: #fff;
+  background: #191919;
     height: 345px;
   border-radius: 8px;
   width: calc(33% - 25px);
@@ -56,14 +63,18 @@
     margin-right: 40px;
   overflow: hidden;
   box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
+    transition: transform 0.5s ease 0.3s;
 }
 .wrapper .card img{
   width: 100%;
   border-radius: 3px;
-  transition: all 0.3s ease;
+  transition:transform 5s ease-in 1s;
 }
 .card:hover img{
-  transform: scale(1.1);
+  transform: scale(1.11);
+}
+.card:hover{
+  transform: scale(1.05);
 }
 .wrapper .card .content{
   position: absolute;
@@ -122,11 +133,15 @@
 }
 
 .quantiteBay {
-    font-size: 55%!important;
-    font-style: italic;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 1px 1.5px;
+    position: absolute;
+    top: 5%;
+    right: 6%;
+    font-size: 90%!important;
+/*    font-style: italic;*/
+    background: rgba(229, 166, 104, 0.7);
+    padding: 1px 0.55rem;
     border-radius: 3px;
+    z-index: 10;
 
 }
 .right {
@@ -139,7 +154,7 @@ bottom: 15%;
     width: 78px;
 }
 .session {
- 
+  
 }
 
 .session-title {
@@ -185,9 +200,9 @@ bottom: 15%;
     font-size: .8rem;
     transition: all 0.15s ease-in-out;
 }
-
+ 
 .session-signe:hover {
-
+ 
     background-color: var(--rouge-rose2);
     box-shadow: 0 4px 0 var(--rouge-rose1), 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     text-shadow: 0 -1px -1px #c4402f;

@@ -6,7 +6,7 @@ function showQte(input) {
     let contents = document.getElementsByClassName("content");
     
     if(input.checked) {
-        console.log("caché");
+        console.log("cach&eacute;");
         for(let i = 0; i < liste.length; i++) {
             console.log(liste[i]);
             liste[i].style.display = "none";
@@ -22,15 +22,15 @@ function showQte(input) {
     }
 }
 
-function plus(id,max) {
-    let input = document.getElementById("nbQteCommande"+id);
+function plus(key,max) {
+    let input = document.getElementById("nbQtePanier"+key);
     if(input.value < max) {
         let x = parseInt(input.value);
         input.value = x+1;
     }
 }
-function moin(id) {
-    let input = document.getElementById("nbQteCommande"+id);
+function moin(key) {
+    let input = document.getElementById("nbQtePanier"+key);
     if(input.value > 0) {
          let x = parseInt(input.value);
         input.value = x-1;

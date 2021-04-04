@@ -21,8 +21,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 } else {
 
-    //    header('Location: index.php');
-    header('Location: produits.php?cat=albums');
+    header('Location: index.php');
+   // header('Location: produits.php?cat=albums');
 
     exit;
 };
@@ -82,12 +82,13 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 <?php if($i % 3 == 0) {?>  <!-- ===== LIGNE ===== --> <div class="wrapper"> <?php } ?>
 
                 <div class="card">
-
+<span class="quantiteBay"><?=$Pr[$i]['Quantity']?> en stock</span>
                     <img src="<?=$Pr[$i]['src']?>" alt="" > 
                     <div class="content ">
+                       
                         <div class="row">
                             <div class="details">
-                                <span><strong><?=$Pr[$i]['Title'] ?><span class="quantiteBay">[<?=$Pr[$i]['Quantity']?> en stock]</span></strong></span>
+                                <span><strong><?=$Pr[$i]['Title'] ?></strong></span>
                                 <p>de <u><?=$Pr[$i]['Author'] ?></u> (<?=$Pr[$i]['Year'] ?>)
 
                                 </p>
@@ -145,7 +146,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         </script>
         <script type="text/javascript" src="js/boutique.js"> </script>
         <script type="text/javascript" src="js/navbar.js"> </script>
-        <script type="text/javascript" src="js/modal.js"> </script>
+
 
     </body>
 </html>

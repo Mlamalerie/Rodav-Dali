@@ -15,10 +15,10 @@ $_SESSION['ici_contact_bool'] = false;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- ===== CSS ===== -->
-        <link rel="stylesheet" href=" css/style.css">
-        <link rel="stylesheet" href=" css/cart.css">
-        <link rel="stylesheet" href=" css/buttonmagique.css">
-        <link rel="stylesheet" href=" css/loader.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/cart.css">
+        <link rel="stylesheet" href="css/buttonmagique.css">
+        <link rel="stylesheet" href="css/loader.css">
         <link rel="icon" href="img/icon.ico" />
 
         <!-- ===== BOX ICONS ===== -->
@@ -31,7 +31,7 @@ $_SESSION['ici_contact_bool'] = false;
             <div id="shadow"></div>
             <div id="box"></div>
         </div>
-        <corps id="leBody" style="display: none">
+        <corps id="leBody" style="display: x">
             <!-- ===== NAV BAR ===== -->
             <?php require_once('php/navbar.php'); ?>
             <!-- ===== WALL ===== -->
