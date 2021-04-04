@@ -181,6 +181,7 @@ bottom: 15%;
 .session-title:active {
     margin-top: -1px;
     box-shadow: none;
+    transform: scale(0.98);
 }
 .session-signe {
    

@@ -36,7 +36,7 @@ if(!empty($_GET) && $okconnectey ){
         $qte = (int) $qte;
         if($qte > $LeProduit['Quantity']) {
             $ok = false;
-            echo "pas assez.. $qte > ".$LeProduit['Quantity'];
+            echo "pas assez en stock.. $qte > ".$LeProduit['Quantity'];
         } else if ($qte < 1) {
             $ok = false;
             echo "augmente wsh c quoi ça";
@@ -55,21 +55,17 @@ if(!empty($_GET) && $okconnectey ){
         var_dump($panier);
 
 
-        
+
         // si plusieurs produits
-        
         if(count($panier) > 1) {
-            var_dump(array_keys($panier));
+            //var_dump(array_keys($panier));
 
             // si le produit est deja dans le panier
             if(in_array($key,array_keys($panier))){
-                $qte += (int) $panier[$key]["quantity"];
-                if($qte > $panier[$key]["quantity"]) {
-                    $qte = $panier[$key]["quantity"];
-                    echo "depasse".$panier[$key]["quantity"];
-                };
+                $qte += (int) $panier[$key]["quantity"]; // add qte
+                
             } 
-            $ajout = array("id" => $codeId, "title" => $LeProduit['Title'], "quantity" => $qte, "type" => $nomCat);
+            $ajout = array("id" => $codeId, "title" => $LeProduit['Title'],"type" => $nomCat, "quantity" => $qte, "key" => $key );
 
 
             $panier[$key] = $ajout; // ajouter la mise à jour au panier
@@ -81,18 +77,19 @@ if(!empty($_GET) && $okconnectey ){
             echo "petit";
             $panier = array($panier,$ajout);
         }
-         var_dump($ajout); 
+        var_dump("a ajouté"); 
+        var_dump($ajout); 
 
         $Data_Users[$uemail]['panier']['produit'] = $panier;
 
         // writeUsersXMLFile($Data_Users); // mettre à jour le fichier des users ?
 
         var_dump($panier); 
-        //$_SESSION['user_panier'] = $panier; a mettre
+        $_SESSION['user_panier'] = $panier; // maj panier
 
 
 
-        echo "*** sendPanier ***";
+        echo "*** sendPanier $key***";
 
     }
 } else {

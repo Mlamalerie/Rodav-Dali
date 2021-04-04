@@ -134,6 +134,7 @@
 
     // Get the button that opens the modal
     var btnModal = document.getElementById("myBtnModal");
+   
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
@@ -164,7 +165,7 @@
 }
 function moin2(id) {
     let input = document.getElementById("nbQtePanier"+id);
-    if(input.value > 0) {
+    if(input.value > 1) {
          let x = parseInt(input.value);
         input.value = x-1;
     } 

@@ -1,0 +1,35 @@
+
+
+#toasts {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+    z-index: 9000;
+    transition: all 5.5s ease;
+   
+}
+
+.toast {
+     color: #191919;
+    font-weight: 500;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
+}
+
+.toast.error {
+        background-color: #e74c3c;
+}
+
+.toast.error {
+        background-color: #e8d925;
+}
+
+.toast.success {
+       background-color: rgb(46,204,113);
+}

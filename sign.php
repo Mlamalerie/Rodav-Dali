@@ -186,8 +186,8 @@ if(!empty($_POST)){
                 $_SESSION['user_panier'] = [$_SESSION['user_panier']["key"] => ($_SESSION['user_panier'])];
                 var_dump( $_SESSION['user_panier']);
             } 
-            // header("Location: index.php");
-            //  exit;
+            header("Location: index.php");
+            exit;
 
         } else {
             echo "ERROR connex";

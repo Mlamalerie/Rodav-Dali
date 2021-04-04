@@ -22,7 +22,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 } else {
 
     header('Location: index.php');
-   // header('Location: produits.php?cat=albums');
+    // header('Location: produits.php?cat=albums');
 
     exit;
 };
@@ -41,6 +41,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <link rel="stylesheet" href="css/produits.css">
         <link rel="stylesheet" href="css/buttonmagique.css">
         <link rel="stylesheet" href="css/cart.css">
+        <link rel="stylesheet" href="css/notif.css">
 
 
         <link rel="icon" href="img/icon.ico" />
@@ -53,8 +54,45 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
     </head>
     <body >
-
+        <button id="buttonTest">EEH CLIQUER</button>
         <input type="hidden" id="CodeCat" value="<?= $CodeCat ?>">
+        <div id="toasts"></div>
+        <script>
+            const iconError =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" ;
+            const iconBellek =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
+            const iconSuccess =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
+            const toasts = document.getElementById('toasts');
+
+            function createNotification(message,type,okClickPanier) {
+                let icon = "";
+                switch (type){
+                    case -1 :  icon = iconError; classType = 'error'; break;
+                    case 0 :  icon = iconBellek; classType = 'bellek';break;
+                    case 1 :  icon = iconSuccess; classType = 'success'; break;
+    
+                }
+                   
+               
+
+                const notif = document.createElement('div');
+
+                if(okClickPanier) {
+                    notif.onclick = function() {
+                        document.getElementById("myModal").style.display = "block";
+                    }
+                }
+                notif.classList.add('toast');
+                notif.classList.add(classType);
+                notif.innerHTML =  message + " " + icon  ;
+                toasts.appendChild(notif);
+
+                setTimeout(() => {
+                    notif.remove();
+                }, 5000);
+            }
+
+
+        </script>
 
         <!-- ===== NAV BAR ===== -->
         <?php require_once('php/navbar.php'); ?>
@@ -67,12 +105,21 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
             <!-- ===== CONTENU MAGASINS ===== -->
             <div class="content  ">
                 <?php
-                $LaCat = "albums";
 
                 $Pr = $Produits[$LaCat];
                 $i = 0;
 
+
                 while($i < count($Pr)) {
+                    $max = (int) $Pr[$i]['Quantity'];
+
+                    $key = $CodeCat."".$i;
+
+                    // si le produit est deja dans le panier
+                    if(in_array($key,array_keys($_SESSION["user_panier"]))) {
+                        $q = (int) $_SESSION["user_panier"][$key]['quantity'];
+                        $max -= $q;
+                    }
 
 
                 ?>
@@ -82,10 +129,10 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 <?php if($i % 3 == 0) {?>  <!-- ===== LIGNE ===== --> <div class="wrapper"> <?php } ?>
 
                 <div class="card">
-<span class="quantiteBay"><?=$Pr[$i]['Quantity']?> en stock</span>
+                    <span class="quantiteBay"><?=$Pr[$i]['Quantity']?> en stock</span>
                     <img src="<?=$Pr[$i]['src']?>" alt="" > 
                     <div class="content ">
-                       
+
                         <div class="row">
                             <div class="details">
                                 <span><strong><?=$Pr[$i]['Title'] ?></strong></span>
@@ -94,13 +141,13 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                                 </p>
                                 <div class="CombienDiv right">
                                     <button class="session-title my-2 " <?php if(!$okconnectey) { ?> onclick="location.href = 'sign.php'" <?php } 
-                    else {?>onclick="addPanier(<?=$i?>)" <?php }?> > <u>Ajouter au panier</u></button>  
+                    else {?>onclick="addPanier(<?=$i?>,'<?=$Pr[$i]['Title']?>')" <?php }?> > <u>Ajouter au panier</u></button>  
                                     <div class="session justify-content-center my-2  "> 
 
                                         <div class="plus-minus"> 
                                             <button id="session-minus" class="session-signe" onclick="moin(<?=$i?>)" >–</button>
                                             <input id="nbQteCommande<?=$i?>" type="number" class="session-time mx-2" value="0" disabled>
-                                            <button id="session-plus" class="session-signe" onclick="plus(<?=$i?>,<?=$Pr[$i]['Quantity'] ?>)">+</button> 
+                                            <button id="session-plus" class="session-signe" onclick="plus(<?=$i?>,<?=$max?>)">+</button> 
                                         </div> 
                                     </div>
                                 </div>
@@ -122,11 +169,12 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <!-- ===== FOOTER ===== -->
         <?php require_once('php/footer.php'); ?>
         <script>
-            function addPanier(key) {
+            function addPanier(key,nom) {
+                console.log("addPanier",key);
                 let qte = parseInt(document.getElementById("nbQteCommande"+key).value);
 
                 if (qte > 0){
-                    console.log("ajoutPanier");
+                    console.log("***");
                     var xmlhttp = new XMLHttpRequest();
                     let codeCat = document.getElementById("CodeCat").value;
 
@@ -135,11 +183,17 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                     ou += codeCat;
                     ou += key;
                     ou += '&qte=';
-                    ou += key;
+                    ou += qte;
 
                     console.log(ou,key,qte);
                     xmlhttp.open("GET",ou,true);
                     xmlhttp.send();
+
+
+                    createNotification('"' + nom +'"' + " x " + qte + " a été ajouté au panier",1,1);
+
+                } else {
+                    createNotification("Plus rien en stock.. ",-1,0);
                 }
             }
 
