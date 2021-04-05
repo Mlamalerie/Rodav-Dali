@@ -734,13 +734,19 @@ html,body {
     0%   { background-position: left;  }
     50%  { background-position: right; }
     100% { background-position: right; }
+} 
+.image {
+     position: relative;
+        width: 75px;
+        height: 75px; 
+     overflow: hidden;
+        margin: 0 10px 0 5px;
+     border-radius: 5px;
+     box-shadow: 4px 1px 10px 3px rgba(206, 154, 39, 0.05);
 }
-
 .imgCoverPan {
-    width: 75px;
-    height: 75px;
-    margin: 0 10px;
-    border-radius: 5px;
+    width: 100%;
+       
 }
 
 .description {

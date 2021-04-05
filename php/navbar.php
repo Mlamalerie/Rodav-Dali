@@ -97,7 +97,7 @@
             $PrixTotalPan += $prod['Price']*$pan['quantity'];
                 ?> 
                 <!-- Product #1 -->
-                <div class="item">
+                <div class="item" id="item-<?=$pan['key']?>">
 
                     <div class="buttons">
                         <button class="delete-btn" onclick="removePanier('<?=$pan['key']?>')"><i class="fas fa-trash-alt"></i></button>

@@ -3,7 +3,7 @@ session_start();
 include_once("varSession.inc.php");
 
 if($okconnectey) {
-    header("Location: 404.php");
+    header("Location: index.php");
     exit;
 }
 

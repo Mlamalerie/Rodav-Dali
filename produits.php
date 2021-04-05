@@ -144,8 +144,9 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
         <script type="text/javascript">
             var LePanierSESSION = <?php if(!$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
-            var LaBoutique = <?php echo json_encode($Produits[$LaCat]);?>;
+            var LaBoutique = <?php echo json_encode($Produits);?>;
             var codeCat = <?php echo json_encode($CodeCat);?>;
+            var LaCat = <?php echo json_encode($LaCat);?>;
             console.log(LePanierSESSION);
             console.log(LaBoutique,codeCat);
 
@@ -154,11 +155,6 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                     CalculAffPrixTotal();
                 }
             }
-            function majQteVarPanier(key,newQte) {
-
-                console.log("majVarPanier",key,newQte);
-                LePanierSESSION[key]['quantity'] = newQte; 
-            }
 
             function majQteVarPanier(key,newQte,ajouterNewP = false) {
 
@@ -166,12 +162,14 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 if(!ajouterNewP) {
                     console.log("majVarPanier",key,newQte);
                     LePanierSESSION[key]['quantity'] = newQte; 
-                } else {
-                    LePanierSESSION = {};
+                } else { // 
+                    if(!LePanierSESSION){
+                        LePanierSESSION = {};
+                    }
                     p = {
-                        "id": LaBoutique[key.substr(1)]['id'],
-                        "title": LaBoutique[key.substr(1)]['title'],
-                        "type": LaBoutique[key.substr(1)]['type'],
+                        "id": LaBoutique[LaCat][key.substr(1)]['id'],
+                        "title": LaBoutique[LaCat][key.substr(1)]['Title'],
+                        "type": LaCat,
                         "quantity": newQte,
                         "key": key
                     }
@@ -194,7 +192,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <script type="text/javascript"  src="js/boutique.js"> </script>
         <script>
             var AfficherTextActualiserPage = true;
-
+            majCountPan();
             function goToSendPanierPHP(key,qte) {
                 var xmlhttp = new XMLHttpRequest();
 
@@ -209,6 +207,22 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 xmlhttp.send();
 
             }  
+
+            function majCountPan() {
+
+
+                if(LePanierSESSION) {
+                    let k = Object.keys(LePanierSESSION).length;
+                    document.getElementsByClassName('item-count')[0].innerHTML = k;
+                    return k;
+                } else {
+                    document.getElementsByClassName('item-count')[0].innerHTML = "0";
+                    return 0;
+                }
+
+
+
+            }
 
             function addPanier(key,max) {
 
@@ -230,10 +244,12 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                         } else { // n'est pas dans le panier
                             majQteVarPanier((codeCat+key),qte,true);
 
+
                         }
                     } else {
                         console.log("sache que le panier est vide");
                         majQteVarPanier((codeCat+key),qte,true);
+
                         console.log(  LePanierSESSION,"mtn je l'ai rempli");
                     }
 
@@ -242,7 +258,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
                     if(qte + qteDejaPanier <= max){
-                        createNotification('<b>"' + LaBoutique[key]['Title'] +'"</b>' + " x " + qte + " a été ajouté au panier",1,1);
+                        createNotification('<b>"' + LaBoutique[LaCat][key]['Title'] +'"</b>' + " x " + qte + " a été ajouté au panier",1,1);
 
                         goToSendPanierPHP((codeCat+key),qte);
 
@@ -251,19 +267,16 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
                     } else {
-                        createNotification("Il n'y a que " + max + " <b>'" + LaBoutique[key]['Title'] +"'</b> en stock.. ",-1);
-                    }
-
-                    if(AfficherTextActualiserPage){
-
-                        createNotificationDelay(15,"Actualiser la page pour voir les modifications faîtes au panier",0);
-                        AfficherTextActualiserPage = false;
+                        createNotification("Il n'y a que " + max + " - <b>'" + LaBoutique[LaCat][key]['Title'] +"'</b> en stock.. ",-1);
                     }
 
 
+                    majCountPan();
                 } else {
                     createNotification(" ",-1);
                 }
+
+                console.log("LePanierSESSION après ajout",LePanierSESSION);
             }
         </script>
         <script type="text/javascript" src="js/modal.js"></script>
@@ -284,6 +297,13 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 // When the user clicks the button, open the modal 
                 btnModal.onclick = function() {
                     modal.style.display = "block";
+                    if(majCountPan() == 0 ) {
+                        if(AfficherTextActualiserPage){
+                            createNotificationDelay(4,"Actualiser la page pour voir les modifications faîtes au panier",0);
+                            AfficherTextActualiserPage = false;
+                        }
+
+                    }
                 }
                 // When the user clicks on <span> (x), close the modal
                 if(span){
@@ -301,6 +321,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
             }
 
+
+
             function CalculAffPrixTotal() {
                 console.log("calculTotal");
                 let s = 0;
@@ -310,7 +332,15 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 for(let i = 0; i < listeProduits.length; i++) {
                     p = LePanierSESSION[listeProduits[i]];
                     id = p['key'].substring(1);
-                    s +=  p['quantity']*LaBoutique[id]['Price'];
+
+                    let cc = "";
+                    switch(p['key'][0]) {
+                        case 'a' : cc = "albums";break;
+                        case 't' : cc = "tableaux";break;
+                        case 'm' : cc = "mode";break;
+                    }
+
+                    s +=  p['quantity']*LaBoutique[cc][id]['Price'];
                 }
 
                 document.getElementById("prixTotalPan").innerHTML = "$"+s;
@@ -340,7 +370,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
                     } else {
-                        createNotification("Il n'y a que " + max + " <b>'" + LaBoutique[id.substr(1)]['Title'] +"'</b> en stock.. ",-1,1);
+                        createNotification("Il n'y a que " + max + " <b>'" + LaBoutique[LaCat][id.substr(1)]['Title'] +"'</b> en stock.. ",-1,1);
                     }
                 }
 
@@ -371,7 +401,17 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 xmlhttp.open("GET",ou,true);
                 xmlhttp.send();
 
-                createNotification('"' + LePanierSESSION[key]['title'] +'"' + " a été supprimer du panier",1,1);
+                // suprimer la div
+                let elem = document.getElementById("item-"+key);
+                elem.parentNode.removeChild(elem);
+
+                createNotification(" <b>'" + LePanierSESSION[key]['title'] +"'</b>'" + " a été supprimer du panier",1,1);
+
+                delete LePanierSESSION[key];
+                CalculAffPrixTotal();
+                majCountPan();
+
+
 
             }
 

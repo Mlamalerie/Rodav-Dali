@@ -4,94 +4,94 @@
 /*** CARTE  ***/
 
 .wrapper{  
-  position: relative;
-  max-width: 1130px;
-  display: flex; 
-  align-items: center;
-  justify-content: space-between;
+    position: relative;
+    max-width: 1130px;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
     margin: 40px 0px; 
 }
 
 .wrapper .card{ 
-  position: relative;
-  background: #191919;
+    position: relative;
+    background: #191919;
     height: 345px;
-  border-radius: 8px;
-  width: calc(33% - 25px);
+    border-radius: 8px;
+    width: calc(33% - 25px);
     min-width: 350px; 
     margin-right: 40px; 
-  overflow: hidden;
-  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
+    overflow: hidden;
+    box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
     transition: transform 0.5s ease 0.25s;
 }   
 .wrapper .card img{ 
-  width: 100%;
-  border-radius: 3px;
-  transition:transform 8s ease-in 1s;
+    width: 100%;
+    border-radius: 3px;
+    transition:transform 8s ease-in 1s;
 } 
 .card:hover img{
-  transform: scale(1.11);
+    transform: scale(1.11);
 }  
 .card:hover{
-  transform: scale(1.08);
+    transform: scale(1.08);
 }
 .wrapper .card .content{
-  position: absolute;
-  width: 100%;
+    position: absolute;
+    width: 100%;
     height: 40%;
-  bottom: -25%; /* placement du content */
-  background: rgba(25, 25, 25, 0.75);
-  padding: 10px 20px 22px 20px;
-  box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+    bottom: -25%; /* placement du content */
+    background: rgba(25, 25, 25, 0.75);
+    padding: 10px 20px 22px 20px;
+    box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
 }
 .wrapper .card .bottombottom1 {
     /* bottom: -20%; /* placement du content */
 }
 
 .wrapper .content:hover {
-     
+
 }
 
 .wrapper .card .content:hover{
-  bottom: 0;  
+    bottom: 0;  
     background: rgba(25, 25, 25, 0.98);
-   
+
 }
 .card .content .row,
 .content .buttons{
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
     z-index: 1;
 }
 .content .row .details span{
-  font-size: 22px;
-  font-weight: 500;
+    font-size: 22px;
+    font-weight: 500;
 }
 .content .row .details p{
-  color: #7c7c7c;
-  font-size: 15.5px;
-  font-weight: 400;
+    color: #7c7c7c;
+    font-size: 15.5px;
+    font-weight: 400;
     padding: 1px 5px;
-      margin-top: 15px;
+    margin-top: 15px;
     max-width: 98%;
-     text-align: left!important;
+    text-align: left!important;
 }
 
 .content .row .price{
-  color: #ff7979;
-  font-size: 25px;
-  font-weight: 600;
+    color: #ff7979;
+    font-size: 25px;
+    font-weight: 600;
     padding: 0 3px;
 }
 
 
 :root {
     --rouge-rose-1 :#ad5454 ;
-  
+
     --rouge-rose0 :#f47474 ;
-      --rouge-rose1 :#e56868 ;
-     --rouge-rose2 : #fc9696;
+    --rouge-rose1 :#e56868 ;
+    --rouge-rose2 : #fc9696;
 }
 
 .quantiteBay {
@@ -99,7 +99,7 @@
     top: 5%;
     right: 6%; 
     font-size: 90%!important;
-/*    font-style: italic;*/
+    /*    font-style: italic;*/
     background: rgba(229, 166, 104, 0.7);
     padding: 1px 0.55rem;
     border-radius: 3px;
@@ -109,14 +109,14 @@
 .right {
     position: absolute;
     right:6%;
-  
+
 }
 .CombienDiv { 
-bottom: 15%;
+    bottom: 15%;
     width: 78px;
 }
 .session {
-  
+
 }
 
 .session-title {
@@ -146,7 +146,7 @@ bottom: 15%;
     transform: scale(0.98);
 }
 .session-signe {
-   
+
     cursor: pointer;
     display: block;
     width: 1.3rem;
@@ -163,9 +163,9 @@ bottom: 15%;
     font-size: .8rem;
     transition: all 0.15s ease-in-out;
 }
- 
+
 .session-signe:hover {
- 
+
     background-color: var(--rouge-rose2);
     box-shadow: 0 4px 0 var(--rouge-rose1), 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     text-shadow: 0 -1px -1px #c4402f;
@@ -181,7 +181,7 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
- 
+
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;

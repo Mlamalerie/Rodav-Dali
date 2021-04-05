@@ -31,7 +31,7 @@ $_SESSION['ici_contact_bool'] = false;
             <div id="shadow"></div>
             <div id="box"></div>
         </div>
-        <corps id="leBody" style="display: x">
+        <corps id="leBody" style="display: none">
             <!-- ===== NAV BAR ===== -->
             <?php require_once('php/navbar.php'); ?>
             <!-- ===== WALL ===== -->
