@@ -32,11 +32,25 @@ if(!empty($_GET) && $okconnectey ){
         echo " # produit $nomCat $codeCat existe pas dans la boutique!";
     } else {
         // verif que la quantité est résonable
-        $LeProduit = $Produits[$nomCat][$codeId];
-        $qte = (int) $qte;
-        if($qte > $LeProduit['Quantity']) {
+        $LeProduit = $Produits[$nomCat][$codeId]; // le produit dapres la boutique
+        $qte = (int) $qte; // la quantité a jouté askip
+        $qteDejaPan = 0;
+        if(!$okMonPanierEstVide){
+            $Produits2MonPan = array_keys($_SESSION['user_panier']); 
+            // si le produit est deja dans le panier
+            if(in_array($key,$Produits2MonPan)) {
+                // recuperer la quantité du produit deja dans le panier
+                $qteDejaPan += $_SESSION['user_panier'][$key]['quantity'];
+                var_dump("qté deja dans le panier",$qteDejaPan);
+            }
+
+
+
+
+        }
+        if($qte + $qteDejaPan > $LeProduit['Quantity']) {
             $ok = false;
-            echo "pas assez en stock.. $qte > ".$LeProduit['Quantity'];
+            echo "pas assez en stock.. ".($qte + $qteDejaPan)." > ".$LeProduit['Quantity'];
         } else if ($qte < 1) {
             $ok = false;
             echo "augmente wsh c quoi ça";
@@ -45,49 +59,38 @@ if(!empty($_GET) && $okconnectey ){
 
     }
 
-
+    // juska la le produit peut etre ajouté
     if($ok){
 
         // le panier 
-        // if(isset($_SESSION['panier']) ) {
         $panier = $_SESSION['user_panier'] ;
         //}
+        var_dump("panier du boug avant ajout");
         var_dump($panier);
 
-
-
-        // si plusieurs produits
-        if(count($panier) > 1) {
-            //var_dump(array_keys($panier));
-
+        // si panier pas vide
+        if(!$okMonPanierEstVide) {
             // si le produit est deja dans le panier
             if(in_array($key,array_keys($panier))){
                 $qte += (int) $panier[$key]["quantity"]; // add qte
-                
+
             } 
-            $ajout = array("id" => $codeId, "title" => $LeProduit['Title'],"type" => $nomCat, "quantity" => $qte, "key" => $key );
-
-
-            $panier[$key] = $ajout; // ajouter la mise à jour au panier
-
         }
-        // si un produit
-        else {
+        $ajout = array("id" => $codeId, "title" => $LeProduit['Title'],"type" => $nomCat, "quantity" => $qte, "key" => $key );
 
-            echo "petit";
-             $ajout = array("id" => $codeId, "title" => $LeProduit['Title'],"type" => $nomCat, "quantity" => $qte, "key" => $key );
-            $panier = array($panier,$ajout);
-        }
-        var_dump("a ajouté"); 
+
+        $panier[$key] = $ajout; // ajouter la mise à jour au panier
+
+
+        var_dump("element a ajouté"); 
         var_dump($ajout); 
 
         $Data_Users[$uemail]['panier']['produit'] = $panier;
 
         // writeUsersXMLFile($Data_Users); // mettre à jour le fichier des users ?
-
+        var_dump("panier du boug APRES jout");
         var_dump($panier); 
         $_SESSION['user_panier'] = $panier; // maj panier
-
 
 
         echo "*** sendPanier $key***";

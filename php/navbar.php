@@ -51,7 +51,7 @@
                         <i class="fas fa-shopping-cart"></i>
                         <span>Cart</span>
                     </div>
-                    <div class="item-count"><?= count($_SESSION["user_panier"])?></div>
+                    <div class="item-count"><?php if($okMonPanierEstVide) {echo 0;} else { echo count($_SESSION["user_panier"]);}?></div>
                     <div class="item-iconshop"><i class="fas fa-shopping-cart"></i></div>
 
                 </button>
@@ -86,15 +86,21 @@
                 <?php 
     $PrixTotalPan = 0;
     $NbProdPan = 0;
-    foreach($_SESSION['user_panier'] as $pan) {
-        $prod = $Produits[$pan['type']][$pan['id']];
-        $PrixTotalPan += $prod['Price']*$pan['quantity'];
+
+
+    if($okMonPanierEstVide) { ?>
+                <div id="panierVide"><span>Votre panier est vide..</span></div> 
+                <?php  } else {
+
+        foreach($_SESSION['user_panier'] as $pan) {
+            $prod = $Produits[$pan['type']][$pan['id']];
+            $PrixTotalPan += $prod['Price']*$pan['quantity'];
                 ?> 
                 <!-- Product #1 -->
                 <div class="item">
 
                     <div class="buttons">
-                        <button class="delete-btn" onclick="removePanier('<?=$pan['key']?>','<?=$pan['title']?>')"><i class="fas fa-trash-alt"></i></button>
+                        <button class="delete-btn" onclick="removePanier('<?=$pan['key']?>')"><i class="fas fa-trash-alt"></i></button>
 
                     </div>
 
@@ -112,7 +118,7 @@
                     <div class="quantity">
                         <button class="plus-btn" type="button" name="button" onclick="moin2('<?=$pan['key']?>')" >–</button>
                         <input id="nbQtePanier<?=$pan['key']?>" type="number" class="session-time mx-2" value="<?=$pan['quantity']?>" disabled>
-                        <button class="minus-btn" type="button" name="button" onclick="plus2('<?=$pan['key']?>',<?=$prod['Quantity'] ?>)">+</button>
+                        <button class="minus-btn" type="button" name="button" onclick="plus2('<?=$pan['key']?>',<?=$prod['Quantity'] ?>,1,true)">+</button>
                     </div>
 
                     <div class="total-price">$<?=$prod['Price']?></div>
@@ -122,12 +128,13 @@
                 <!-- Title -->
                 <div class="titlePanier">
 
-                   Prix Total : <b class="prixTotalPan">$<?=$PrixTotalPan?></b>
-                  
+                    Prix Total : <b id="prixTotalPan"></b>
+
 
                 </div>
-            </div>
 
+                <?php } ?>
+            </div>
         </div>
 
     </div>

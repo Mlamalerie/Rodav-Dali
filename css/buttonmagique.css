@@ -3,7 +3,7 @@
   padding: 0.85rem 1rem; 
 /* margin-left: 400px;*/ 
   border-radius: 50px; 
-  border: none;  
+  border: none;   
   outline: none; 
   background: #111;
   color: #fff; 
@@ -20,7 +20,7 @@ button:first-child:hover{
   background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 400%;
 }
-*/ 
+*/  
 .buttons-magique:hover{
   background: linear-gradient(90deg, #fa7199, #f5ce62, #e43603, #fa7199);
   background-size: 400%;

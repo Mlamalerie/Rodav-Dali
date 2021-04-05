@@ -1,9 +1,10 @@
-const iconError =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" ;
-const iconBellek =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
+const iconError =  "<i class='fas fa-times-circle'></i>" ;
+const iconBellek =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" ;
 const iconSuccess =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
 const toasts = document.getElementById('toasts');
+const delay1Sec = 1000; 
 
-function createNotification(message,type,okClickPanier) {
+function createNotification(message,type,okClickPanier = 0) {
     let icon = "";
     switch (type){
         case -1 :  icon = iconError; classType = 'error'; break;
@@ -28,5 +29,12 @@ function createNotification(message,type,okClickPanier) {
 
     setTimeout(() => {
         notif.remove();
-    }, 5000);
+    }, delay1Sec*5);
+}
+
+function createNotificationDelay(attenteSec,message,type,okClickPanier) {
+    setTimeout(function() {
+        createNotification(message,type,okClickPanier);
+
+    },delay1Sec*attenteSec);
 }

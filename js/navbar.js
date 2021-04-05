@@ -1,5 +1,4 @@
 const body = document.getElementsByName("body");
-console.log(body);
 const navbar = document.getElementsByClassName("navbar")[0];
 const menuBtn = document.getElementsByClassName("menu-btn")[0];
 const cancelBtn = document.getElementsByClassName("cancel-btn")[0];

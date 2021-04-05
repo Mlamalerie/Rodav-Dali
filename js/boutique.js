@@ -25,7 +25,7 @@ function showQte(input) {
 function plus(key,max) {
 
     let input = document.getElementById("nbQtePanier"+key);
-    if(input.value < max) {
+    if(parseInt(input.value) < max) {
         let x = parseInt(input.value);
         input.value = x+1;
     } else {
@@ -35,36 +35,8 @@ function plus(key,max) {
 }
 function moin(key) {
     let input = document.getElementById("nbQtePanier"+key);
-    if(input.value > 0) {
+    if(parseInt(input.value) > 0) {
         let x = parseInt(input.value);
         input.value = x-1;
     } 
-}
-
-function addPanier(key,nom,max) {
-    console.log("addPanier",key);
-    let qte = parseInt(document.getElementById("nbQteCommande"+key).value);
-
-    if (qte > 0){
-        console.log("***");
-        var xmlhttp = new XMLHttpRequest();
-        let codeCat = document.getElementById("CodeCat").value.trim();
-
-
-        let ou = "sendToPanier.php?key=";
-        ou += codeCat;
-        ou += key; // c'est l'id ça en vrai
-        ou += '&qte=';
-        ou += qte;
-
-        console.log(ou,key,qte);
-        xmlhttp.open("GET",ou,true);
-        xmlhttp.send();
-
-        plus2(key,max,qte); // maj les quantité dans le panier
-        createNotification('<b>"' + nom +'"</b>' + " x " + qte + " a été ajouté au panier",1,1);
-
-    } else {
-        createNotification("0.. ",-1,0);
-    }
 }

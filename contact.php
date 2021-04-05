@@ -424,6 +424,7 @@ if(!empty($_POST)){
         </script>
 
         <script src="js/navbar.js"> </script>
+        <script src="js/modal.js"> </script>
 
 
     </body>
