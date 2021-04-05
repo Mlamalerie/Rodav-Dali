@@ -18,11 +18,11 @@ function createNotification(message,type,okClickPanier = 0) {
 
     if(okClickPanier) {
         notif.onclick = function() {
-  
+
             document.getElementById("myModal").style.display = "block";
-            
+
         }
-        
+
     } 
     notif.classList.add('toast');
     notif.classList.add(classType);
@@ -31,5 +31,13 @@ function createNotification(message,type,okClickPanier = 0) {
     setTimeout(() => {
         notif.remove();
     }, delay1Sec*5);
+}
+
+
+function createNotificationDelay(attenteSec,message,type,okClickPanier) {
+    setTimeout(function() {
+        createNotification(message,type,okClickPanier);
+
+    },delay1Sec*attenteSec);
 }
 

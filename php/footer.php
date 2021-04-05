@@ -15,17 +15,52 @@
 
         </center >
         <center class="bg-dark">
-            <span class="credit">
+            <span class="credit mss-rz">
 
-                By 
+               By 
                 <a href="https://www.linkedin.com/in/mlamalisaidsalimo"  target="_blank"><span class="text-white">Mlamali SAID SALIMO</span></a> 
                 and 
                 <a href="https://www.linkedin.com/in/redouane-zamani-041184200"  target="_blank"><span class="text-white">Redouane ZAMANI</span></a>
 
-
             </span>
-            <span class="far fa-copyright"></span><span> 2021 All rights reserved.</span>
+          <span> | Copyright  <span class="far fa-copyright"></span> Rodav Dalì 2021 All rights reserved.</span>
         </center>
     </div>
 
 </footer>
+
+
+<script type="text/javascript"> // var PHP
+    var okConnect = <?php if($okconnectey) {echo 'true'; } else {echo "false";}?>;
+
+    var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
+    var LaBoutique = <?php echo json_encode($Produits);?>;
+    var codeCat = <?php echo json_encode($CodeCat);?>;
+    var LaCat = <?php echo json_encode($LaCat);?>;
+    console.log(LePanierSESSION);
+    console.log(LaBoutique,codeCat);
+
+    // *** Mise a jour de la var js LePanierSESSION, modification qté ou ajout d'un nv produit
+    function majQteVarPanier(key,newQte,ajouterNewP = false) {
+
+
+        if(!ajouterNewP) {
+            console.log("majVarPanier",key,newQte);
+            LePanierSESSION[key]['quantity'] = newQte; 
+        } else { // 
+            if(!LePanierSESSION){
+                LePanierSESSION = {};
+            }
+            p = {
+                "id": LaBoutique[LaCat][key.substr(1)]['id'],
+                "title": LaBoutique[LaCat][key.substr(1)]['Title'],
+                "type": LaCat,
+                "quantity": newQte,
+                "key": key
+            }
+            console.log(p);
+            LePanierSESSION[key] = p;
+        }
+
+    }
+</script>
