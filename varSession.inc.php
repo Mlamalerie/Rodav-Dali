@@ -73,46 +73,74 @@ $Produits = readJSONFile("boutique.json");
 
 function writeUsersXMLFile($data) {
 
-    $nomFichier = "users.xml";
-    $xml = new SimpleXMLElement('<?xml version="1.0"?><data-users/>');
-    if(!empty($data)){
-        $listeKeys = array_keys($data[array_keys($data)[0]]);
-        //var_dump($listeKeys);
-        foreach($data as $u) {
 
+    $ok = true;
+    try{
+        $nomFichier = "users.xml";
+        $xml = new SimpleXMLElement('<?xml version="1.0"?><data-users/>');
+        if(!empty($data)){
+            $listeKeys = array_keys($data[array_keys($data)[0]]); // attribut des users
+
+            // pour chaque users
+            foreach($data as $u) {
+                $user = $xml->addChild('user');
+
+                // pour chacun de ses attributs users
+                foreach($listeKeys as $k) {
+                    if($k != 'panier'){
+                        $user->addChild($k, $u[$k]);
+                    } 
+                    // quand on arrive au panier
+                    else {
+
+                        $panier = $user->addChild('panier');  //** user> panier>
+
+                        // pour chaque element du panier
+                        $lesProduitsPan = $u['panier']['produit']; // array('a1' =>)
+
+                        $listeKeys1Produits = ['id','title','type','key','quantity'];
+
+                        // si le panier pa vide
+                        if(!empty($lesProduitsPan)){
+
+                            foreach($lesProduitsPan as $p ){
+                                //ajouter un enfant produit
+                                $prod = $panier->addChild("produit"); 
+
+                                // ajouter les attribut du produit
+                                foreach($listeKeys1Produits as $attrP) {
+                                    $prod->addChild($attrP,$p[$attrP]);
+
+                                }
+                            }
+                        } else {
+                            $prod = $panier->addChild("produit","vide"); 
+                            var_dump("le boug en bas a un panier vide");
+                            var_dump($u['pseudo']);
+                        }
+                    }
+                }
+
+            }
+        } else {
             $user = $xml->addChild('user');
 
             foreach($listeKeys as $k) {
-                if($k != 'panier'){
-                    $user->addChild($k, $u[$k]);
-                } else {
-                    
-                    $panier = $user->addChild('panier'); //** user> panier>
-                    
-                    $lePanier = $u['panier']['produit']; // array('a1' =>) le panier de u
-                    //var_dump($u['pseudo'],$u['panier']);
-                    foreach($lePanier as $p ){
-                        $panier->addChild("produit",$p); //panier>
-                        
-                    }
-
-
-
-                }
+                $user->addChild($k, $u[$k]);
             }
-
         }
-    } else {
-        $user = $xml->addChild('user');
-
-        foreach($listeKeys as $k) {
-            $user->addChild($k, $u[$k]);
-        }
+    } catch (Exception $e) {
+        $ok = false;
+        echo "Pb avec l'ajout d'un new UserException reçue : ",  $e->getMessage(), "\n";
+    }
+    if($ok){
+        $res = $xml->asXML();
+        $res=str_replace('><',">    \n<",$res);
+        $bytes = file_put_contents($nomFichier,$res);
+        return $ok;
     }
 
-    $res = $xml->asXML();
-    $res=str_replace('><',">    \n<",$res);
-    //$bytes = file_put_contents($nomFichier,$res);
+
 }
 function changerKeys($data,$NEW) {
     $i = 0;
@@ -120,8 +148,8 @@ function changerKeys($data,$NEW) {
 
         foreach($data as $u){
             //if($NEW == "key"){ var_dump($u);}
-            
-            
+
+
             if(!empty($u[$NEW]) && !empty($u)){
                 $newkey = $u[$NEW];
                 $oldkey = $i;
@@ -141,11 +169,28 @@ function readUsersXMLFile() {
 
         //var_dump(count($data));
         if(count($data) > 1){
+            // recuper les données
             $res = @json_decode(@json_encode($data),1);
 
-            // changer clé panier
+            // pour chaq user
             for($i = 0; $i < count($res['user']); $i++ ) {
-                $res['user'][$i]['panier']['produit'] = changerKeys($res['user'][$i]['panier']['produit'],"key");
+
+
+                // si le panier est rempli
+                $lePanier = $res['user'][$i]['panier']['produit'];
+                if($lePanier != "vide"){
+
+                    // si ya un juste un bail
+                    if(in_array("type",array_keys($lePanier),true)) {
+                        $lePanier = [0 => $lePanier];
+
+                    }
+
+                    // changer clé panier
+                    $res['user'][$i]['panier']['produit'] = changerKeys($lePanier,"key");
+                } else {
+                    $res['user'][$i]['panier']['produit'] = array();
+                }
             }
 
 
@@ -154,10 +199,11 @@ function readUsersXMLFile() {
             $res = @json_decode(@json_encode(array($data->user)),1);
 
             // changer clé panier
-            
+
+
             $res[0]['panier']['produit'] = changerKeys($res[0]['panier']['produit'],"key");
 
-            
+
             return changerKeys($res,"email");
         } 
     } else { 
@@ -167,7 +213,25 @@ function readUsersXMLFile() {
 }
 
 
+function addNewUser($newUser,$data){
+    // ajouter le new user au tableau
+    $data[$newUser['email']] = $newUser;
+    // creer un fichier xml avec le nouveau tab
+    writeUsersXMLFile($data);
+    return $data;
+
+}
+
+
 $Data_Users = readUsersXMLFile();
-
-
+/*
+$panier = array("produit" => array()) ;
+$newUser = ["pseudo" => "mlamali45", "email" =>"test95@gmail.com", "password" => "123","date_inscription" => '2021-04-05 10:22:40', "panier" => $panier];
+var_dump($newUser);
+var_dump($Data_Users[ "test@gmail.com"]['panier']);
+$Data_Users = addNewUser($newUser,$Data_Users);
+var_dump($Data_Users);
+$b = writeUsersXMLFile($Data_Users); 
+var_dump($b);
+*/
 ?>

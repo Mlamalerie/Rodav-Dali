@@ -75,6 +75,7 @@ if(!empty($_GET) && $okconnectey ){
         else {
 
             echo "petit";
+             $ajout = array("id" => $codeId, "title" => $LeProduit['Title'],"type" => $nomCat, "quantity" => $qte, "key" => $key );
             $panier = array($panier,$ajout);
         }
         var_dump("a ajouté"); 

@@ -193,7 +193,7 @@ if(!empty($_POST)){
                         </select>
                         <div class="error error-metiers" > <?php if(isset($err_metiers)) echo $err_metiers?> </div>
                         
-                        <input onkeyup="check()" id="email" name="email" type="email" placeholder="Saisir votre adresse email" value="<?php if(isset($email)){echo $email;}?>">
+                        <input onkeyup="check()" id="email" name="email" type="email" placeholder="Saisir votre adresse email" value="<?php if(isset($email)){echo $email;} else if($okconnectey) {echo $_SESSION["user_email"];}?>">
                         <div class="error error-mail" >  <?php if(isset($err_email)) echo $err_email?></div>
 
                         <input id="sujet" name="sujet" onkeyup="check()" type="text" placeholder="Sujet du message" value="<?php if(isset($sujet)){echo $sujet;}?>">

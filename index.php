@@ -73,7 +73,7 @@ $_SESSION['ici_contact_bool'] = false;
                     </div>
                 </div>
                 <div class="content descriptionsite">
-                    <div class="title">Bienvenue sur Rodav Dalí !</div>
+                    <div class="title">Bienvenue ! sur Rodav Dalí !</div>
                     <p class="text-white2">Chez Rodav Dalí, notre but est d’utiliser l’envers des possibles que nous proposes les nouvelles technologies, afin de mettre sur le devant de la scène, des artistes encore trop peu connus du grand publique, et qui, selon nous, démontrent un réel talent et une réelle soif de travail à travers leurs diverses créations. 
 
 

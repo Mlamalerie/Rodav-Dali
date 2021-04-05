@@ -59,22 +59,22 @@
     height: 345px;
   border-radius: 8px;
   width: calc(33% - 25px);
-    min-width: 350px;
-    margin-right: 40px;
+    min-width: 350px; 
+    margin-right: 40px; 
   overflow: hidden;
   box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
-    transition: transform 0.5s ease 0.3s;
-}
-.wrapper .card img{
+    transition: transform 0.5s ease 0.25s;
+}   
+.wrapper .card img{ 
   width: 100%;
   border-radius: 3px;
-  transition:transform 5s ease-in 1s;
-}
+  transition:transform 8s ease-in 1s;
+} 
 .card:hover img{
   transform: scale(1.11);
-}
+}  
 .card:hover{
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 .wrapper .card .content{
   position: absolute;
@@ -90,10 +90,12 @@
     /* bottom: -20%; /* placement du content */
 }
 
+.wrapper .content:hover {
+     
+}
 
-
-.wrapper .card:hover .content{
-  bottom: 0;
+.wrapper .card .content:hover{
+  bottom: 0;  
     background: rgba(25, 25, 25, 0.98);
    
 }
@@ -101,6 +103,7 @@
 .content .buttons{
   display: flex;
   justify-content: space-between;
+    z-index: 1;
 }
 .content .row .details span{
   font-size: 22px;
@@ -219,11 +222,11 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
+ 
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
-}
+} 
 .session-time {
     text-align: center; 
     max-width: 25%;

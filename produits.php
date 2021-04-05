@@ -54,45 +54,11 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
     </head>
     <body >
-        <button id="buttonTest">EEH CLIQUER</button>
         <input type="hidden" id="CodeCat" value="<?= $CodeCat ?>">
-        <div id="toasts"></div>
-        <script>
-            const iconError =  "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>" ;
-            const iconBellek =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
-            const iconSuccess =  "<i class='fas fa-check-circle' aria-hidden='true'></i>" ;
-            const toasts = document.getElementById('toasts');
-
-            function createNotification(message,type,okClickPanier) {
-                let icon = "";
-                switch (type){
-                    case -1 :  icon = iconError; classType = 'error'; break;
-                    case 0 :  icon = iconBellek; classType = 'bellek';break;
-                    case 1 :  icon = iconSuccess; classType = 'success'; break;
-    
-                }
-                   
-               
-
-                const notif = document.createElement('div');
-
-                if(okClickPanier) {
-                    notif.onclick = function() {
-                        document.getElementById("myModal").style.display = "block";
-                    }
-                }
-                notif.classList.add('toast');
-                notif.classList.add(classType);
-                notif.innerHTML =  message + " " + icon  ;
-                toasts.appendChild(notif);
-
-                setTimeout(() => {
-                    notif.remove();
-                }, 5000);
-            }
+        <div id="toasts"></div> <!--  NOTIFICICATION -->
 
 
-        </script>
+
 
         <!-- ===== NAV BAR ===== -->
         <?php require_once('php/navbar.php'); ?>
@@ -114,13 +80,14 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                     $max = (int) $Pr[$i]['Quantity'];
 
                     $key = $CodeCat."".$i;
+                    if($okconnectey){
 
-                    // si le produit est deja dans le panier
-                    if(in_array($key,array_keys($_SESSION["user_panier"]))) {
-                        $q = (int) $_SESSION["user_panier"][$key]['quantity'];
-                        $max -= $q;
+                        // si le produit est deja dans le panier
+                        if(in_array($key,array_keys($_SESSION["user_panier"]))) {
+                            $q = (int) $_SESSION["user_panier"][$key]['quantity'];
+                            $max -= $q;
+                        }
                     }
-
 
                 ?>
 
@@ -141,7 +108,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                                 </p>
                                 <div class="CombienDiv right">
                                     <button class="session-title my-2 " <?php if(!$okconnectey) { ?> onclick="location.href = 'sign.php'" <?php } 
-                    else {?>onclick="addPanier(<?=$i?>,'<?=$Pr[$i]['Title']?>')" <?php }?> > <u>Ajouter au panier</u></button>  
+                    else {?>onclick="addPanier(<?=$i?>,'<?=$Pr[$i]['Title']?>','<?=$Pr[$i]['Quantity']?>')" <?php }?> > <u>Ajouter au panier</u></button>  
                                     <div class="session justify-content-center my-2  "> 
 
                                         <div class="plus-minus"> 
@@ -168,37 +135,10 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
         <!-- ===== FOOTER ===== -->
         <?php require_once('php/footer.php'); ?>
-        <script>
-            function addPanier(key,nom) {
-                console.log("addPanier",key);
-                let qte = parseInt(document.getElementById("nbQteCommande"+key).value);
 
-                if (qte > 0){
-                    console.log("***");
-                    var xmlhttp = new XMLHttpRequest();
-                    let codeCat = document.getElementById("CodeCat").value;
-
-
-                    let ou = "sendToPanier.php?key=";
-                    ou += codeCat;
-                    ou += key;
-                    ou += '&qte=';
-                    ou += qte;
-
-                    console.log(ou,key,qte);
-                    xmlhttp.open("GET",ou,true);
-                    xmlhttp.send();
-
-
-                    createNotification('"' + nom +'"' + " x " + qte + " a été ajouté au panier",1,1);
-
-                } else {
-                    createNotification("Plus rien en stock.. ",-1,0);
-                }
-            }
-
-        </script>
-        <script type="text/javascript" src="js/boutique.js"> </script>
+        <script type="text/javascript" src="js/notif.js"> </script>
+        <script type="text/javascript"  src="js/boutique.js"> </script>
+        <script type="text/javascript" src="js/modal.js"></script>
         <script type="text/javascript" src="js/navbar.js"> </script>
 
 

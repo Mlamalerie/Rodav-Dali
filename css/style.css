@@ -590,8 +590,8 @@ html,body {
     box-shadow: 0 4px 0 var(--rouge-rose-1), 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     padding: 0.1rem 0.68rem;
     border-radius: 15%;
-    transition: all 0.2s ease-in-out;
-}
+    transition: all 0.2s eas e-in-out;
+} 
 
 .close:hover,
 .close:focus {
@@ -637,15 +637,19 @@ html,body {
     flex-direction: column;
 }
 .titlePanier {
-    height: 68px;
+    height: 75px;
     text-align: end;
     padding: 20px 10%; 
-    
+     font-size: 20px;
     color: var(--rouge-rose1);
-    font-size: 19px;
-    font-weight: 400;
 }
+.prixTotalPan {
+    font-size: 130%; 
 
+}
+.infoNbPan {
+    font-size: 90%!important;
+}
 .item {
     border-bottom: 1px solid #E1E8EE;
     padding: 20px 5% 0 5%;

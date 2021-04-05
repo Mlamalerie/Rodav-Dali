@@ -7,12 +7,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-    z-index: 9000;
+     z-index: 50000;
     transition: all 5.5s ease;
    
 }
 
 .toast {
+/*     z-index: 500001;*/
      color: #191919;
     font-weight: 500;
   border-radius: 5px;
@@ -26,7 +27,7 @@
         background-color: #e74c3c;
 }
 
-.toast.error {
+.toast.bellek {
         background-color: #e8d925;
 }
 

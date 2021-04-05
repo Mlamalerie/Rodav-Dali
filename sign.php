@@ -7,15 +7,6 @@ if($okconnectey) {
     exit;
 }
 
-function addNewUser($newUser,$data){
-    // ajouter le new user au tableau
-    $data[$newUser['email']] = $newUser;
-    // creer un fichier xml avec le nouveau tab
-    writeUsersXMLFile($data);
-    return $data;
-
-}
-
 
 
 if(!empty($_POST)){
@@ -109,16 +100,26 @@ if(!empty($_POST)){
         if($ok) {
             $date = date("Y-m-d H:i:s"); 
             $password = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
-            $panier = array() ;
+            
+            $panier = array("produit" => array());
             $newUser = ["pseudo" => $pseudo, "email" => $email, "password" => $password,"date_inscription" => $date, "panier" => $panier];
-            addNewUser($newUser,$Data_Users);
 
+            var_dump($newUser,$Data_Users);
+
+            try {
+                addNewUser($newUser,$Data_Users);
+            } catch (Exception $e) {
+                $ok = false;
+                echo "Pb avec l'ajout d'un new User : ",  $e->getMessage(), "\n";
+            }
+            if($ok){
             $_SESSION['user_email'] = $email;
             $_SESSION['user_pseudo'] =  $pseudo;
             $_SESSION['user_panier'] = $panier;
 
             header("Location: bravo.php?n=2");
             exit;
+            }
         } else {
             echo "ERROR";
         }
@@ -179,9 +180,9 @@ if(!empty($_POST)){
             $_SESSION['user_pseudo'] = $Data_Users[$email]['pseudo'];
             $_SESSION['user_email'] = $Data_Users[$email]['email'];
 
-            
-             $_SESSION['user_panier'] = $Data_Users[$email]['panier']['produit'];
-             var_dump( $_SESSION['user_panier']);
+
+            $_SESSION['user_panier'] = $Data_Users[$email]['panier']['produit'];
+            var_dump( $_SESSION['user_panier']);
             if(in_array("id",array_keys($_SESSION['user_panier']))){
                 $_SESSION['user_panier'] = [$_SESSION['user_panier']["key"] => ($_SESSION['user_panier'])];
                 var_dump( $_SESSION['user_panier']);
@@ -322,7 +323,7 @@ if(!empty($_POST)){
 
                     } 
                     else {
-                        if(!iemail.value.match(regExpMail)){ // si c'est pas bon
+                        if(!iemail.value.trim().match(regExpMail)){ // si c'est pas bon
 
                             iemail.style.border = "solid 1.5px"
                             iemail.style.borderColor = "#e74c3c";
@@ -347,13 +348,13 @@ if(!empty($_POST)){
                     }
 
                     /**** verif email CONNEXION */
-                    if(cemail.value.length == 0) {
+                    if(cemail.value.trim().length == 0) {
                         //errorcemail.style.display = "none";
                         cemail.style.border = "none";
 
                     } 
                     else {
-                        if(!cemail.value.match(regExpMail)){ // si c'est pas bon
+                        if(!cemail.value.trim().match(regExpMail)){ // si c'est pas bon
 
                             cemail.style.border = "solid 1.5px"
                             cemail.style.borderColor = "#e74c3c";
@@ -381,12 +382,12 @@ if(!empty($_POST)){
                     }
 
                     /**** verif pseudo */
-                    if(ipseudo.value.length == 0) {
+                    if(ipseudo.value.trim().length == 0) {
                         // erroripseudo.style.display = "none";
                         ipseudo.style.border = "none";
 
                     } 
-                    else if(ipseudo.value.length < 3 || ipseudo.value.length > 30 ) {
+                    else if(ipseudo.value.trim().length < 3 || ipseudo.value.trim().length > 30 ) {
 
                         ipseudo.style.border = "solid 1.5px"
                         ipseudo.style.borderColor = "#e74c3c";
@@ -395,7 +396,7 @@ if(!empty($_POST)){
 
                     } 
                     else {
-                        if(!ipseudo.value.match(regExpAlphaNum)){ // si c'est pas bon
+                        if(!ipseudo.value.trim().match(regExpAlphaNum)){ // si c'est pas bon
 
                             ipseudo.style.border = "solid 1.5px"
                             ipseudo.style.borderColor = "#e74c3c";

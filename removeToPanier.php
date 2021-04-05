@@ -31,10 +31,10 @@ if(!empty($_GET) && $okconnectey ){
         $ok = false;
         echo " # produit $nomCat $codeCat existe pas dans la boutique!";
     } else {
-         $panier = $_SESSION['user_panier'] ;
+        $panier = $_SESSION['user_panier'] ;
         // verif que lelement est bien present
         if(!in_array($key,array_keys($panier))){
-           $ok = false;
+            $ok = false;
             echo " # produit $nomCat $codeCat n'était pas pas dans le panier chakal";
         } 
 
@@ -45,16 +45,16 @@ if(!empty($_GET) && $okconnectey ){
     if($ok){
 
         var_dump($panier);
+        unset($panier[$key]); // delete
+        var_dump($panier); 
 
 
-      
-        //$Data_Users[$uemail]['panier']['produit'] = $panier;
 
         // writeUsersXMLFile($Data_Users); // mettre à jour le fichier des users ?
 
-        var_dump($panier); 
-        //$_SESSION['user_panier'] = $panier; // maj panier
 
+        $_SESSION['user_panier'] = $panier; // maj panier
+        $Data_Users[$uemail]['panier']['produit'] = $panier;
 
 
         echo "***removePanier $key ***";
