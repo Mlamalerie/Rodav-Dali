@@ -1,7 +1,23 @@
 <?php
-session_start();
-session_unset();
-session_destroy();
+
+include_once("varSession.inc.php");
+
+if($okconnectey){
+    $panier = $_SESSION['user_panier'];
+
+    var_dump('Le panier',$panier);
+    var_dump('le panier de u avant ',$Data_Users[$_SESSION['user_email']]['panier']);
+    $Data_Users[$_SESSION['user_email']]['panier']['produit'] = $panier;
+
+    var_dump('le panier de u après',$Data_Users[$_SESSION['user_email']]['panier']);
+
+    if(writeUsersXMLFile($Data_Users)) {
+        echo "ok write save panier";
+
+    }
+  
+}
+
 /*
     print_r($_SESSION);
     var_dump( $Data_Users[$_SESSION["user_email"]]['panier'], $_SESSION["user_panier"]);
@@ -10,11 +26,11 @@ session_destroy();
 
 //writeUsersXMLFile($Data_Users);  // mettre à jour le fichier des users ?
 
-header('Location: index.php');
+  session_unset();
+    session_destroy();
+
+header('Location:'.$_SERVER['HTTP_REFERER']);
 exit;
-
-
-//header('Location:'.$_SERVER['HTTP_REFERER']);
 
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // si une connection est détecter : (ta rien a faire ici mec)
 $okconnectey = false;
 if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
@@ -229,6 +229,7 @@ function addNewUser($newUser,$data){
 
 
 $Data_Users = readUsersXMLFile();
+
 /*
 $panier = array("produit" => array()) ;
 $newUser = ["pseudo" => "mlamali45", "email" =>"test95@gmail.com", "password" => "123","date_inscription" => '2021-04-05 10:22:40', "panier" => $panier];

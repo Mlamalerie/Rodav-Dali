@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once("varSession.inc.php");
 
 if(!empty($_GET) && $okconnectey ){

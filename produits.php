@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once("varSession.inc.php");
 $weCatExiste = false;
 
@@ -143,7 +143,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <?php require_once('php/footer.php'); ?>
 
         <script type="text/javascript">
-            var LePanierSESSION = <?php if(!$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
+            var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
             var LaBoutique = <?php echo json_encode($Produits);?>;
             var codeCat = <?php echo json_encode($CodeCat);?>;
             var LaCat = <?php echo json_encode($LaCat);?>;
@@ -192,7 +192,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <script type="text/javascript"  src="js/boutique.js"> </script>
         <script>
             var AfficherTextActualiserPage = true;
-            majCountPan();
+
             function goToSendPanierPHP(key,qte) {
                 var xmlhttp = new XMLHttpRequest();
 
@@ -242,12 +242,25 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
             function addPanier(key,max) {
 
+
+
+
+
                 let qte = parseInt(document.getElementById("nbQteCommande"+key).value);
                 let qteDejaPanier = 0;
 
 
 
                 if (qte > 0){
+
+                    // faut actualiser chakal
+                    if(AfficherTextActualiserPage){
+                        createNotificationDelay(4,"Actualiser la page pour voir les modifications faîtes au panier",0);
+                        AfficherTextActualiserPage = false;
+                    }
+
+
+
                     console.log("addPanier***");
 
                     // si le panier n'est pas vide

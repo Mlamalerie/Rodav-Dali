@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once("varSession.inc.php");
 $_SESSION['ici_index_bool'] = false;
 $_SESSION['ici_contact_bool'] = true;

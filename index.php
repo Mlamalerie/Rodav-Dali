@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once("varSession.inc.php");
 //if($okconnectey){var_dump($_SESSION);}
 $_SESSION['ici_index_bool'] = true;
@@ -55,23 +55,9 @@ $_SESSION['ici_contact_bool'] = false;
             <div class="about text-white">
 
                 <!-- ===== MENU GAUCHE ===== -->
-                <div class="content-left">
+                <?php require_once('php/menugauche.php'); ?>
 
 
-                    <div class="sidebar">
-
-                        <h1 class="text-shadow text-point">Nos produits</h1>
-
-
-                        <a href="albums.html"><span class="amenuactive ">Albums</span> 💽</a>
-                        <a href="tableaux.html">Tableaux 🎨</a>
-                        <a href="dress.html">Mode 🧦</a>
-
-
-                        <h2 class="text-shadow ">  ---</h2>
-                        <a href="contact.html">Nous contacter 👈🏾</a>
-                    </div>
-                </div>
                 <div class="content descriptionsite">
                     <div class="title">Bienvenue ! sur Rodav Dalí !</div>
                     <p class="text-white2">Chez Rodav Dalí, notre but est d’utiliser l’envers des possibles que nous proposes les nouvelles technologies, afin de mettre sur le devant de la scène, des artistes encore trop peu connus du grand publique, et qui, selon nous, démontrent un réel talent et une réelle soif de travail à travers leurs diverses créations. 
