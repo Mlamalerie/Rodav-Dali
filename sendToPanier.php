@@ -85,13 +85,13 @@ if(!empty($_GET) && $okconnectey ){
         var_dump("element a ajouté"); 
         var_dump($ajout); 
 
-        $Data_Users[$uemail]['panier']['produit'] = $panier;
+  
 
-        // writeUsersXMLFile($Data_Users); // mettre à jour le fichier des users ?
+       
         var_dump("panier du boug APRES jout");
         var_dump($panier); 
         $_SESSION['user_panier'] = $panier; // maj panier
-
+      $Data_Users[$uemail]['panier']['produit'] = $panier; // maj data
 
         echo "*** sendPanier $key***";
 

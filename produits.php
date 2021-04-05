@@ -207,6 +207,22 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 xmlhttp.send();
 
             }  
+            function goToRemovePanierPHP(key,OkDiminu = false) {
+                var xmlhttp = new XMLHttpRequest();
+
+                let ou = "removeToPanier.php?key=";
+
+                ou += key; // c'est la clé
+
+                if(OkDiminu) {
+                    ou += '&diminu=1';
+                }
+
+                console.log("go",ou);
+                xmlhttp.open("GET",ou,true);
+                xmlhttp.send();
+
+            }  
 
             function majCountPan() {
 
@@ -377,30 +393,13 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
             }
-            function moin2(id) {
-                let input = document.getElementById("nbQtePanier"+id);
-                if(input){
-                    if(input.value > 1) {
-                        let x = parseInt(input.value);
-                        document.getElementById("nbQtePanier"+id).value = x-1;
 
-
-                        CalculAffPrixTotal();
-                    } 
-                }
-            }
             function removePanier(key) {
                 console.log("removePanier",key);
 
                 console.log("***");
-                var xmlhttp = new XMLHttpRequest();
-                let ou = "removeToPanier.php?key=";
-                ou += key;
 
-                console.log(ou,key);
-                xmlhttp.open("GET",ou,true);
-                xmlhttp.send();
-
+                goToRemovePanierPHP(key);
                 // suprimer la div
                 let elem = document.getElementById("item-"+key);
                 elem.parentNode.removeChild(elem);
@@ -411,9 +410,20 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 CalculAffPrixTotal();
                 majCountPan();
 
-
-
             }
+            function moin2(id) {
+                let input = document.getElementById("nbQtePanier"+id);
+                if(input){
+                    if(input.value > 1) {
+                        let x = parseInt(input.value);
+                        document.getElementById("nbQtePanier"+id).value = x-1;
+
+                        goToRemovePanierPHP(id,true);
+                        CalculAffPrixTotal();
+                    } 
+                }
+            }
+
 
 
 
