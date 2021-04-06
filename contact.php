@@ -91,12 +91,12 @@ if(!empty($_POST)){
 
     }
 
-  
+
     //*** Verification du sujet
     if(empty($sujet)) { // si vide
         $ok = false;
     } else if(strlen($sujet) > 125) {
-          $ok = false;
+        $ok = false;
         $err_sujet = $icon." Erreur sujet est trop long !";
     }
 
@@ -105,7 +105,7 @@ if(!empty($_POST)){
         $ok = false;
     } 
 
-    
+
     /**** ENVOIE */
     if($ok) {
 
@@ -150,19 +150,19 @@ if(!empty($_POST)){
 
             <!-- ===== MENU GAUCHE ===== -->
             <?php require_once('php/menugauche.php'); 
-            
+/*
             $prenom = "Mlamali";
             $nom = "Mlamali";
             $datenaissance = "2020-04-02";
             $sujet = "wi";
-            $message = "xx xxxxxx";
+            $message = "xx xxxxxx";*/
             ?>
-            
-            
+
+
             <div class="content content-right">
-                <div class="box"><h2 >CONTACTEZ NOUS  <i class="fas fa-envelope"></i></h2></div>
+
                 <div class="box">
-                    
+                    <div><h2 >CONTACTEZ NOUS  <i class="fas fa-envelope"></i></h2></div>
                     <form action="" id="formContact" method="post" autocomplete="off" >
                         <div class="">
                             <input id="prenom" name="prenom" onkeyup="check()" type="text" placeholder="Saisir votre prénom" value="<?php if(isset($prenom)){echo $prenom;}?>" style="grid-column: 2">
@@ -175,9 +175,10 @@ if(!empty($_POST)){
 
                         <div class="divSexe" style="grid-column: 2">
 
-                            <input onchange="check()" name="sexe" type="radio" id="inputX" value="X" <?php if(isset($sexe) && ($sexe == "X")){echo "checked";} else echo "checked"?>><label for="inputM" >Non binaire</label>
+
                             <input onchange="check()" name="sexe" type="radio" id="inputM" value="M" <?php if(isset($sexe) && ($sexe == "M")){echo "checked";}?>><label for="inputM" >♂️ Homme</label>
                             <input onchange="check()" name="sexe" type="radio" id="inputF" value="F" <?php if(isset($sexe) && ($sexe == "F")){echo "checked";}?>><label for="inputF">♀ Femme</label>
+                            <input onchange="check()" name="sexe" type="radio" id="inputX" value="X" <?php if(isset($sexe) && ($sexe == "X")){echo "checked";} else echo "checked"?>><label for="inputM" >Autre</label>
 
                             <div class="error error-sexe" > <?php if(isset($err_sexe)) echo $err_sexe?> </div>
                         </div>
@@ -197,15 +198,15 @@ if(!empty($_POST)){
                             <option value="3">🤷🏾‍♀️ Autre</option>
                         </select>
                         <div class="error error-metiers" > <?php if(isset($err_metiers)) echo $err_metiers?> </div>
-                        
+
                         <input onkeyup="check()" id="email" name="email" type="email" placeholder="Saisir votre adresse email" value="<?php if(isset($email)){echo $email;} else if($okconnectey) {echo $_SESSION["user_email"];}?>">
                         <div class="error error-mail" >  <?php if(isset($err_email)) echo $err_email?></div>
 
                         <input id="sujet" name="sujet" onkeyup="check()" type="text" placeholder="Sujet du message" value="<?php if(isset($sujet)){echo $sujet;}?>">
-                          <div class="error errorsujet" >  <?php if(isset($err_sujet)) echo $err_sujet?></div>
+                        <div class="error errorsujet" >  <?php if(isset($err_sujet)) echo $err_sujet?></div>
                         <textarea id="message" name="message" onkeyup="check()" placeholder="Tapez votre message...."><?php if(isset($message)){echo $message;}?></textarea>
                         <button id="btnSEND" disabled>veuillez remplir toute les cases <i class="fas fa-exclamation-triangle"></i></button>
-                        <input type="submit">
+
                     </form>
                 </div>
 
@@ -215,9 +216,12 @@ if(!empty($_POST)){
 
         <?php require_once('php/footer.php'); ?>      
         <script>
+   check();
+
             const email = document.getElementById("email");
             const prenom = document.getElementById("prenom");
             const nom = document.getElementById("nom");
+            const metiers = document.getElementById("metiers");
             const sexeM = document.getElementById("inputM");
             const sexeF = document.getElementById("inputF");
             const sexeX = document.getElementById("inputX");
@@ -271,150 +275,178 @@ if(!empty($_POST)){
                 // Check the range of the day
                 return day > 0 && day <= monthLength[month - 1];
             }
+
+
+         
             function check(){
-                console.log("check");
-                okSEND = true;
+                setTimeout(function() { 
 
-                /**** verif email */
-                if(email.value.length == 0) {
-                    erroremail.style.display = "none";
-                    email.style.border = "none";
-                    okSEND =false;console.log("email");
-                    email.classList.add("clignote");
-                } 
-                else {
-                    email.classList.remove("clignote");
+                    console.log("check");
+                    okSEND = true;
 
-                    if(!email.value.match(regExpMail)){ // si c'est pas bon
-
-                        email.style.border = "solid 1px"
-                        email.style.borderColor = "#e74c3c";
-
-                        erroremail.style.display = "block";
-                        erroremail.innerHTML = icon + "Veuillez saisir une adresse mail correct (exemple : said@gmail.com) !";
-                        okSEND =false;
-                        console.log("email");
-                        //btn.style.display = "none";
-                    } else {
+                    /**** verif email */
+                    if(email.value.length == 0) {
                         erroremail.style.display = "none";
-                        email.style.border = "none"
+                        email.style.border = "none";
+                        okSEND =false;console.log("email");
+                        email.classList.add("clignote");
+                    } 
+                    else {
+                        email.classList.remove("clignote");
+
+                        if(!email.value.match(regExpMail)){ // si c'est pas bon
+
+                            email.style.border = "solid 1px"
+                            email.style.borderColor = "#e74c3c";
+
+                            erroremail.style.display = "block";
+                            erroremail.innerHTML = icon + "Veuillez saisir une adresse mail correct (exemple : said@gmail.com) !";
+                            okSEND =false;
+                            console.log("email");
+                            //btn.style.display = "none";
+                        } else {
+                            erroremail.style.display = "none";
+                            email.style.border = "solid 1px"
+                            email.style.borderColor = "#3ce763";
+
+                        }
                     }
-                }
 
-                /**** verif prenom */
-                if(prenom.value.trim().length == 0) {
-                    errorprenom.style.display = "none";
-                    prenom.style.border = "none"
-                    okSEND =false;console.log("prenom");
-                    prenom.classList.add("clignote");
-
-                } else {
-                    prenom.classList.remove("clignote");
-
-                    if(!prenom.value.match(regExpAlpha)){ // si c'est pas bon
-                        console.log("*-");
-                        prenom.style.border = "solid 1px"
-                        prenom.style.borderColor = "#e74c3c";
-
-                        errorprenom.style.display = "block";
-                        errorprenom.innerHTML = icon + "Veuillez saisir un prenom correct (des lettres uniquement)!";
-                        okSEND =false;console.log("prenom");
-                        //btn.style.display = "none";
-                    } else {
-                        console.log("++-");
+                    /**** verif prenom */
+                    if(prenom.value.trim().length == 0) {
                         errorprenom.style.display = "none";
                         prenom.style.border = "none"
-                    }
-                }
+                        okSEND =false;console.log("prenom");
+                        prenom.classList.add("clignote");
 
-                /**** verif nom */
-                if(nom.value.trim().length == 0) {
-                    errornom.style.display = "none";
-                    nom.style.border = "none";
-                    okSEND =false;
-                    console.log("nom");  nom.classList.add("clignote");
-                } else {
-                    nom.classList.remove("clignote");
-
-                    if(!nom.value.match(regExpAlpha)){ // si c'est pas bon
-                        console.log("*-");
-                        nom.style.border = "solid 1px"
-                        nom.style.borderColor = "#e74c3c";
-
-                        errornom.style.display = "block";
-                        errornom.innerHTML = icon + "Veuillez saisir un nom correct (des lettres uniquement)!";
-                        okSEND =false;console.log("nom");
-                        //btn.style.display = "none";
                     } else {
+                        prenom.classList.remove("clignote");
+
+                        if(!prenom.value.match(regExpAlpha)){ // si c'est pas bon
+                            console.log("*-");
+                            prenom.style.border = "solid 1px"
+                            prenom.style.borderColor = "#e74c3c";
+
+                            errorprenom.style.display = "block";
+                            errorprenom.innerHTML = icon + "Veuillez saisir un prenom correct (des lettres uniquement)!";
+                            okSEND =false;console.log("prenom");
+                            //btn.style.display = "none";
+                        } else {
+                            console.log("++-");
+                            errorprenom.style.display = "none";
+                            prenom.style.border = "solid 1px"
+                            prenom.style.borderColor = "#3ce763";
+                        }
+                    }
+
+                    /**** verif nom */
+                    if(nom.value.trim().length == 0) {
                         errornom.style.display = "none";
                         nom.style.border = "none";
-                    }
-                }
+                        okSEND =false;
+                        console.log("nom");  nom.classList.add("clignote");
+                    } else {
+                        nom.classList.remove("clignote");
 
-                /**** verif sexe */
-                if(!sexeM.checked && !sexeF.checked && !sexeX.checked) {
-                    okSEND = false;
-                    console.log("sexe");
-                    sexeM.classList.add("clignote");
-                    sexeF.classList.add("clignote");
-                    sexeX.classList.add("clignote");
+                        if(!nom.value.match(regExpAlpha)){ // si c'est pas bon
+                            console.log("*-");
+                            nom.style.border = "solid 1px"
+                            nom.style.borderColor = "#e74c3c";
 
-                } else {
-                    sexeM.classList.remove("clignote");
-                    sexeF.classList.remove("clignote");
-                    sexeX.classList.remove("clignote");
-                }
+                            errornom.style.display = "block";
+                            errornom.innerHTML = icon + "Veuillez saisir un nom correct (des lettres uniquement)!";
+                            okSEND =false;console.log("nom");
+                            //btn.style.display = "none";
+                        } else {
+                            errornom.style.display = "none";
 
-
-                /**** verif sujet */
-                if(sujet.value.trim().length == 0) {
-                    okSEND = false;
-                    console.log("sujet");  sujet.classList.add("clignote");
-                } else {
-                    sujet.classList.remove("clignote");
-                }
-
-                /**** verif message */
-                if(message.value.trim().length == 0) {
-                    okSEND = false; console.log("message");  message.classList.add("clignote");
-                } else{
-                    message.classList.remove("clignote");
-                }
-
-                /**** verif date */
-                if(!isValidDate(date.value) ) {
-                    console.log(date.value,"###data pas bon");
-                    okSEND = false;
-                    date.classList.add("clignote");
-                } else{
-                    console.log(date.value,"### tout est bon");
-                    date.classList.remove("clignote");
-                }
-
-                console.log(date.value,"***********",isValidDate(date.value));
-                if(okSEND) {
-                    btnSEND.style.display = "block";
-                    btnSEND.setAttribute("class","buttons-magique");
-                    btnSEND.style.fontSize = "1.1rem";
-                    btnSEND.innerHTML = "ENVOYER !";
-                    btnSEND.removeAttribute("disabled");
-                    btnSEND.setAttribute("type","submit");
-
-                    console.log("if%");
-                } 
-                else{
-                    console.log("else%");
-                    btnSEND.setAttribute("class"," ");
-                    btnSEND.innerHTML = "veuillez remplir toute les cases <i class='fas fa-exclamation-triangle'></i>";
-                    btnSEND.style.fontSize = "0.8rem";
-                    if (!btnSEND.disabled) {
-
-                        btnSEND.setAttribute("disabled");
+                            nom.style.border = "solid 1px"
+                            nom.style.borderColor = "#3ce763";
+                        }
                     }
 
-                    btnSEND.removeAttribute("onclick");
+                    /**** verif sexe */
+                    if(!sexeM.checked && !sexeF.checked && !sexeX.checked) {
+                        okSEND = false;
+                        console.log("sexe");
+                        sexeM.classList.add("clignote");
+                        sexeF.classList.add("clignote");
+                        sexeX.classList.add("clignote");
 
-                }
+                    } else {
+                        sexeM.classList.remove("clignote");
+                        sexeF.classList.remove("clignote");
+                        sexeX.classList.remove("clignote");
+                    }
+
+
+                    /**** verif sujet */
+                    if(sujet.value.trim().length == 0) {
+                        okSEND = false;
+                        console.log("sujet");  sujet.classList.add("clignote");
+                        sujet.style.border = "none";
+                    } else {
+                        sujet.classList.remove("clignote");
+                        sujet.style.border = "solid 1px"
+                        sujet.style.borderColor = "#3ce763";
+                    }
+
+                    /**** verif message */
+                    if(message.value.trim().length == 0) {
+                        okSEND = false; console.log("message"); 
+                        message.classList.add("clignote");
+                        message.style.border = "none";
+                    } else{
+                        message.classList.remove("clignote");
+                        message.style.border = "solid 1px"
+                        message.style.borderColor = "#3ce763";
+                    }
+
+                    /**** verif metiers */
+                    if(metiers.value.trim().length != 0) {
+                        metiers.style.border = "solid 1px"
+                        metiers.style.borderColor = "#3ce763";
+                    } 
+
+                    /**** verif date */
+                    if(!isValidDate(date.value) ) {
+                        console.log(date.value,"###data pas bon");
+                        okSEND = false;
+                        date.classList.add("clignote");
+                    } else{
+                        console.log(date.value,"### tout est bon");
+                        date.classList.remove("clignote");
+                        date.style.border = "solid 1px"
+                        date.style.borderColor = "#3ce763";
+                    }
+
+                    console.log(date.value,"***********",isValidDate(date.value));
+                    if(okSEND) {
+                        btnSEND.style.display = "block";
+                        btnSEND.setAttribute("class","activeBtn");
+                        btnSEND.style.fontSize = "1.1rem";
+                        btnSEND.innerHTML = "ENVOYER !";
+                        btnSEND.removeAttribute("disabled");
+                        btnSEND.setAttribute("type","submit");
+
+                        console.log("if%");
+                    } 
+                    else{
+                        console.log("else%");
+
+                        btnSEND.innerHTML = "veuillez remplir toute les cases <i class='fas fa-exclamation-triangle'></i>";
+                        btnSEND.style.fontSize = "0.8rem";
+                        if (!btnSEND.disabled) {
+
+                            btnSEND.setAttribute("disabled","");
+                        }
+
+                        btnSEND.removeAttribute("onclick");
+                        btnSEND.removeAttribute("class");
+                        btnSEND.removeAttribute("type");
+
+                    }
+                }, 1000);
             }
 
             function submitForm() {
@@ -429,7 +461,9 @@ if(!empty($_POST)){
         </script>
 
         <script src="js/navbar.js"> </script>
+        <script src="js/notif.js"> </script>
         <script src="js/modal.js"> </script>
+
 
 
     </body>
