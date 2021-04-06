@@ -1,7 +1,4 @@
 
-<?php
-//var_dump($_SESSION['user_panier']);
-?>
 
 <nav class="navbar">
     <div class="content">
@@ -26,13 +23,17 @@
             </li>
 
             <li><a href="contact.php" >Contact</a></li>
-            <?php if(!$okconnectey) {?> 
-            <li><a href="sign.php" class="buttons-magique user-btn"><i class="fas fa-user"></i></a></li> <?php } else { ?>
+            <?php if(!$okconnectey ) {?> 
+            
+            <li><a href="sign.php" class="buttons-magique user-btn"  id="RONDUSER"><i class="fas fa-user"></i></a></li> 
+            
+            
+            <?php } else { ?>
 
             <li>
 
 
-                <a href="#" class="desktop-link buttons-magique "><i class="fas fa-user"></i></a>
+                <a href="#" class="desktop-link buttons-magique " id="RONDUSER"><i class="fas fa-user"></i></a>
 
 
                 <input type="checkbox" id="show-features">

@@ -1,3 +1,4 @@
+Loading() ;
 var myVar;
 
 function Loading() {

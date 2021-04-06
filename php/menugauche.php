@@ -23,7 +23,7 @@
         <?php if ($_SESSION['ici_contact_bool'] || $_SESSION['ici_index_bool'] ) {$LaCat = "";}; ?>
 
         <a href="produits.php?cat=albums"><?php if($LaCat == "albums"){ ?> <span class="amenuactive "> <?php }?> Albums<?php if($LaCat == "albums"){ ?> </span><?php }?> 💽</a>
-        <a href="produits.php?cat=tableaux"><?php if($LaCat == "tableaux"){ ?> <span class="amenuactive "> <?php }?>Tableaux<?php if($LaCat == "tableaux"){ ?></span><?php }?></a>
+        <a href="produits.php?cat=tableaux"><?php if($LaCat == "tableaux"){ ?> <span class="amenuactive "> <?php }?>Tableaux<?php if($LaCat == "tableaux"){ ?></span><?php }?> 🎨</a>
         <a href="produits.php?cat=mode"><?php if($LaCat == "mode"){ ?> <span class="amenuactive "> <?php }?>Mode<?php if($LaCat == "mode"){ ?></span><?php }?>🧦</a>
 
 

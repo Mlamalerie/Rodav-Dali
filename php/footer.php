@@ -5,7 +5,7 @@
 
             <span class="credit social-group">
 
-                <a href="mailto:contact@rodavdali.com"  target="_blank"><span class="text-white socialicon mr-2 mh-l"><i class="fa fa-envelope" aria-hidden="true"></i></span></a> 
+                <a href="mailto:rodavdali@gmail.com"  target="_blank"><span class="text-white socialicon mr-2 mh-l"><i class="fa fa-envelope" aria-hidden="true"></i></span></a> 
                 <a href="https://www.instagram.com/rodavdali"  target="_blank"><span class="text-white socialicon mr-2"><i class="fab fa-instagram"></i></span></a> 
 
 
@@ -29,10 +29,17 @@
 
 </footer>
 
-<?php if(!$_SESSION['ici_index_bool']) { ?> 
+
+<script>
+
+   
+</script>
+
+
 <script type="text/javascript"> // var PHP
     var okConnect = <?php if($okconnectey) {echo 'true'; } else {echo "false";}?>;
-    var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
+
+     var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
     var LaBoutique = <?php echo json_encode($Produits);?>;
 
     <?php if(!$_SESSION['ici_contact_bool'] && !$_SESSION['ici_index_bool'] ) {?> 
@@ -69,5 +76,3 @@
     }
 </script>
 
-
-<?php } ?>

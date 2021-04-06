@@ -38,8 +38,9 @@ function sendMailContact($prenom,$nom,$sexe,$datenaissance,$metier,$email,$sujet
     $sujet = (String) trim($sujet);
     $message = (String) trim($message);
     $metier = (String) ConvertMetier($metier);
-
-
+    
+    $ok = true;
+    
     require_once "php/PHPMailer/PHPMailer.php";
     require_once "php/PHPMailer/SMTP.php";
     require_once "php/PHPMailer/Exception.php";
@@ -57,7 +58,7 @@ function sendMailContact($prenom,$nom,$sexe,$datenaissance,$metier,$email,$sujet
     $mail = new PHPMailer(true);
 
     $alert = '';
-
+    
     try {
 
         //*** personal
@@ -86,10 +87,13 @@ function sendMailContact($prenom,$nom,$sexe,$datenaissance,$metier,$email,$sujet
                 </div>';
     }
     catch (Exception $e){
+            $ok = true;
         $alert = '<div class="alert-error">
                 <span>'.$e->getMessage().'</span>
               </div>';
     }
+    
+    return $ok;
 
 }
 

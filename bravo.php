@@ -3,14 +3,15 @@
 include_once("varSession.inc.php");
 $_SESSION['ici_index_bool'] = true;
 $_SESSION['ici_contact_bool'] = false;
-
+$_SESSION['ici_sign_bool'] = false;
 
 if(isset($_GET['n']) && !empty($_GET['n'])) {
     extract($_GET);
+    $pseudo = $_SESSION['user_pseudo'];
     $n = (int) $n;
     switch($n) {
         case 1 : $mess = "Votre message a bien été envoyé ! Vous allez être redirigé vers l'index..."; break;
-        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers l'index... Bienvenue  <b> ". $_SESSION['user_pseudo']. " </b>  :) "; break;
+        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers la page d'accueil...  Bienvenue &nbsp; <b> $pseudo </b> &nbsp; :) "; break;
         default : $mess = "?";break;
     }
 } else {

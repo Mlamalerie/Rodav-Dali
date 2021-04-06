@@ -22,7 +22,7 @@ html,body {
 } 
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
-}
+} 
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
@@ -581,6 +581,15 @@ html,body {
 /****************************/
 /************** MODAL ******/
 
+
+#myBtnModal {
+    transition: all 0.2s ease-in-out;
+    
+}
+#myBtnModal:active {
+    transform: scale(0.90);
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -598,6 +607,7 @@ html,body {
 
 /* Modal Content */
 .modal-content {
+  
     position: relative;
     background-color: #191919;
     margin: auto;
@@ -627,6 +637,7 @@ html,body {
 
 /* The Close Button */
 .close {
+    
     color: white;
     float: right;
     font-size: 24px;
@@ -635,7 +646,7 @@ html,body {
     box-shadow: 0 4px 0 var(--rouge-rose-1), 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     padding: 0.1rem 0.68rem;
     border-radius: 15%;
-    transition: all 0.2s eas e-in-out;
+    transition: all 0.2s ease-in-out;
 } 
 
 .close:hover,
@@ -659,7 +670,9 @@ html,body {
     line-height: 28px;
 } 
 
-.modal-body {padding: 5px 3px;}
+.modal-body {  
+   
+    padding: 5px 3px;}
 
 .modal-footer {
     padding: 2px 16px;
@@ -668,13 +681,17 @@ html,body {
 }
 
 
-
-
+#panierVide{
+    color: whitesmoke;
+    text-align: center;
+    padding: 10% 5%;
+}
+ 
 
 .shopping-cart {
     width: 100%;
     
-    background: #FFFFFF;
+    background: rgba(8, 8, 8, 0.42);
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
 
@@ -687,22 +704,27 @@ html,body {
     padding: 20px 10%; 
      font-size: 20px;
     color: var(--rouge-rose1);
+     background-color: #191919;
 }
 #prixTotalPan {
     font-size: 130%; 
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1px 0.15rem;
+    border-radius: 4px;
+    
 
 }
 .infoNbPan {
     font-size: 90%!important;
 }
 .item {
-    border-bottom: 1px solid #E1E8EE;
+    border-bottom: 1px solid #383838;
     padding: 20px 5% 0 5%;
     height: 118px;
     display: flex;
     justify-content: center;
     align-content: center;
-    border-bottom: 
+
 }
 
 .item:nth-child(3) {
@@ -714,13 +736,18 @@ html,body {
     width: 8%;
     padding-right:10%;
 }
+
+
+
 .delete-btn {
     display: inline-block;
     Cursor: pointer;
+     border-radius : 50%!important;
+   width: 2.1rem!important;
+   height: 2.1rem!important;
+  
 }
 .delete-btn {
-
-    height: 17px;
     font-size: 110%;
     margin-top: 23.5px;
     /*  background: url(&amp;quot;delete-icn.svg&amp;quot;) no-repeat center;*/
@@ -760,6 +787,7 @@ html,body {
     min-width: 95px;
 }
 
+
 .description span {
     display: block;
     font-size: 14px;
@@ -769,41 +797,54 @@ html,body {
 
 .description span:first-child {
     margin-bottom: 5px;
+     color: #cac4cc;
+    font-weight:500;
 }
 .description span:last-child {
     font-weight: 300;
+    font-size: 82%;
     margin-top: 8px;
     color: #86939E;
 }
  
 .quantity {
-    padding-top: 23.5px;
+    padding-top: 22.5px;
  
 }
 .quantity input {
     -webkit-appearance: none;
     border: none;
     text-align: center;
-    width: 32px;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
+    width: 20px;
+    margin: 0 3px;
+    font-size: 13px;
+    color: #e0e0e0;
+    background-color: rgba(245, 245, 245, 0.26);
+    font-weight: 500;
+    height: 18px;
 }
 
 .item button[class*=btn] {
-    width: 30px; 
-    height: 30px;
-    background-color: #E1E8EE;
+    width: 25px; 
+    height: 25px;
+    background-color: rgba(28, 28, 28, 0.69);
+    color : whitesmoke;
     border-radius: 6px;
     border: none;
     cursor: pointer;
+      outline: none; 
+    transition: all 0.1s ease ;
+}
+
+.item button[class*=btn]:active {
+    transform: scale(0.90);
 }
 
 .total-price {
-    padding: 27px 0 0 7%;
+    padding: 21px 0 0 7%;
     text-align: center;
-    font-size: 16px;
-    color: #43484D;
+    font-size: 19px;
+    color: #dbd1d6;
     font-weight: 300;
 }
 

@@ -6,22 +6,25 @@ var inputAffichageQte = document.getElementById('affqte');
 showQte(inputAffichageQte);
 
 function showQte(input) {
-    let liste = document.getElementsByClassName("quantiteBay");
-    let contents = document.getElementsByClassName("content");
 
-    if(input.checked) {
-        console.log("cach&eacute;");
-        for(let i = 0; i < liste.length; i++) {
-            console.log(liste[i]);
-            liste[i].style.display = "none";
-            //  contents[i].classList.add("bottombottom1");
-        }
-    } else {
-        console.log("visible");
-        for(let i = 0; i < liste.length; i++) {
-            console.log(liste[i]);
-            liste[i].style.display = "inline";
-            //   contents[i].classList.remove("bottombottom1");
+    if(input){
+        let liste = document.getElementsByClassName("quantiteBay");
+        let contents = document.getElementsByClassName("content");
+
+        if(input.checked) {
+            console.log("cach&eacute;");
+            for(let i = 0; i < liste.length; i++) {
+                console.log(liste[i]);
+                liste[i].style.display = "none";
+                //  contents[i].classList.add("bottombottom1");
+            }
+        } else {
+            console.log("visible");
+            for(let i = 0; i < liste.length; i++) {
+                console.log(liste[i]);
+                liste[i].style.display = "inline";
+                //   contents[i].classList.remove("bottombottom1");
+            }
         }
     }
 }
@@ -148,7 +151,7 @@ function addPanier(key,max) {
 
         majCountPan();
     } else {
-        createNotification(" ",-1);
+        createNotification("Veuillez augmenter la quantité pour l'ajouter au panier",-1);
     }
 
     console.log("LePanierSESSION après ajout",LePanierSESSION);

@@ -2,22 +2,16 @@
 <data-users>    
 <user>    
 <pseudo>Mlamali</pseudo>    
-<email>pipi@gmail.com</email>    
+<email>mlamali@gmail.com</email>    
 <password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
 <date_inscription>2021-04-03 10:22:40</date_inscription>    
 <panier>    
-<produit>    
-<id>0</id>    
-<title>Eyes Of Days</title>    
-<type>albums</type>    
-<key>a0</key>    
-<quantity>2</quantity>    
-</produit>    
+<produit>vide</produit>    
 </panier>    
 </user>    
 <user>    
-<pseudo>Mlamali95</pseudo>    
-<email>pipiz@gmail.com</email>    
+<pseudo>Redouane</pseudo>    
+<email>redouane@gmail.com</email>    
 <password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
 <date_inscription>2021-04-03 10:22:40</date_inscription>    
 <panier>    
@@ -31,31 +25,17 @@
 </panier>    
 </user>    
 <user>    
-<pseudo>Mlamali</pseudo>    
+<pseudo>test</pseudo>    
 <email>test@gmail.com</email>    
 <password>$6$rounds=5000$grzgirjzgrpzhte9$cKO2cfaYjn9b0IirKoi2HxLdA0jlRtfki60D967chSwEzTQ3qMT171yvuWCi6ikxTRIX9qq8QfbKYkFy4qGin/</password>    
-<date_inscription>2021-04-06 03:18:28</date_inscription>    
+<date_inscription>2021-04-06 13:30:20</date_inscription>    
 <panier>    
 <produit>    
-<id>1</id>    
-<title>I Want</title>    
+<id>0</id>    
+<title>Eyes Of Days</title>    
 <type>albums</type>    
-<key>a1</key>    
-<quantity>42</quantity>    
-</produit>    
-<produit>    
-<id>4</id>    
-<title>Silver</title>    
-<type>albums</type>    
-<key>a4</key>    
-<quantity>3</quantity>    
-</produit>    
-<produit>    
-<id>5</id>    
-<title>BLOCKS Jeans</title>    
-<type>mode</type>    
-<key>m5</key>    
-<quantity>3</quantity>    
+<key>a0</key>    
+<quantity>5</quantity>    
 </produit>    
 </panier>    
 </user>    

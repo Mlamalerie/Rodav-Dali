@@ -4,6 +4,7 @@ include_once("varSession.inc.php");
 
 $_SESSION['ici_index_bool'] = true;
 $_SESSION['ici_contact_bool'] = false;
+$_SESSION['ici_sign_bool'] = false;
 
 ?>
 
@@ -18,12 +19,13 @@ $_SESSION['ici_contact_bool'] = false;
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/buttonmagique.css">
+          <link rel="stylesheet" href="css/notif.css">
         <link rel="stylesheet" href="css/loader.css">
         <link rel="icon" href="img/icon.ico" />
 
         <!-- ===== BOX ICONS ===== -->
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-  <script src="js/loader.js"> </script>
+        <script src="js/loader.js"> </script>
         <title>Rodav Dalí • Web Site</title>
     </head>
     <body onload="Loading()">
@@ -68,24 +70,29 @@ $_SESSION['ici_contact_bool'] = false;
 
 
                     </p>
-                    <p class="text-white2">Sur Rodav Dalí retrouverez différentes formes de conceptions artistiques, qu’elles soient musicales, visuelles, et bien d’autres..</p>
+                    <p class="text-white2">Sur Rodav Dalí vous retrouverez différentes formes de conceptions artistiques, qu’elles soient musicales, visuelles, et bien d’autres..</p>
                     <p class="text-white2">
                         Nous permettons aux jeunes artistes de mettre en ventes leurs créations sur notre site, afin de pouvoir leur fournir un tremplin financier dans la commercialisation et l’élaboration de leurs arts.</p>
 
                     <p>
-                        Parcourez dès maintenant notre boutique virtuel en cliquant à gauche ! Bonne découverte !  
+                        Parcourez dès maintenant notre boutique virtuelle en cliquant à gauche ! Bonne découverte !  
                     </p> 
 
                 </div>
             </div>
+            <script src="js/loader.js"> </script>
 
             <!-- ===== FOOTER ===== -->
             <?php require_once('php/footer.php'); ?>
         </corps>
+
+        <script src="js/notif.js"> </script>
         <script src="js/navbar.js"> </script>
+        <script src="js/boutique.js"> </script>
         <script src="js/modal.js"> </script>
-      
-       
+
+
+
 
 
     </body>

@@ -1,3 +1,5 @@
+var AfficherTextVaTePromenerFrr = true;
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -13,10 +15,11 @@ if(btnModal && modal){
     // When the user clicks the button, open the modal 
     btnModal.onclick = function() {
         modal.style.display = "block";
+        CalculAffPrixTotal();
         if(majCountPan() == 0 ) {
-            if(AfficherTextActualiserPage){
-                createNotificationDelay(4,"Actualiser la page pour voir les modifications faîtes au panier",0);
-                AfficherTextActualiserPage = false;
+            if(AfficherTextVaTePromenerFrr){
+                createNotificationDelay(4,"Votre panier est vide.. promenez vous dans la boutique et ajouter des articles...",0);
+                AfficherTextVaTePromenerFrr = false;
             }
 
         }
@@ -82,11 +85,6 @@ function CalculAffPrixTotal() {
 
 }
 
-if(LePanierSESSION){
-    window.onload = function() {
-        CalculAffPrixTotal();
-    }
-}
 // *** BTN + du modal, ajoute une qte sur le modal, et directement a la bdd si voulu
 function plus2(id,max,qte = 1,directToSendPanier = false) { 
     console.log("plus2",directToSendPanier);
@@ -110,7 +108,7 @@ function plus2(id,max,qte = 1,directToSendPanier = false) {
 
 
         } else {
-            createNotification("Il n'y a que " + max + " <b>'" + LePanierSESSION[key]['title'] +"'</b> en stock.. ",-1,1);
+            createNotification("Il n'y a que " + max + " <b>'" + LePanierSESSION[id]['title'] +"'</b> en stock.. ",-1,1);
         }
     }
 
@@ -146,6 +144,7 @@ function moin2(id) {
             document.getElementById("nbQtePanier"+id).value = x-1;
 
             goToRemovePanierPHP(id,true);
+            majQteVarPanier(id,x-1); 
             CalculAffPrixTotal();
         } 
     }

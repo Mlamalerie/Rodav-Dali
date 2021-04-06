@@ -97,7 +97,7 @@ label {
 }
 
 #btnSEND.activeBtn { 
-
+color: #fff; 
     background: #4bcff7;
     font-size: 600px;
     font-weight: 800; 
@@ -112,7 +112,7 @@ label {
 
     background-size: 400%;
     color: white!important;
-}    
+}     
 
 #btnSEND.activeBtn:before{
     content: '';

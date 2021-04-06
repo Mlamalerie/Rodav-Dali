@@ -26,10 +26,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
 } else {
-    header('Location: produits.php?cat=albums');
-    // header('Location: index.php');
-
-
+    header('Location:index.php');
     exit;
 };
 
@@ -145,10 +142,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <script type="text/javascript" src="js/notif.js"> </script>
 
         <script type="text/javascript"  src="js/boutique.js"> </script>
-        <script>
-
-           
-        </script>
+        
         <script type="text/javascript" src="js/modal.js"> </script>
 
         <script type="text/javascript" src="js/navbar.js"> </script>
