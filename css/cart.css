@@ -30,7 +30,7 @@
     transition:transform 8s ease-in 1s;
 } 
 .card:hover img{
-    transform: scale(1.11);
+    transform: scale(1.15);
 }  
 .card:hover{
     transform: scale(1.08);
@@ -97,13 +97,22 @@
 .quantiteBay {
     position: absolute;
     top: 5%;
-    right: 6%; 
-    font-size: 90%!important;
+    left: 5%; 
+    font-size: 83%!important;
     /*    font-style: italic;*/
-    background: rgba(229, 166, 104, 0.7);
+    background: rgba(229, 166, 104, 0.65);
     padding: 1px 0.55rem;
-    border-radius: 3px;
+    border-radius: 4px;
     z-index: 10;
+
+}
+
+.billeQte {
+    background-color: rgba(201, 145, 80, 0.8);
+    border-radius: 2.5px;
+    padding: 7px 3px;
+    font-size: 140%;
+    font-weight: 700;
 
 }
 .right {

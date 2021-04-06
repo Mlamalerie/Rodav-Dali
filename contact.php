@@ -139,8 +139,9 @@ if(!empty($_POST)){
 
         <title>Nous contacter ? | Rodav Dalí • Web Site</title>
     </head>
-    <body onload="check()">
+    <body>
 
+        <div id="toasts"></div> <!--  NOTIFICICATION -->
         <!-- ===== NAV BAR ===== -->
         <?php require_once('php/navbar.php'); ?>
         <!-- ===== WALL ===== -->
@@ -215,6 +216,8 @@ if(!empty($_POST)){
         <!-- ===== FOOTER ===== -->
 
         <?php require_once('php/footer.php'); ?>      
+        
+         <script src="js/notif.js"> </script>
         <script>
    check();
 
@@ -455,13 +458,13 @@ if(!empty($_POST)){
                 console.log(f);
                 f.submit();
             }
-
+ createNotificationDelay(3," ",1);
 
 
         </script>
 
         <script src="js/navbar.js"> </script>
-        <script src="js/notif.js"> </script>
+       
         <script src="js/modal.js"> </script>
 
 

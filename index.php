@@ -1,7 +1,7 @@
 <?php
 
 include_once("varSession.inc.php");
-//if($okconnectey){var_dump($_SESSION);}
+
 $_SESSION['ici_index_bool'] = true;
 $_SESSION['ici_contact_bool'] = false;
 
@@ -23,15 +23,19 @@ $_SESSION['ici_contact_bool'] = false;
 
         <!-- ===== BOX ICONS ===== -->
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-
+  <script src="js/loader.js"> </script>
         <title>Rodav Dalí • Web Site</title>
     </head>
     <body onload="Loading()">
+
+
         <div id="loader">
             <div id="shadow"></div>
             <div id="box"></div>
         </div>
-        <corps id="leBody" style="display: x">
+
+        <div id="toasts"></div> <!--  NOTIFICICATION -->
+        <corps id="leBody" style="display: none">
             <!-- ===== NAV BAR ===== -->
             <?php require_once('php/navbar.php'); ?>
             <!-- ===== WALL ===== -->
@@ -80,7 +84,8 @@ $_SESSION['ici_contact_bool'] = false;
         </corps>
         <script src="js/navbar.js"> </script>
         <script src="js/modal.js"> </script>
-        <script src="js/loader.js"> </script>
+      
+       
 
 
     </body>

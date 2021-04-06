@@ -6,12 +6,12 @@ if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
     $okconnectey = true;
      
     $okMonPanierEstVide = false;
-    if(empty($_SESSION["user_panier"])) {
+    if(empty($_SESSION["user_panier"]) || !isset($_SESSION["user_panier"])) {
          $okMonPanierEstVide = true;
     }
 } 
 
-require('php/fctGestionData.php');
+include('php/fctGestionData.php');
 
 $Produits = readJSONFile("boutique.json");
 

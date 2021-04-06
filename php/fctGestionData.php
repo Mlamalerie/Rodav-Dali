@@ -90,29 +90,34 @@ function writeUsersXMLFile($data) {
                     else {
 
                         $panier = $user->addChild('panier');  //** user> panier>
-
+                        //var_dump($u['email'],$u['panier']);
                         // pour chaque element du panier
                         $lesProduitsPan = $u['panier']['produit']; // array('a1' =>)
 
                         $listeKeys1Produits = ['id','title','type','key','quantity'];
 
-                        // si le panier pa vide
-                        if(!empty($lesProduitsPan)){
+                        try {
+                            // si le panier pa vide
+                            if(!empty($lesProduitsPan)){
 
-                            foreach($lesProduitsPan as $p ){
-                                //ajouter un enfant produit
-                                $prod = $panier->addChild("produit"); 
+                                foreach($lesProduitsPan as $p ){
+                                    //ajouter un enfant produit
+                                    $prod = $panier->addChild("produit"); 
 
-                                // ajouter les attribut du produit
-                                foreach($listeKeys1Produits as $attrP) {
-                                    $prod->addChild($attrP,$p[$attrP]);
+                                    // ajouter les attribut du produit
+                                    foreach($listeKeys1Produits as $attrP) {
+                                        $prod->addChild($attrP,$p[$attrP]);
 
+                                    }
                                 }
+                            } else {
+                                $prod = $panier->addChild("produit","vide"); 
+                                //var_dump("le boug en bas a un panier vide");
+                                //var_dump($u['pseudo']);
                             }
-                        } else {
-                            $prod = $panier->addChild("produit","vide"); 
-                            var_dump("le boug en bas a un panier vide");
-                            var_dump($u['pseudo']);
+                        } catch (Exception $e) {
+                            $ok = false;
+                            echo "Pb dans l'ajout du panier : ",  $e->getMessage(), "\n";
                         }
                     }
                 }

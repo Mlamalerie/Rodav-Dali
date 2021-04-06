@@ -29,7 +29,7 @@
 
 </footer>
 
-
+<?php if(!$_SESSION['ici_index_bool']) { ?> 
 <script type="text/javascript"> // var PHP
     var okConnect = <?php if($okconnectey) {echo 'true'; } else {echo "false";}?>;
     var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
@@ -68,3 +68,6 @@
 
     }
 </script>
+
+
+<?php } ?>

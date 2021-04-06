@@ -10,7 +10,7 @@ if(isset($_GET['n']) && !empty($_GET['n'])) {
     $n = (int) $n;
     switch($n) {
         case 1 : $mess = "Votre message a bien été envoyé ! Vous allez être redirigé vers l'index..."; break;
-        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers l'index... Bienvenue <b> ". $_SESSION['user_pseudo']. " </b> :) "; break;
+        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers l'index... Bienvenue  <b> ". $_SESSION['user_pseudo']. " </b>  :) "; break;
         default : $mess = "?";break;
     }
 } else {

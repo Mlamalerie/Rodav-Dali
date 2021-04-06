@@ -102,7 +102,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                 <?php if($i % 3 == 0) {?>  <!-- ===== LIGNE ===== --> <div class="wrapper"> <?php } ?>
 
                 <div class="card">
-                    <span class="quantiteBay"><?=$Pr[$i]['Quantity']?> en stock</span>
+                    <span class="quantiteBay"><span class="billeQte"><?=$Pr[$i]['Quantity']?></span> en stock</span>
                     <img src="<?=$Pr[$i]['src']?>" alt="" > 
                     <div class="content ">
 
@@ -145,7 +145,10 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <script type="text/javascript" src="js/notif.js"> </script>
 
         <script type="text/javascript"  src="js/boutique.js"> </script>
+        <script>
 
+           
+        </script>
         <script type="text/javascript" src="js/modal.js"> </script>
 
         <script type="text/javascript" src="js/navbar.js"> </script>

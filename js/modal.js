@@ -60,23 +60,25 @@ function CalculAffPrixTotal() {
     console.log("calculTotal");
     let s = 0;
 
-    let listeProduits = Object.keys(LePanierSESSION);
+    if(LePanierSESSION){
+        let listeProduits = Object.keys(LePanierSESSION);
 
-    for(let i = 0; i < listeProduits.length; i++) {
-        p = LePanierSESSION[listeProduits[i]];
-        id = p['key'].substring(1);
+        for(let i = 0; i < listeProduits.length; i++) {
+            p = LePanierSESSION[listeProduits[i]];
+            id = p['key'].substring(1);
 
-        let cc = "";
-        switch(p['key'][0]) {
-            case 'a' : cc = "albums";break;
-            case 't' : cc = "tableaux";break;
-            case 'm' : cc = "mode";break;
+            let cc = "";
+            switch(p['key'][0]) {
+                case 'a' : cc = "albums";break;
+                case 't' : cc = "tableaux";break;
+                case 'm' : cc = "mode";break;
+            }
+
+            s +=  p['quantity']*LaBoutique[cc][id]['Price'];
         }
 
-        s +=  p['quantity']*LaBoutique[cc][id]['Price'];
+        document.getElementById("prixTotalPan").innerHTML = "$"+s;
     }
-
-    document.getElementById("prixTotalPan").innerHTML = "$"+s;
 
 }
 
@@ -108,7 +110,7 @@ function plus2(id,max,qte = 1,directToSendPanier = false) {
 
 
         } else {
-            createNotification("Il n'y a que " + max + " <b>'" + LaBoutique[LaCat][id.substr(1)]['Title'] +"'</b> en stock.. ",-1,1);
+            createNotification("Il n'y a que " + max + " <b>'" + LePanierSESSION[key]['title'] +"'</b> en stock.. ",-1,1);
         }
     }
 
@@ -137,7 +139,9 @@ function removePanier(key) {
 function moin2(id) {
     let input = document.getElementById("nbQtePanier"+id);
     if(input){
+
         if(input.value > 1) {
+            console.log("moins2()",id,"we");
             let x = parseInt(input.value);
             document.getElementById("nbQtePanier"+id).value = x-1;
 

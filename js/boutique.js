@@ -28,11 +28,13 @@ function showQte(input) {
 
 /**************************************************************/
 /***************************** BTN + - CARD */
-
 function plus(key,max) {
-    console.log("plus()");
-    createNotificationDelay(2,"Connectez-vous pour pouvoir ajouter au panier ",type,okClickPanier);
-    let input = document.getElementById("nbQtePanier"+key);
+    console.log("plus("+key + "," + max + ")");
+    //  if(!okConnect){
+    //      createNotificationDelay(2,"Connectez-vous pour pouvoir ajouter au panier ",0);
+    //  }
+    let input = document.getElementById("nbQteCommande"+key);
+    console.log(input);
     if(parseInt(input.value) < max) {
         let x = parseInt(input.value);
         input.value = x+1;
@@ -41,8 +43,9 @@ function plus(key,max) {
         createNotification("Vous ne pouvez pas en prendre plus.. ",0,0);
     }
 }
+
 function moin(key) {
-    let input = document.getElementById("nbQtePanier"+key);
+    let input = document.getElementById("nbQteCommande"+key);
     if(parseInt(input.value) > 0) {
         let x = parseInt(input.value);
         input.value = x-1;

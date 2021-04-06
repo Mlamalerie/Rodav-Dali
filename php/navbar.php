@@ -1,5 +1,7 @@
 
-
+<?php
+//var_dump($_SESSION['user_panier']);
+?>
 
 <nav class="navbar">
     <div class="content">
