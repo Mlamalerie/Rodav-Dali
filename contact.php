@@ -2,7 +2,7 @@
 include_once("varSession.inc.php");
 $_SESSION['ici_index_bool'] = false;
 $_SESSION['ici_contact_bool'] = true;
-
+include("sendMail.php");
 
 $icon = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>";
 
@@ -25,7 +25,6 @@ if(!empty($_POST)){
     $sujet = (String) trim($sujet);
     $message = (String) trim($message);
     $metiers = (int) $metiers;
-    $metiers = 1;
 
     //*** Verification du prenom
 
@@ -110,7 +109,7 @@ if(!empty($_POST)){
     /**** ENVOIE */
     if($ok) {
 
-        sendMail();
+        sendMailContact($prenom,$nom,$sexe,$datenaissance,$metiers,$email,$sujet,$message);
         header('Location: bravo.php?n=1');
         exit;
     }
@@ -150,7 +149,14 @@ if(!empty($_POST)){
         <div class="about text-white">
 
             <!-- ===== MENU GAUCHE ===== -->
-            <?php require_once('php/menugauche.php'); ?>
+            <?php require_once('php/menugauche.php'); 
+            
+            $prenom = "Mlamali";
+            $nom = "Mlamali";
+            $datenaissance = "2020-04-02";
+            $sujet = "wi";
+            $message = "xx xxxxxx";
+            ?>
             
             
             <div class="content content-right">
