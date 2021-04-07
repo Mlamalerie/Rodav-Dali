@@ -43,7 +43,7 @@ function plus(key,max) {
         input.value = x+1;
     } else {
         console.log("*");
-        createNotification("Vous ne pouvez pas en prendre plus.. ",0,0);
+        createNotification("Vous avez déjà tous mis dans votre panier... ",0,0);
     }
 }
 
