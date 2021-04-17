@@ -61,8 +61,6 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <div id="toasts"></div> <!--  NOTIFICICATION -->
 
 
-
-
         <!-- ===== NAV BAR ===== -->
         <?php require_once('php/navbar.php'); ?>
         <!-- ===== WALL ===== -->
@@ -71,6 +69,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <div class="about text-white">
             <!-- ===== MENU GAUCHE ===== -->
             <?php require_once('php/menugauche.php'); ?>
+            
+            
             <!-- ===== CONTENU MAGASINS ===== -->
             <div class="content  ">
                 <?php
