@@ -11,6 +11,7 @@ $_SESSION['ici_contact_bool'] = false;
 $_SESSION['ici_sign_bool'] = true;
 
 
+
 if(!empty($_POST)){
     $icon = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i>";
 
@@ -33,7 +34,8 @@ if(!empty($_POST)){
             $ok = false;
             $err_pseudo = $icon." Veuillez renseigner ce champ !";
 
-        } else if (strlen($pseudo) < 3) {
+        } 
+        else if (strlen($pseudo) < 3) {
 
             $ok = false;
             $err_pseudo = $icon." Ce pseudo est trop petit !";
@@ -49,7 +51,7 @@ if(!empty($_POST)){
             $ok = false;
             $err_pseudo = $icon." Votre pseudo ne doit pas contenir d'espace";
         }
-        else if (strlen($pseudo) > 30) {
+        else if (strlen($pseudo) > 25) {
 
             $ok = false;
             $err_pseudo = $icon." Ce pseudo est trop grand ! Vous avez ".(strlen($pseudo) - 25)." caractère(s) en trop";
@@ -60,15 +62,26 @@ if(!empty($_POST)){
             $ok = false;
             $err_email = $icon. " Veuillez renseigner ce champ !";
 
-        } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // si invalide
+        } 
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // si invalide
             $ok = false;
             $err_email = $icon. " Adresse e-mail invalide !";
 
-        } else {
+        } 
+        else { // ensuite on verifie si ce mail a déja été pris
             $okDejaMailExiste = false;
-            $lesEmails = array_keys($Data_Users);
+
+
+            $req = $BDD->prepare("SELECT user_id
+                            FROM user
+                            WHERE user_email = ? 
+                                ");
+            $req->execute(array($email));
+            $user = $req->fetch();
+
+
             //var_dump($lesEmails);
-            if(in_array($email, $lesEmails)) {
+            if(isset($user['user_id'])) {
                 $ok = false;
                 //print_r($email);
                 $okDejaMailExiste = true;
@@ -103,30 +116,29 @@ if(!empty($_POST)){
             $date = date("Y-m-d H:i:s"); 
             $password = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
 
-            $panier = array("produit" => array());
-            $newUser = ["pseudo" => $pseudo, "email" => $email, "password" => $password,"date_inscription" => $date, "panier" => $panier];
+            // preparer requete INSERT
+            $req = $BDD->prepare("INSERT INTO user (user_pseudo, user_email, user_password, user_dateinscription) VALUES (?, ?, ?, ?)"); 
 
+            $req->execute(array($pseudo,$email,$password,$date));
 
-            try {
-                addNewUser($newUser,$Data_Users);
-            } catch (Exception $e) {
-                $ok = false;
-                echo "Pb avec l'ajout d'un new User : ",  $e->getMessage(), "\n";
-            }
-            if($ok){
-                $_SESSION['user_email'] = $email;
-                $_SESSION['user_pseudo'] =  $pseudo;
-                $_SESSION['user_panier'] = $panier['produit'];
+            // recuperer l'id
+            $req = $BDD->prepare("SELECT user_id FROM user 
+            WHERE user_pseudo = ? AND user_email = ? ");  
+            $req->execute(array($pseudo,$email)); $u = $req->fetch();
 
-                header("Location: bravo.php?n=2");
-                exit;
-            }
+            $_SESSION['user_id'] = $u['user_id'];
+            $_SESSION['user_email'] = $email;
+            $_SESSION['user_pseudo'] =  $pseudo;
+
+            header("Location: bravo.php?n=2");
+            exit;
+
         } else {
-            echo "ERROR";
+            //echo "ERROR";
         }
     }
-    //******************************** Se connecter
 
+    //******************************** Se connecter
     if(isset($_POST['GoSignIn'])) {
         extract($_POST);
 
@@ -149,9 +161,17 @@ if(!empty($_POST)){
 
             $okDejaMailExiste = false; // le mail n'est pas dans la bdd
 
-            $lesEmails = array_keys($Data_Users);
+
+            $req = $BDD->prepare("SELECT user_id
+                            FROM user
+                            WHERE user_email = ? 
+                                ");
+            $req->execute(array($email));
+            $user = $req->fetch();
+
+
             //var_dump($lesEmails);
-            if(in_array($email, $lesEmails)) {
+            if( isset($user['user_id']) ) {
                 $okDejaMailExiste = true; 
             }  else {
                 $err_email = $icon. " Aucun compte trouvé... ";
@@ -164,30 +184,43 @@ if(!empty($_POST)){
             $err_password = $icon." Veuillez renseigner ce champ !";
 
         } else {
+            // ici l'user existe
             // verif si le boug tape le bon mdp
             if($ok) {
-                $saisie = crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$');
-                $goodmdp = $Data_Users[$email]['password'];
 
-                if($saisie != $goodmdp) {
+                $req = $BDD->prepare("SELECT user_id
+                            FROM user
+                            WHERE user_email = ? AND user_password = ?
+                                ");
+                $req->execute(array($email,crypt($password, '$6$rounds=5000$grzgirjzgrpzhte95grzegruoRZPrzg8$')));
+                $verif_user = $req->fetch();
+
+                if(!isset($verif_user['user_id'])) {
                     $ok = false;
                     $err_password = $icon." Mot de passe incorrect. Réessayez !";
                 }
+
             }
         }
 
         if($ok) {
             echo "OKKK";
-            $_SESSION['user_pseudo'] = $Data_Users[$email]['pseudo'];
-            $_SESSION['user_email'] = $Data_Users[$email]['email'];
+            // selectionne tout les info de l'user
+            $req = $BDD->prepare("SELECT *
+                            FROM user
+                            WHERE user_email = ?
+                                ");
+            $req->execute(array($email));
+            $u = $req->fetch();
+
+            $_SESSION['user_id'] = $u['user_id'];
+            $_SESSION['user_pseudo'] = $u['user_pseudo'];
+            $_SESSION['user_email'] = $u['user_email'];
+
+            // recuperer le panier = getDataPanier(user_id)
+            $_SESSION['user_panier'] = getDataBDDPanier($_SESSION['user_id'],$BDD);
 
 
-            $_SESSION['user_panier'] = $Data_Users[$email]['panier']['produit'];
-
-            if(in_array("id",array_keys($_SESSION['user_panier']))){
-                $_SESSION['user_panier'] = [$_SESSION['user_panier']["key"] => ($_SESSION['user_panier'])];
-
-            } 
             header("Location: index.php");
             exit;
 
@@ -292,7 +325,7 @@ if(!empty($_POST)){
 
 
         <script src="js/sign.js"> </script>
-            <script src="js/navbar.js"> </script>
+        <script src="js/navbar.js"> </script>
 
     </body>
 </html>

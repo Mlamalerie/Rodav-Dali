@@ -221,5 +221,40 @@ function addNewUser($newUser,$data){
 
 }
 
+function getDataBDDPanier($u_id,$BDD) {
+    $req = $BDD->prepare("SELECT panier_produit_id,panier_quantity
+                            FROM panier
+                            WHERE panier_user_id = ? 
+                                ");
+    $req->execute(array($u_id));
+    $panier_produits = $req->fetchAll();
+
+    $res = [];
+
+    foreach($panier_produits as $idp) { // pour tous les id de produits
+
+        // on récupère les infos du produit
+        $req = $BDD->prepare("SELECT produit_id, produit_title, produit_author, produit_price, produit_src,produit_quantity
+                            FROM produit
+                            WHERE produit_id = ?");
+        $req->execute(array($idp['panier_produit_id']));
+        $p = $req->fetch();
+        
+        $p['q'] = $idp['panier_quantity'];
+        
+        $res[] = $p;
+
+    }
+
+    return changerKeys($res, "produit_id");
+}
+function getAllBDDProduits($BDD) {
+    $req = $BDD->prepare("SELECT * FROM produit");
+    $req->execute(array());
+    
+    $res = $req->fetchAll();
+
+    return changerKeys($res, "produit_id");
+}
 
 ?>

@@ -40,39 +40,18 @@
     var okConnect = <?php if($okconnectey) {echo 'true'; } else {echo "false";}?>;
 
      var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
-    var LaBoutique = <?php echo json_encode($Produits);?>;
+var LaBoutique = <?php echo json_encode($AllProduits); ?>;
 
+ console.log(LePanierSESSION);
+    console.log(LaBoutique);
+    
     <?php if(!$_SESSION['ici_contact_bool'] && !$_SESSION['ici_index_bool'] ) {?> 
     var codeCat = <?php echo json_encode($CodeCat);?>;
     var LaCat = <?php echo json_encode($LaCat);?>;
 
     <?php } ?>
 
-    console.log(LePanierSESSION);
-    console.log(LaBoutique);
+   
 
-    // *** Mise a jour de la var js LePanierSESSION, modification qté ou ajout d'un nv produit
-    function majQteVarPanier(key,newQte,ajouterNewP = false) {
-
-
-        if(!ajouterNewP) {
-            console.log("majVarPanier",key,newQte);
-            LePanierSESSION[key]['quantity'] = newQte; 
-        } else { // 
-            if(!LePanierSESSION){
-                LePanierSESSION = {};
-            }
-            p = {
-                "id": LaBoutique[LaCat][key.substr(1)]['id'],
-                "title": LaBoutique[LaCat][key.substr(1)]['Title'],
-                "type": LaCat,
-                "quantity": newQte,
-                "key": key
-            }
-            console.log(p);
-            LePanierSESSION[key] = p;
-        }
-
-    }
 </script>
 

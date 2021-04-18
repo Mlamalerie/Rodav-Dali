@@ -67,3 +67,4 @@ header( "refresh:3;url=index.php" );
 
     </body>
 </html>
+© 2021 GitHub, Inc.

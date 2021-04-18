@@ -11,6 +11,10 @@ function createNotification(message,type,okClickPanier = 0) {
         case 1 :  icon = iconSuccess; classType = 'success'; break;
 
     }
+    
+    message = message.trim();
+    
+    console.log()
 
 
 
@@ -28,9 +32,11 @@ function createNotification(message,type,okClickPanier = 0) {
     notif.classList.add(classType);
     notif.innerHTML =  message + " " + icon  ;
     toasts.appendChild(notif);
+    
+    let delaiAvantSuppression = parseInt(message.length /10) // delai de suppression proportionnel a la longeur du texte
     setTimeout(() => {
         notif.remove();
-    }, delay1Sec*5);
+    }, delaiAvantSuppression); 
 }
 
 

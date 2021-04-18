@@ -96,41 +96,42 @@
                 <?php  } else {
 
         foreach($_SESSION['user_panier'] as $pan) {
-            $prod = $Produits[$pan['type']][$pan['id']];
-            $PrixTotalPan += $prod['Price']*$pan['quantity'];
+        $max = (int) $pan['produit_quantity'];
+            
+            $PrixTotalPan += $pan['produit_price']*$pan['q'];
                 ?> 
                 <!-- Product #1 -->
-                <div class="item" id="item-<?=$pan['key']?>">
+                <div class="item" id="item-<?=$pan['produit_id']?>">
 
                     <div class="buttons">
-                        <button class="delete-btn" onclick="removePanier('<?=$pan['key']?>')"><i class="fas fa-trash-alt"></i></button>
+                        <button class="delete-btn" onclick="removePanier('<?=$pan['produit_id']?>')"><i class="fas fa-trash-alt"></i></button>
 
                     </div>
 
 
                     <div class="image">
-                        <img class="imgCoverPan" src="<?=$prod['src']?>" alt="" />
+                        <img class="imgCoverPan" src="<?=$pan['produit_src']?>" alt="" />
                     </div>
 
                     <div class="description">
-                        <span><?=$prod['Title']?></span>
-                        <span><?=$prod['Author']?></span>
+                        <span><?=$pan['produit_title']?></span>
+                        <span><?=$pan['produit_author']?></span>
 
                     </div>
 
                     <div class="quantity">
-                        <button class="plus-btn" type="button" name="button" onclick="moin2('<?=$pan['key']?>')" >–</button>
-                        <input id="nbQtePanier<?=$pan['key']?>" type="number" class="session-time mx-2" value="<?=$pan['quantity']?>" disabled>
-                        <button class="minus-btn" type="button" name="button" onclick="plus2('<?=$pan['key']?>',<?=$prod['Quantity'] ?>,1,true)">+</button>
+                        <button class="plus-btn" type="button" name="button" onclick="moin2('<?=$pan['produit_id']?>')" >–</button>
+                        <input id="nbQtePanier<?=$pan['produit_id']?>" type="number" class="session-time mx-2" value="<?=$pan['q']?>" disabled>
+                        <button class="minus-btn" type="button" name="button" onclick="plus2('<?=$pan['produit_id']?>',<?=$max ?>)">+</button>
                     </div>
 
-                    <div class="total-price">$<?=$prod['Price']?></div>
+                    <div class="total-price">$<?=$pan['produit_price']?></div>
                 </div>
                 <?php $NbProdPan++; } ?>
 
                 <!-- Title -->
                 <div class="titlePanier">
-
+  <button class="" onclick="window.location.replace('bravo.php')">Passer Commande</button>
                     Prix Total : <b id="prixTotalPan"></b>
 
 
