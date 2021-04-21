@@ -129,7 +129,7 @@ if(!empty($_POST)){
             $_SESSION['user_id'] = $u['user_id'];
             $_SESSION['user_email'] = $email;
             $_SESSION['user_pseudo'] =  $pseudo;
-
+            $_SESSION['user_role'] = $u['user_role'];
             header("Location: bravo.php?n=2");
             exit;
 
@@ -216,7 +216,7 @@ if(!empty($_POST)){
             $_SESSION['user_id'] = $u['user_id'];
             $_SESSION['user_pseudo'] = $u['user_pseudo'];
             $_SESSION['user_email'] = $u['user_email'];
-
+            $_SESSION['user_role'] = $u['user_role'];
             // recuperer le panier = getDataPanier(user_id)
             $_SESSION['user_panier'] = getDataBDDPanier($_SESSION['user_id'],$BDD);
 

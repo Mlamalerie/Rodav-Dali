@@ -3,19 +3,16 @@
 include_once("varSession.inc.php");
 
 if($okconnectey){
-    $panier = $_SESSION['user_panier'];
+    session_unset();
+    session_destroy();
 
-    //var_dump('Le panier',$panier);
-    //var_dump('le panier de u avant ',$Data_Users[$_SESSION['user_email']]['panier']);
-    $Data_Users[$_SESSION['user_email']]['panier']['produit'] = $panier;
+    header('Location: index.php');
+    exit;
 
-   // var_dump('le panier de u après',$Data_Users[$_SESSION['user_email']]['panier']);
+} else {
+    header('HTTP/1.0 404 Not Found');
+    exit();
 
-    if(writeUsersXMLFile($Data_Users)) {
-        echo "ok write save panier";
-
-    }
-  
 }
 
 /*
@@ -26,11 +23,7 @@ if($okconnectey){
 
 //writeUsersXMLFile($Data_Users);  // mettre à jour le fichier des users ?
 
-session_unset();
-session_destroy();
 
-header('Location: index.php');
-exit;
 
 
 ?>

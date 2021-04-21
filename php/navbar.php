@@ -131,7 +131,7 @@
 
                 <!-- Title -->
                 <div class="titlePanier">
-  <button class="" onclick="window.location.replace('bravo.php')">Passer Commande</button>
+  <button id="btnPasserCommande" onclick="window.location.replace('validCommande.php')">Passer Commande</button>
                     Prix Total : <b id="prixTotalPan"></b>
 
 

@@ -1,6 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
+#voirPanier {
+    margin-bottom: 50px;
+}
 .error {
     color: #fc1800;
 }
@@ -13,15 +15,17 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #191919;
     height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    
 
+}
+html,body {
+    background-color: #191919!important; 
 }
 
 h1 {
     font-weight: bold;
     margin: 0;
+    font-size: 210%;
 }
 
 h2 {
@@ -40,7 +44,7 @@ span {
     font-size: 12px;
 }
 
-/*
+/* 
 a {
 color: #333;
 font-size: 14px;
@@ -49,11 +53,11 @@ margin: 15px 0;
 }
 */
 
-button {
+button.btnCom {
     border-radius: 20px;
     border: 1px solid #FF4B2B;
     background-color: #ff3453;
-    color: #FFFFFF;
+    color: #FFFFFF; 
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
@@ -63,22 +67,22 @@ button {
     cursor: pointer;
 }
 
-button:active {
+button.btnCom:active { 
     transform: scale(0.95);
 }
 
-button:focus {
-    outline: none;
+button.btnCom:focus {
+    outline: none; 
 }
 
-button.ghost {
+button.btnCom.ghost {
     background-color: transparent;
     border-color: #FFFFFF; 
 
 }
 
 form {
-    background-color: #191919;
+/*    background-color: #191919;*/
     display: flex;
     align-items: center;
     justify-content: center; 
@@ -89,18 +93,19 @@ form {
     text-align: center;
 }
 
-input {
+input.iptCom {
     background-color: #2a2a2a!important;
     border: none;
     padding: 12px 15px;
-    margin: 8px 0; 
+    margin: 8px 0;  
     width: 80%;
     max-width: 475px;
     border-radius: 6px; 
     color: whitesmoke;
+    text-align: center; 
 
 }
-input:active, input:focus, input:-internal-autofill-selected{
+input.iptCom:active, input.iptCom:focus, input.iptCom:-internal-autofill-selected{
     outline: none;
     background-color: #2a2a2a!important;
 
@@ -195,7 +200,7 @@ h1.title {
 
 .social-container {
     margin: 20px 0;
-}
+} 
 
 .social-container a {
     border: 1px solid #DDDDDD;
@@ -223,3 +228,5 @@ h1.title {
 :-ms-input-placeholder {  
    text-align: center; 
 }
+
+

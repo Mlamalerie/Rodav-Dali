@@ -1,6 +1,10 @@
 <footer>
 
     <div class="bottom">
+       <?php 
+        if($_SESSION['ici_index_bool']){
+        ?>
+       
         <center class="bg-dark2">
 
             <span class="credit social-group">
@@ -14,6 +18,8 @@
             </span>
 
         </center >
+        
+         <?php }  ?>
         <center class="bg-dark">
             <span class="credit mss-rz">
 
@@ -45,7 +51,8 @@ var LaBoutique = <?php echo json_encode($AllProduits); ?>;
  console.log(LePanierSESSION);
     console.log(LaBoutique);
     
-    <?php if(!$_SESSION['ici_contact_bool'] && !$_SESSION['ici_index_bool'] ) {?> 
+    <?php if(isset($CodeCat) ) {?> 
+    
     var codeCat = <?php echo json_encode($CodeCat);?>;
     var LaCat = <?php echo json_encode($LaCat);?>;
 

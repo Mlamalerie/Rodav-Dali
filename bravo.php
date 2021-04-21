@@ -10,9 +10,10 @@ if(isset($_GET['n']) && !empty($_GET['n'])) {
     $pseudo = $_SESSION['user_pseudo'];
     $n = (int) $n;
     switch($n) {
-        case 1 : $mess = "Votre message a bien été envoyé ! Vous allez être redirigé vers l'index..."; break;
-        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers la page d'accueil...  Bienvenue &nbsp; <b> $pseudo </b> &nbsp; :) "; break;
-        default : $mess = "?";break;
+        case 1 : $mess = "Votre message a bien été envoyé ! Vous allez être redirigé vers l'index..."; $refresh = 4; break;
+        case 2 : $mess = "L'inscription c'est bien passé ! Vous allez être redirigé vers la page d'accueil...  Bienvenue &nbsp; <b> $pseudo </b> &nbsp; :) ";  $refresh = 6;break;
+        case 3 : $mess = "Votre commande à bien été pris en compte, et votre colis est en cours de route ! Votre panier a été vidé. Vous allez être redirigé vers la page d'accueil... :) "; $refresh = 8;break;
+        default : $mess = "?"; $refresh = 3;break;
     }
 } else {
     header('HTTP/1.0 404 Not Found');
@@ -24,7 +25,7 @@ if(!isset($mess)) {
     exit();
 }
 
-header( "refresh:3;url=index.php" );
+header( "refresh:$refresh;url=index.php" );
 
 ?>
 
@@ -67,4 +68,3 @@ header( "refresh:3;url=index.php" );
 
     </body>
 </html>
-© 2021 GitHub, Inc.

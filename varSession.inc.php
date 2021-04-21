@@ -17,6 +17,11 @@ if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
     if(empty($_SESSION["user_panier"]) || !isset($_SESSION["user_panier"])) {
         $okMonPanierEstVide = true;
     } 
+    
+    $okuserADMIN = false;
+    if($_SESSION['user_role'] == 0) {
+        $okuserADMIN = true;
+    }
 } 
 
 

@@ -1,0 +1,27 @@
+#footer,footer {
+        position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    z-index: 999;
+      min-width: 100%; 
+   
+        margin-bottom: 0px;
+}
+
+.mss-rz {
+    
+} 
+.bottom center{
+     min-width: 100%; 
+    padding: 20px 5px;
+    font-size: 0.9375rem;
+} 
+.bg-dark {
+    background: #151515;
+}
+.bg-dark2 { 
+    background: none;
+
+}

@@ -11,11 +11,11 @@ function createNotification(message,type,okClickPanier = 0) {
         case 1 :  icon = iconSuccess; classType = 'success'; break;
 
     }
-    
-    message = message.trim();
-    
-    console.log()
 
+    // delai de suppression proportionnel a la longeur du texte)
+    let delaiAvantSuppression = parseInt(message.length /10);
+
+    if (delaiAvantSuppression < 2) {delaiAvantSuppression = 2;}
 
 
     const notif = document.createElement('div');
@@ -32,11 +32,9 @@ function createNotification(message,type,okClickPanier = 0) {
     notif.classList.add(classType);
     notif.innerHTML =  message + " " + icon  ;
     toasts.appendChild(notif);
-    
-    let delaiAvantSuppression = parseInt(message.length /10) // delai de suppression proportionnel a la longeur du texte
     setTimeout(() => {
         notif.remove();
-    }, delaiAvantSuppression); 
+    }, delay1Sec*delaiAvantSuppression);
 }
 
 
@@ -46,4 +44,3 @@ function createNotificationDelay(attenteSec,message,type,okClickPanier) {
 
     },delay1Sec*attenteSec);
 }
-
