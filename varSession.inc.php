@@ -5,8 +5,6 @@ include_once("bdd/connexiondb.php");
 include('php/fctGestionData.php');
 
 
-
-
 $okconnectey = false;
 // si une connection est détecter 
 if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {

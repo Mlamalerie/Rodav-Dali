@@ -1,10 +1,9 @@
 <?php
 
 
-
     class connexionDB {
     private $host = 'localhost:3307'; // nom de l'hote
-    private $name = 'rodavdali_data'; // nom de la base de donnée
+    private $name = 'rodavdali'; // nom de la base de donnée
     private $user = 'root';       // utilisateur 
     private $pass = '';       // mot de passe (il faudra peut-être mettre '' sous Windows)
     private $connexion;
@@ -30,6 +29,9 @@
 
     public function connexion() {
         return $this->connexion;
+    }
+    public function deconnexion() {
+        
     }
 
 

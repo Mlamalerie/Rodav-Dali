@@ -6,8 +6,6 @@ $weCatExiste = false;
 $_SESSION['ici_index_bool'] = false;
 $_SESSION['ici_contact_bool'] = false;
 
-$_GET['cat'] = "albums";
-
 if(isset($_GET['cat']) && !empty($_GET['cat'])) {
 
 
@@ -32,8 +30,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
     // si la cat est valide
     if ($weCatExiste) {
         $req = $BDD->prepare("SELECT * FROM produit
-                            WHERE ? = produit_cat  
-                           ");
+                            WHERE ? = produit_cat");
 
         $req->execute(array($CodeCat));
         $Produits = $req->fetchAll();
@@ -131,7 +128,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                             <div class="details">
                                 <span><strong><?=$Pr[$i]['produit_title'] ?></strong></span>
                                 <p>de <u><?=$Pr[$i]['produit_author'] ?></u> (<?=$Pr[$i]['produit_year'] ?>)
-
+<br>
+                               <small><i><b>ref : <?= $LaCat ?><?=$Pr[$i]['produit_id']?></b></i></small>
                                 </p>
                                 <div class="CombienDiv right">
                                     <button class="session-title my-2 " <?php if(!$okconnectey) { ?> onclick="location.href = 'sign.php'" <?php } 

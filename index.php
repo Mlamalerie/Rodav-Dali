@@ -37,7 +37,7 @@ $_SESSION['ici_sign_bool'] = false;
         </div>
 
         <div id="toasts"></div> <!--  NOTIFICICATION -->
-        <corps id="leBody" style="display: x">
+        <corps id="leBody" style="display: none">
             <!-- ===== NAV BAR ===== -->
             <?php require_once('php/navbar.php'); ?>
             <!-- ===== WALL ===== -->
