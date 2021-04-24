@@ -53,7 +53,7 @@ margin: 15px 0;
 }
 */
 
-button.btnCom {
+button.btnCom,span.btnCom {
     border-radius: 20px;
     border: 1px solid #FF4B2B;
     background-color: #ff3453;
@@ -67,15 +67,15 @@ button.btnCom {
     cursor: pointer;
 }
 
-button.btnCom:active { 
+button.btnCom,span.btnCom:active { 
     transform: scale(0.95);
 }
 
-button.btnCom:focus {
+button.btnCom,span.btnCom:focus {
     outline: none; 
 }
 
-button.btnCom.ghost {
+button.btnCom.ghost,span.btnCom {
     background-color: transparent;
     border-color: #FFFFFF; 
 

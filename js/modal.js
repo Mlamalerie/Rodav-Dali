@@ -18,7 +18,7 @@ if(btnModal && modal){
         CalculAffPrixTotal();
         if(majCountPan() == 0 ) {
             if(AfficherTextVaTePromenerFrr){
-                createNotificationDelay(4,"Votre panier est vide.. promenez vous dans la boutique pour y ajouter des articles...",0);
+                createNotificationDelay(4,"Votre panier est vide.. promenez vous dans la boutique pour y ajouter des articles...",0,1);
                 AfficherTextVaTePromenerFrr = false;
             }
 

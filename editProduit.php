@@ -231,7 +231,7 @@ if(!empty($_POST)){
         <title> Edit ~ <?=$basep_title?> - <?=$basep_author?> | Rodav Dalí </title>
 
     </head>
-    <body onload="check()"> 
+    <body> 
 
 
         <div id="toasts"></div> <!--  NOTIFICICATION -->

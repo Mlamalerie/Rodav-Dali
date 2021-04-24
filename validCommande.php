@@ -98,8 +98,9 @@ if(!empty($_POST)){
 
 
             foreach($_SESSION['user_panier'] as $pa){
-                $req = $BDD->prepare("INSERT INTO commande (commande_produit_id,commande_quantity,commande_user_id,commande_date) VALUES (?, ?, ?, ?)"); 
-                $req->execute(array($pa['produit_id'],$pa['produit_quantity'],$_SESSION['user_id'],$date ) );
+                $req = $BDD->prepare("INSERT INTO commande (commande_produit_id,commande_quantity,commande_user_id,commande_date, commande_prenom_nom,commande_adresse, commande_ville_pays) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)"); 
+                $req->execute(array($pa['produit_id'],$pa['produit_quantity'],$_SESSION['user_id'],$date, $prenomnom,$adresse,$villepays ) );
 
 
                 $req = $BDD->prepare("DELETE FROM panier WHERE panier_produit_id = ? AND panier_user_id = ? "); 
@@ -135,7 +136,7 @@ if(!empty($_POST)){
         <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/validCommande.css">
         <link rel="stylesheet" href="css/footer.css">
-        
+
 
         <link rel="icon" href="img/icon.ico" />
 
@@ -162,11 +163,11 @@ if(!empty($_POST)){
                 <form action="" method="post">
 
 
-                    <button class="btnCom ghost" id="voirPanier" onclick="afficherModal()">Voir mon Panier ~ $<span id="prixTotalBtn">0.00</span> </button>
+                    <span disabled class="btnCom ghost" id="voirPanier">Voir mon Panier ~ $<span id="prixTotalBtn">0.00</span> </span>
 
 
                     <h1 class="title">Ma Commande • Veuillez remplir vos coordonnées</h1>
-                 
+
 
 
                     <input class="iptCom" onkeyup="check()" type="text" name="prenomnom" id="prenomnom" placeholder="Prenom Nom" value="<?php if(isset($prenomnom)){ echo $prenomnom;} ?>"/>
@@ -205,6 +206,16 @@ if(!empty($_POST)){
         <script type="text/javascript"  src="js/boutique.js"> </script>
 
         <script type="text/javascript" src="js/modal.js"> </script>
+
+        <script>
+            // Get the button that opens the modal
+            var voirPanier = document.getElementById("voirPanier");
+            voirPanier.onclick = function() {
+                modal.style.display = "block";
+           
+            }
+
+        </script>
         <script type="text/javascript" src="js/validCommande.js"> </script>
 
         <script src="js/navbar.js"> </script>

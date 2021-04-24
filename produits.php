@@ -129,7 +129,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                                 <span><strong><?=$Pr[$i]['produit_title'] ?></strong></span>
                                 <p>de <u><?=$Pr[$i]['produit_author'] ?></u> (<?=$Pr[$i]['produit_year'] ?>)
 <br>
-                               <small><i><b>ref : <?= $LaCat ?><?=$Pr[$i]['produit_id']?></b></i></small>
+                               <small class="ref"><i><b>ref : <?= $LaCat ?><?=$Pr[$i]['produit_id']?></b></i></small>
                                 </p>
                                 <div class="CombienDiv right">
                                     <button class="session-title my-2 " <?php if(!$okconnectey) { ?> onclick="location.href = 'sign.php'" <?php } 

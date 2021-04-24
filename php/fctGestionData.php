@@ -62,11 +62,27 @@ writeJSONFile("boutique.json",$Produits);
 */
 
 
-/********************************************************************************/
-/*****************************     USERS      ***********************************/
-/********************************************************************************/
+function changerKeys($data,$NEW) {
+    $i = 0;
+    if(!empty($data[0])){
+
+        foreach($data as $u){
+            //if($NEW == "key"){ var_dump($u);}
 
 
+            if(!empty($u[$NEW]) && !empty($u)){
+                $newkey = $u[$NEW];
+                $oldkey = $i;
+                $data[$newkey] = $data[$oldkey];
+                unset($data[$oldkey]);
+            }
+            $i++;
+        }
+    }
+    return $data;
+}
+
+/*
 function writeUsersXMLFile($data) {
 
 
@@ -143,25 +159,7 @@ function writeUsersXMLFile($data) {
 
 
 }
-function changerKeys($data,$NEW) {
-    $i = 0;
-    if(!empty($data[0])){
 
-        foreach($data as $u){
-            //if($NEW == "key"){ var_dump($u);}
-
-
-            if(!empty($u[$NEW]) && !empty($u)){
-                $newkey = $u[$NEW];
-                $oldkey = $i;
-                $data[$newkey] = $data[$oldkey];
-                unset($data[$oldkey]);
-            }
-            $i++;
-        }
-    }
-    return $data;
-}
 function readUsersXMLFile() {
     $fic = "users.xml";
 
@@ -220,38 +218,59 @@ function addNewUser($newUser,$data){
     return $data;
 
 }
+*/
 
+
+
+// recup panier d'un user
 function getDataBDDPanier($u_id,$BDD) {
-    $req = $BDD->prepare("SELECT panier_produit_id,panier_quantity
+    try{
+        $req = $BDD->prepare("SELECT panier_produit_id,panier_quantity
                             FROM panier
                             WHERE panier_user_id = ? 
                                 ");
-    $req->execute(array($u_id));
+        $req->execute(array($u_id));
+    } catch (Exception $e) {
+        return null;
+
+    }     
+
     $panier_produits = $req->fetchAll();
 
     $res = [];
 
     foreach($panier_produits as $idp) { // pour tous les id de produits
-
-        // on récupère les infos du produit
-        $req = $BDD->prepare("SELECT produit_id, produit_title, produit_author, produit_price, produit_src,produit_quantity
+        try{
+            // on récupère les infos du produit
+            $req = $BDD->prepare("SELECT produit_id, produit_title, produit_author, produit_price, produit_src,produit_quantity
                             FROM produit
                             WHERE produit_id = ?");
-        $req->execute(array($idp['panier_produit_id']));
+            $req->execute(array($idp['panier_produit_id']));
+
+        } catch (Exception $e) {
+            return null;
+
+        }     
         $p = $req->fetch();
-        
+
         $p['q'] = $idp['panier_quantity'];
-        
+
         $res[] = $p;
 
     }
 
     return changerKeys($res, "produit_id");
 }
+
+// recup tout les produits de la bdd
 function getAllBDDProduits($BDD) {
-    $req = $BDD->prepare("SELECT * FROM produit");
-    $req->execute(array());
-    
+    try{
+        $req = $BDD->prepare("SELECT * FROM produit");
+        $req->execute(array());
+    } catch (Exception $e) {
+        return null;
+
+    }
     $res = $req->fetchAll();
 
     return changerKeys($res, "produit_id");

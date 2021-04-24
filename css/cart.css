@@ -1,6 +1,12 @@
 
+.ref {
+    color: whitesmoke;
+    opacity: 0.1;
+    position: relative;
 
-
+    left:93px;
+}
+ 
 /*** CARTE  ***/
 
 .wrapper{  

@@ -41,8 +41,8 @@ function plus(key,max) {
     if(parseInt(input.value) < max) {
         let x = parseInt(input.value);
         input.value = x+1;
-    } else {
-        console.log("*");
+    } else if(max > 0) {
+       
         createNotification("Vous ne pouvez pas en mettre plus de " + max.toString() + "... ",0,0);
     }
 }
