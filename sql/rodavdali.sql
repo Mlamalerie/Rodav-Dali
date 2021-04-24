@@ -33,14 +33,17 @@ USE `rodavdali`;
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `commande_id` int(30) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `commande_date` datetime NOT NULL,
   `commande_produit_id` int(15) UNSIGNED NOT NULL,
   `commande_user_id` int(10) UNSIGNED NOT NULL,
-  `commande_date` datetime NOT NULL,
   `commande_quantity` int(5) UNSIGNED NOT NULL DEFAULT 1,
+  `commande_prenom_nom` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `commande_adresse` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `commande_ville_pays` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`commande_id`),
   KEY `commande_produit_id` (`commande_produit_id`),
   KEY `commande_user_id` (`commande_user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 

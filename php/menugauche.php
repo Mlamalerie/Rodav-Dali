@@ -1,5 +1,5 @@
 <div class="content-left">
-<?php if (!$_SESSION['ici_contact_bool'] && !$_SESSION['ici_index_bool'] ) { ?>
+<?php if ($okuserADMIN && (!$_SESSION['ici_contact_bool'] && !$_SESSION['ici_index_bool']) ) { ?>
     <div id="app-cover"> <label class="labelStock" for="affqte">Affichage quantité en stock</label><br>
         <div class="row-row">
             <div class="toggle-button-cover">

@@ -3,8 +3,6 @@
 
 
 var inputAffichageQte = document.getElementById('affqte'); 
-showQte(inputAffichageQte);
-
 function showQte(input) {
 
     if(input){

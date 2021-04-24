@@ -207,15 +207,6 @@ if(!empty($_POST)){
 
         <script type="text/javascript" src="js/modal.js"> </script>
 
-        <script>
-            // Get the button that opens the modal
-            var voirPanier = document.getElementById("voirPanier");
-            voirPanier.onclick = function() {
-                modal.style.display = "block";
-           
-            }
-
-        </script>
         <script type="text/javascript" src="js/validCommande.js"> </script>
 
         <script src="js/navbar.js"> </script>

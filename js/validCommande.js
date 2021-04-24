@@ -1,3 +1,11 @@
+// Get the button that opens the modal
+var voirPanier = document.getElementById("voirPanier");
+voirPanier.onclick = function() {
+    modal.style.display = "block";
+
+}
+
+
 prixTotalPanier();
 function prixTotalPanier() {
     console.log("calculTotal");
