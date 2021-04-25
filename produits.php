@@ -128,8 +128,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
                             <div class="details">
                                 <span><strong><?=$Pr[$i]['produit_title'] ?></strong></span>
                                 <p>de <u><?=$Pr[$i]['produit_author'] ?></u> (<?=$Pr[$i]['produit_year'] ?>)
-<br>
-                               <small class="ref"><i><b>ref : <?= $LaCat ?><?=$Pr[$i]['produit_id']?></b></i></small>
+                                    <br>
+                                    <small class="ref"><i><b>ref : <?= $LaCat ?><?=$Pr[$i]['produit_id']?></b></i></small>
                                 </p>
                                 <div class="CombienDiv right">
                                     <button class="session-title my-2 " <?php if(!$okconnectey) { ?> onclick="location.href = 'sign.php'" <?php } 
@@ -158,15 +158,13 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
             </div>
         </div>
 
+       
+       
         <!-- ===== FOOTER ===== -->
         <?php require_once('php/footer.php'); ?>
-        <script>
 
-
-
-
-        </script>
         <script type="text/javascript" src="js/notif.js"> </script>
+
 
         <script type="text/javascript"  src="js/boutique.js"> </script>
 

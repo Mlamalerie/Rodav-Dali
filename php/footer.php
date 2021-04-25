@@ -48,9 +48,7 @@
      var LePanierSESSION = <?php if($okconnectey && !$okMonPanierEstVide) {echo json_encode($_SESSION['user_panier']); } else {echo "null";}?>;
 var LaBoutique = <?php echo json_encode($AllProduits); ?>;
 
- console.log(LePanierSESSION);
-    console.log(LaBoutique);
-    
+
     <?php if(isset($CodeCat) ) {?> 
     
     var codeCat = <?php echo json_encode($CodeCat);?>;
@@ -59,6 +57,5 @@ var LaBoutique = <?php echo json_encode($AllProduits); ?>;
     <?php } ?>
 
    
-
 </script>
 

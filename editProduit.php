@@ -11,7 +11,7 @@ $_SESSION['ici_index_bool'] =  false;
 $_SESSION['ici_contact_bool'] = false;
 $_SESSION['ici_sign_bool'] = false;
 
-$_GET['id'] = 25;
+
 if( !empty($_GET) ){
     $ok = true;
     extract($_GET);

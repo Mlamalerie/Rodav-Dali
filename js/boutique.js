@@ -3,7 +3,8 @@
 
 
 var inputAffichageQte = document.getElementById('affqte'); 
-function showQte(input) {
+showQte();
+function showQte(input = document.getElementById('affqte')) {
 
     if(input){
         let liste = document.getElementsByClassName("quantiteBay");
@@ -24,6 +25,18 @@ function showQte(input) {
                 //   contents[i].classList.remove("bottombottom1");
             }
         }
+    } else {
+
+        let liste = document.getElementsByClassName("quantiteBay");
+        let contents = document.getElementsByClassName("content");
+        if(liste && contents) {
+            for(let i = 0; i < liste.length; i++) {
+                liste[i].style.display = "none";
+
+            }
+        } 
+
+
     }
 }
 
@@ -40,8 +53,10 @@ function plus(key,max) {
         let x = parseInt(input.value);
         input.value = x+1;
     } else if(max > 0) {
-       
+
         createNotification("Vous ne pouvez pas en mettre plus de " + max.toString() + "... ",0,0);
+    } else {
+        createNotification("Plus en stock... ",0,0);
     }
 }
 

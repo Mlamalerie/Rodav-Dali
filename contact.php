@@ -224,8 +224,7 @@ if(!empty($_POST)){
         <?php require_once('php/footer.php'); ?>      
 
         <script src="js/notif.js"> </script>
-        
-        
+
         <script src="js/contact.js"> </script>
 
         <script src="js/navbar.js"> </script>

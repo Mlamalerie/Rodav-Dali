@@ -1,9 +1,10 @@
 .ref {
 	color: #f5f5f5;
-	opacity: .1;
-	position: relative;
-	left: 96px  
-}
+	opacity: .1; 
+	position: relative; 
+    font-size: 71%; 
+	left: 103px    
+}   
 
 .wrapper {
 	position: relative;

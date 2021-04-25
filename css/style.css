@@ -673,14 +673,14 @@ html,body {
 .close:active {
      margin-top: -1px;
     box-shadow: none;
-}
-
+} 
+ 
 #btnPasserCommande {
     border: none; 
      color: white;
     position: relative;
-    right: 23.5%;
-    bottom: 10%;
+    right: 68px;
+    bottom: 10%; 
     font-size: 95%; 
     font-weight: bold;
     background: #f46a95;

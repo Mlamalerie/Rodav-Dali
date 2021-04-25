@@ -6,6 +6,7 @@ include('php/fctGestionData.php');
 
 
 $okconnectey = false;
+$okuserADMIN = false;
 // si une connection est détecter 
 if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
     $okconnectey = true;
@@ -16,12 +17,11 @@ if(isset($_SESSION['user_id']) || isset($_SESSION['user_pseudo'])  ) {
         $okMonPanierEstVide = true;
     } 
     
-    $okuserADMIN = false;
+    
     if($_SESSION['user_role'] == 0) {
         $okuserADMIN = true;
     }
 } 
-
 
 
 //$Produits = readJSONFile("boutique.json");
@@ -30,10 +30,13 @@ $AllProduits = getAllBDDProduits($BDD);
 //$Data_Users = readUsersXMLFile();
 
 
-/*
 // JSON TO BDD 
 
+
+
+/*
 $catKeys = array_keys($Produits);
+
 foreach($catKeys as $cat) { // ^pour chaque categorie
 
     $Pr = $Produits[$cat];

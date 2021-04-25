@@ -1,3 +1,9 @@
+createNotificationDelay(4,"Pour nous joindre saisissez, vos informations dans ce formulaire",0);
+createNotificationDelay(15,"Vous pouvez toujours nous joindre via notre adresse mail :",1);
+createNotificationDelay(18,"rodovdali@gmail.com",1);
+createNotificationDelay(20,"rodovdali@gmail.com",1);
+
+
 check();
 
 const email = document.getElementById("email");
@@ -237,7 +243,4 @@ function submitForm() {
     //console.log(f);
     f.submit();
 }
-createNotificationDelay(4,"Pour nous joindre saisissez, vos informations dans ce formulaire",0);
-createNotificationDelay(15,"Vous pouvez toujours nous joindre via notre adresse mail :",1);
-createNotificationDelay(16,"rodovdali@gmail.com",1);
 
