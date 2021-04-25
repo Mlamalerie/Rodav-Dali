@@ -179,9 +179,7 @@ if(!empty($_POST)){
 
 
         if($ok) {
-            echo "<script> createNotification('Vos modifications ont bien étés enregistrées',1); </script>";
-
-
+       
             // preparer requete insertion
             $req = $BDD->prepare("UPDATE produit SET produit_title = ?, produit_author = ?, produit_year = ?, produit_quantity = ?, produit_price = ?, produit_cat = ? WHERE produit_id = ?"); 
 
@@ -249,22 +247,27 @@ if(!empty($_POST)){
 
 
 
-                    <h1 class="title">Edit</h1>
-                    <img src="<?=$basep_src?>" alt="">
+                    <h1 class="title">Edit • '<?=$basep_title?>' de <u><?=$basep_author?></u> </h1>
+                    <img class="photo" src="<?=$basep_src?>" alt="">
 
+                    <label class="labeleuh" for="p_title">Titre :</label>
                     <input class="iptEdit" onkeyup="check()" type="text" name="p_title" id="p_title" placeholder="Titre" value="<?php if(isset($basep_title)){ echo $basep_title;} ?>"/>
                     <span id="error-p_title" class="error"> <?php if(isset($err_p_title)) echo $err_p_title?></span>
-
+                    
+                    <label class="labeleuh" for="p_author">Auteur :</label>
                     <input class="iptEdit" onkeyup="check()" type="text" name="p_author" id="p_author" placeholder="Auteur" value="<?php if(isset($basep_author)){ echo $basep_author;} ?>"/>
                     <span id="error-p_author" class="error"> <?php if(isset($err_p_author)) echo $err_p_author?></span>
-
+                   
+                     <label class="labeleuh" for="p_year">Année de création :</label>
                     <input class="iptEdit" onchange="check()" type="number" name="p_year" id="p_year" placeholder="Année de création" value="<?php if(isset($basep_year)){ echo $basep_year;} ?>"/>
                     <span id="error-p_year" class="error"> <?php if(isset($err_p_year)) echo $err_p_year?></span> 
-
-                    <input class="iptEdit" onchange="check()"  min="1" max="2000" type="number" name="p_quantity" id="p_quantity" placeholder="Quantité" value="<?php if(isset($basep_quantity)){ echo $basep_quantity;} ?>"/>
+                    
+                    <label class="labeleuh" for="p_quantity">Quantité disponible :</label>
+                    <input class="iptEdit ww0" onchange="check()"  min="1" max="2000" type="number" name="p_quantity" id="p_quantity" placeholder="Quantité" value="<?php if(isset($basep_quantity)){ echo $basep_quantity;} ?>"/>
                     <span id="error-p_quantity" class="error"> <?php if(isset($err_p_quantity)) echo $err_p_quantity?></span>
-
-                    <input class="iptEdit" onchange="check()"  min="1" max="50000" step=0.05 type="number" name="p_price" id="p_price" placeholder="Prix" value="<?php if(isset($basep_price)){ echo $basep_price;} ?>"/>
+                   
+                     <label class="labeleuh" for="p_price">Prix :</label>
+                    <input class="iptEdit ww1" onchange="check()"  min="1" max="50000" step=0.05 type="number" name="p_price" id="p_price" placeholder="Prix" value="<?php if(isset($basep_price)){ echo $basep_price;} ?>"/>
                     <span id="error-p_price" class="error"> <?php if(isset($err_p_price)) echo $err_p_price?></span>
 
 
@@ -279,7 +282,7 @@ if(!empty($_POST)){
 
 
                     ?>
-
+ <label class="labeleuh" for="p_cat">Catégorie :</label>
                     <select class="iptEdit" id='p_cat' name="p_cat" class="">
 
                         <option value="<?= $voir_cat['categorie_id'] ?>"> <?= mb_strtoupper($voir_cat['categorie_title']) ?> </option>
@@ -297,12 +300,13 @@ if(!empty($_POST)){
             </div>
 
         </div>
-
-        <script>
-
-            var okMailExisteDeja = <?php if(isset($okDejaMailExiste) && $okDejaMailExiste){ echo 1;} else {echo 0;}  ?>;
-            var MailDeja = <?php if(isset($email)){ echo "'".$email."'";} else {echo "'x'";} ?>;
+<script> 
+    var oksave = <?php if(isset($ok) && !empty($ok)) {echo json_encode($ok);} else {echo json_encode(null);} ?>;
+    
+    createNotification('Vos modifications ont bien étés enregistrées',1); 
+        
         </script>
+       
 
         <!-- ===== FOOTER ===== -->
         <?php require_once('php/footer.php'); ?>
@@ -310,8 +314,7 @@ if(!empty($_POST)){
 
         <script type="text/javascript" src="js/notif.js"> </script>
 
-        <script type="text/javascript"  src="js/boutique.js"> </script>
-
+      
         <script type="text/javascript" src="js/modal.js"> </script>
         <script src="js/navbar.js"> </script>
 
