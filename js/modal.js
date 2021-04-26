@@ -58,26 +58,30 @@ function majCountPan() {
 
 }
 
-// *** Met a jour le prix total du panier dans le modal
-CalculAffPrixTotal();
-function CalculAffPrixTotal() {
-    console.log("calculTotal");
-    let s = 0;
+ // *** Met a jour le prix total du panier dans le modal
+            CalculAffPrixTotal();
+            function CalculAffPrixTotal() {
+                console.log("calculTotal");
+                let s = 0;
 
-    if(LePanierSESSION){
-        let listeProduits = Object.keys(LePanierSESSION);
+                if(LePanierSESSION){
+                    let listeProduits = Object.keys(LePanierSESSION);
 
-        for(let i = 0; i < listeProduits.length; i++) {
-            p = LePanierSESSION[listeProduits[i]];
+                    // pour chaque id de produit dans le panier
+                    for(let i = 0; i < listeProduits.length; i++) {
+                        p = LePanierSESSION[listeProduits[i]]; // lelement du produit
 
-            s +=  parseInt(p['q']) * parseFloat(p['produit_price']);
-        }
+                        // maj total prix pour un produit
+                        document.getElementById("prixTotalPanierProduit"+listeProduits[i]).innerHTML = "$" + parseInt(p['q']) * parseFloat(p['produit_price']);
+                        // compte somme totale
+                        s +=  parseInt(p['q']) * parseFloat(p['produit_price']);
+                    }
 
+                    // maj prix total
+                    document.getElementById("prixTotalPan").innerHTML = "$"+s;
+                }
 
-        document.getElementById("prixTotalPan").innerHTML = "$"+s;
-    }
-
-}
+            }
 
 // *** BTN + du modal, ajoute une qte sur le modal, et directement a la bdd si voulu
 function plus2(id,max,qte = 1) { 

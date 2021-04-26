@@ -97,14 +97,37 @@ if(!empty($_POST)){
 
 
 
+            // pour chaque élements du panier
             foreach($_SESSION['user_panier'] as $pa){
+
+                //*** nouvelles commandes
                 $req = $BDD->prepare("INSERT INTO commande (commande_produit_id,commande_quantity,commande_user_id,commande_date, commande_prenom_nom,commande_adresse, commande_ville_pays) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)"); 
                 $req->execute(array($pa['produit_id'],$pa['produit_quantity'],$_SESSION['user_id'],$date, $prenomnom,$adresse,$villepays ) );
 
-
+               
+                //*** maj quantité stock des produits
+                // recup qte actuel
+                $req = $BDD->prepare("SELECT produit_quantity FROM produit WHERE produit_id = ? "); 
+                $req->execute(array($pa['produit_id']));
+                $lebail = $req->fetch();
+                $laQduBail = $lebail["produit_quantity"];
+                
+                // nouvelle quantité
+                $newQduBail = ((int) $lebail["produit_quantity"]) - ( (int) $pa['produit_quantity']);
+                if($newQduBail < 0) {
+                    $newQduBail = 0;
+                }
+                // maj new qté
+                $req = $BDD->prepare("UPDATE produit SET produit_quantity = ? WHERE produit_id = ? "); 
+                $req->execute(array($newQduBail,$pa['produit_id']));
+                
+                
+                 //*** supprime panier
                 $req = $BDD->prepare("DELETE FROM panier WHERE panier_produit_id = ? AND panier_user_id = ? "); 
                 $req->execute(array($pa['produit_id'],$_SESSION['user_id']));
+
+
             }
 
             header("Location: bravo.php?n=3");

@@ -122,7 +122,7 @@ if(!empty($_POST)){
             $req->execute(array($pseudo,$email,$password,$date));
 
             // recuperer l'id
-            $req = $BDD->prepare("SELECT user_id FROM user 
+            $req = $BDD->prepare("SELECT user_id, user_role FROM user 
             WHERE user_pseudo = ? AND user_email = ? ");  
             $req->execute(array($pseudo,$email)); $u = $req->fetch();
 

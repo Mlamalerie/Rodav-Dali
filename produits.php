@@ -158,8 +158,8 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
             </div>
         </div>
 
-       
-       
+
+
         <!-- ===== FOOTER ===== -->
         <?php require_once('php/footer.php'); ?>
 
@@ -169,7 +169,7 @@ if(isset($_GET['cat']) && !empty($_GET['cat'])) {
         <script type="text/javascript"  src="js/boutique.js"> </script>
 
         <script type="text/javascript" src="js/modal.js"> </script>
-
+       
         <script type="text/javascript" src="js/navbar.js"> </script>
 
 

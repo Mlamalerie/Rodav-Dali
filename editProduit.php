@@ -300,12 +300,7 @@ if(!empty($_POST)){
             </div>
 
         </div>
-<script> 
-    var oksave = <?php if(isset($ok) && !empty($ok)) {echo json_encode($ok);} else {echo json_encode(null);} ?>;
-    
-    createNotification('Vos modifications ont bien étés enregistrées',1); 
-        
-        </script>
+
        
 
         <!-- ===== FOOTER ===== -->
@@ -313,6 +308,7 @@ if(!empty($_POST)){
 
 
         <script type="text/javascript" src="js/notif.js"> </script>
+        <script type="text/javascript" src="js/editProduit.js"> </script>
 
       
         <script type="text/javascript" src="js/modal.js"> </script>

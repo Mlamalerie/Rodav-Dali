@@ -757,6 +757,7 @@ html,body {
     
 
 }
+
 .infoNbPan {
     font-size: 90%!important;
 }
@@ -887,6 +888,14 @@ html,body {
     font-size: 19px;
     color: #dbd1d6;
     font-weight: 300;
+}
+
+.unitePrice { 
+    font-size: 70%;
+    color: rgba(245, 245, 245, 0.15);
+    position: relative; 
+    top: -5px;
+ 
 }
 
 @media (max-width: 800px) {

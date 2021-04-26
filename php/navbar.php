@@ -125,7 +125,7 @@
                         <button class="minus-btn" type="button" name="button" onclick="plus2('<?=$pan['produit_id']?>',<?=$max ?>)">+</button>
                     </div>
 
-                    <div class="total-price">$<?=$pan['produit_price']?></div>
+                    <div class="total-price"><span id="prixTotalPanierProduit<?=$pan['produit_id']?>" class="prixTotalPanierProduit"></span> <br> <span class="unitePrice">($<?=$pan['produit_price']?>  u.)</span></div>
                 </div>
                 <?php $NbProdPan++; } ?>
 
