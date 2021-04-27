@@ -58,30 +58,34 @@ function majCountPan() {
 
 }
 
- // *** Met a jour le prix total du panier dans le modal
-            CalculAffPrixTotal();
-            function CalculAffPrixTotal() {
-                console.log("calculTotal");
-                let s = 0;
+function financial(x) {
+  return Number.parseFloat(x).toFixed(2);
+}
 
-                if(LePanierSESSION){
-                    let listeProduits = Object.keys(LePanierSESSION);
+// *** Met a jour le prix total du panier dans le modal
+CalculAffPrixTotal();
+function CalculAffPrixTotal() {
+    console.log("calculTotal");
+    let s = 0;
 
-                    // pour chaque id de produit dans le panier
-                    for(let i = 0; i < listeProduits.length; i++) {
-                        p = LePanierSESSION[listeProduits[i]]; // lelement du produit
+    if(LePanierSESSION){
+        let listeProduits = Object.keys(LePanierSESSION);
 
-                        // maj total prix pour un produit
-                        document.getElementById("prixTotalPanierProduit"+listeProduits[i]).innerHTML = "$" + parseInt(p['q']) * parseFloat(p['produit_price']);
-                        // compte somme totale
-                        s +=  parseInt(p['q']) * parseFloat(p['produit_price']);
-                    }
+        // pour chaque id de produit dans le panier
+        for(let i = 0; i < listeProduits.length; i++) {
+            p = LePanierSESSION[listeProduits[i]]; // lelement du produit
 
-                    // maj prix total
-                    document.getElementById("prixTotalPan").innerHTML = "$"+s;
-                }
+            // maj total prix pour un produit
+            document.getElementById("prixTotalPanierProduit"+listeProduits[i]).innerHTML = "$" + parseInt(p['q']) * parseFloat(p['produit_price']);
+            // compte somme totale
+            s +=  parseInt(p['q']) * parseFloat(p['produit_price']);
+        }
 
-            }
+        // maj prix total
+        document.getElementById("prixTotalPan").innerHTML = "$"+financial(s);
+    }
+
+}
 
 // *** BTN + du modal, ajoute une qte sur le modal, et directement a la bdd si voulu
 function plus2(id,max,qte = 1) { 

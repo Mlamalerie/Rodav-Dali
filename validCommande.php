@@ -107,17 +107,17 @@ if(!empty($_POST)){
 
                
                 //*** maj quantité stock des produits
-                // recup qte actuel
-                $req = $BDD->prepare("SELECT produit_quantity FROM produit WHERE produit_id = ? "); 
-                $req->execute(array($pa['produit_id']));
-                $lebail = $req->fetch();
-                $laQduBail = $lebail["produit_quantity"];
+        
                 
                 // nouvelle quantité
-                $newQduBail = ((int) $lebail["produit_quantity"]) - ( (int) $pa['produit_quantity']);
+                $newQduBail = ((int) $pa["produit_quantity"]) - ( (int) $pa['q']);
                 if($newQduBail < 0) {
                     $newQduBail = 0;
+                    
                 }
+    
+                
+                
                 // maj new qté
                 $req = $BDD->prepare("UPDATE produit SET produit_quantity = ? WHERE produit_id = ? "); 
                 $req->execute(array($newQduBail,$pa['produit_id']));

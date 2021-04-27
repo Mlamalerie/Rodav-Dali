@@ -127,7 +127,7 @@ if(!empty($_POST)){
         if($basep_quantity != $p_quantity){
             $okquantitynotsame =  true;
             // Verification du Prix
-            if(empty($p_quantity)) {
+            if(!isset($p_quantity) && empty($p_quantity)) {
                 $ok = false;
                 $err_p_quantity = "Veuillez renseigner ce champ !"; 
             } else if( $p_quantity < 0) {
@@ -263,7 +263,7 @@ if(!empty($_POST)){
                     <span id="error-p_year" class="error"> <?php if(isset($err_p_year)) echo $err_p_year?></span> 
                     
                     <label class="labeleuh" for="p_quantity">Quantité disponible :</label>
-                    <input class="iptEdit ww0" onchange="check()"  min="1" max="2000" type="number" name="p_quantity" id="p_quantity" placeholder="Quantité" value="<?php if(isset($basep_quantity)){ echo $basep_quantity;} ?>"/>
+                    <input class="iptEdit ww0" onchange="check()"  min="0" max="2000" type="number" name="p_quantity" id="p_quantity" placeholder="Quantité" value="<?php if(isset($basep_quantity)){ echo $basep_quantity;} ?>"/>
                     <span id="error-p_quantity" class="error"> <?php if(isset($err_p_quantity)) echo $err_p_quantity?></span>
                    
                      <label class="labeleuh" for="p_price">Prix :</label>
