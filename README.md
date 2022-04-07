@@ -2,10 +2,10 @@
 Site d'exposition et vente de créations artistiques et esthétique. 
 
 ### 📸 Screenshots 
-![](https://drive.google.com/uc?id=1IC-wuB454fFAzkUNW1eUA0ewfn0WPb6Q&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Page d'accueil")
-![](https://drive.google.com/uc?id=1IDCNgEJbSDHc9CsH9cnuvxfic8-majo9&authuser=saidsalimo%40eisti.eu&usp=drive_fs "SignUp - SignIn | Rodav Dalì")
-![](https://drive.google.com/uc?id=1IIJViCXXf6cXnoho--YbvIVKSHy4Qhs1&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Albums | Rodav Dalì")
-![](https://drive.google.com/uc?id=1IIvKy1HOLoExQanKwFGQVcYZnktkRQj_&authuser=saidsalimo%40eisti.eu&usp=drive_fs "Mon Panier")
+![](img/index.png "Page d'accueil")
+![](img/sign.png "SignUp - SignIn | Rodav Dalì")
+![](img/produits4.png "Albums | Rodav Dalì")
+![](img/panier.png "Mon Panier")
 
 ---
 ### 📌 Notes 
